@@ -1,0 +1,24 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'core/helper/get_di.dart';
+import 'my_app.dart';
+
+void main() async {
+  // Initialize controller
+  WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // await NotificationApi.instance.initialize();
+  await Get.putAsync<SharedPreferences>(
+    () async => await SharedPreferences.getInstance(),
+    permanent: true,
+  );
+  await GetStorage.init();
+  // if (kReleaseMode) ErrorWidget.builder = (_) => const AppErrorWidget();
+  await init();
+  runApp(MyApp());
+}
+
+
+
