@@ -7,7 +7,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:white_day/core/constants/colors.dart';
 import 'package:white_day/core/helper/route_helper.dart';
 import '../../controller/home/home_controll.dart';
-import '../../core/constants/dimensions.dart';
 import '../../core/constants/images.dart';
 import '../../core/widget/custom_button.dart';
 import 'widget/reviews_widget.dart';
@@ -53,7 +52,7 @@ class HomeScreenStart extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: AppColors.colorButton.withOpacity(0.8),
                             borderRadius: BorderRadius.circular(
-                              Dimensions.radiusLarge,
+                              12,
                             ),
                           ),
                           child: Text(
@@ -79,7 +78,7 @@ class HomeScreenStart extends StatelessWidget {
                     isBold: true,
                     width: 170.w,
                     height: 35.h,
-                    radius: Dimensions.radiusDefault,
+                    radius: 12,
                   ),
                   SizedBox(height: 10.h),
                   Padding(
@@ -102,7 +101,7 @@ class HomeScreenStart extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                               homeControllImp. listSubCategoryes[index].nameCategory!,
+                               homeControllImp.listSubCategoryes[index].nameCategory!,
                                 style: GoogleFonts.inriaSerif(
                                   fontSize: 20.sp,
                                   fontWeight: FontWeight.w700,
@@ -131,7 +130,7 @@ class HomeScreenStart extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 5.h),
                     decoration: BoxDecoration(
                       color: AppColors.colorButton,
-                      borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+                      borderRadius: BorderRadius.circular(12),
                     ),
                     child: Text(
                       "Reviews",

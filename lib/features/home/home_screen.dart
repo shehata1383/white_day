@@ -7,7 +7,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:white_day/controller/home/home_controll.dart';
 import 'package:white_day/core/constants/colors.dart';
 import 'package:white_day/core/helper/route_helper.dart';
-import '../../core/constants/dimensions.dart';
 import '../../core/constants/images.dart';
 import '../../core/widget/custom_button.dart';
 
@@ -80,7 +79,7 @@ class HomeScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: AppColors.colorButton,
                             borderRadius: BorderRadius.circular(
-                              Dimensions.radiusLarge,
+                              20,
                             ),
                             boxShadow: [
                               BoxShadow(
@@ -98,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(
-                                  Dimensions.radiusLarge,
+                                  20,
                                 ),
                                 child: Image.asset(
                                   homeControll.listSubCategoriesHome[index].image!,
@@ -113,7 +112,7 @@ class HomeScreen extends StatelessWidget {
                                   homeControll.listSubCategoriesHome[index].nameCategory!,
         
                                   style: GoogleFonts.inriaSerif(
-                                    fontSize: Dimensions.fontSizeExtraLarge2.sp,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black,
                                   ),
@@ -146,7 +145,7 @@ class HomeScreen extends StatelessWidget {
                   isBold: true,
                  margin: EdgeInsetsDirectional.symmetric(horizontal:25.w),
                   height: 35.h,
-                  radius: Dimensions.radiusDefault,
+                  radius: 20,
                 ),
               ],
             ),

@@ -1,19 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:overlay_kit/overlay_kit.dart';
+import 'core/constants/app_constants.dart';
 import 'core/helper/get_di.dart';
-import 'my_app.dart';
+import 'core/helper/route_helper.dart';
+import 'core/theme/light.dart';
 
 void main() async {
   // Initialize controller
   WidgetsFlutterBinding.ensureInitialized();
-
-  await Get.putAsync<SharedPreferences>(
-    () async => await SharedPreferences.getInstance(),
-    permanent: true,
-  );
-  await GetStorage.init();
   await init();
   runApp(MyApp());
+}
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: () async {
+        return false;
+      },
+      child: OverlayKit(
+            child: ScreenUtilInit(
+              designSize: const Size(360, 690),
+              minTextAdapt: true,
+              splitScreenMode: true,
+              builder: (_, child) {
+                return GetMaterialApp(
+                  title: AppConstants.appName,
+                  theme: light(),
+                  navigatorKey: Get.key,
+                  initialRoute: RouteHelper.homeScreenStart,
+                  debugShowCheckedModeBanner: false,
+                  getPages: RouteHelper.routes,
+                );
+              },
+            ),
+          )
+    );
+  }
 }

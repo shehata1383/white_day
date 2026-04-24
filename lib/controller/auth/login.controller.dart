@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:overlay_kit/overlay_kit.dart';
-import '../../core/functions/checkInternet.dart';
 import '../../core/helper/route_helper.dart';
 import '../../core/widget/custom_snackbar.dart';
 
@@ -16,11 +15,10 @@ class LoginControllerImp extends LoginController {
   late TextEditingController email;
   late TextEditingController password;
 
-  LoginControllerImp();
+   LoginControllerImp();
   @override
   login() async {
     OverlayLoadingProgress.start();
-    if (await CheckInternet.checkInternet()) {
       var formdata = formstate.currentState;
       if (formdata == null || !formdata.validate()) {
         showCustomSnackBar(
@@ -33,10 +31,7 @@ class LoginControllerImp extends LoginController {
       }
       OverlayLoadingProgress.stop();
       Get.toNamed(RouteHelper.signIn);
-    } else {
-      OverlayLoadingProgress.stop();
-      showCustomSnackBar('Check the internet connection'.tr, isError: true);
-    }
+
   }
 
   @override

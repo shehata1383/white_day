@@ -4,8 +4,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
-import '../constants/dimensions.dart';
 import '../constants/styles.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -78,7 +76,7 @@ class CustomTextField extends StatefulWidget {
     this.prefixImagecolor,
     this.prefixIcon,
     this.suffixIcon,
-    this.prefixSize = Dimensions.paddingSizeSmall,
+    this.prefixSize = 14,
     this.textAlign = TextAlign.start,
     this.isAmount = false,
     this.isNumber = false,
@@ -125,17 +123,17 @@ class CustomTextFieldState extends State<CustomTextField> {
             ? Text(
                 widget.titleText,
                 style: robotoRegular.copyWith(
-                  fontSize: Dimensions.fontSizeSmall,
+                  fontSize: 14,
                 ),
               )
             : const SizedBox(),
         SizedBox(
-          height: widget.showTitle ? Dimensions.paddingSizeExtraSmall : 0,
+          height: widget.showTitle ? 12 : 0,
         ),
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(
-              widget.borderRadius ?? Dimensions.paddingSizeSmall,
+              widget.borderRadius ?? 12,
             ),
             border: Border.all(
               style: widget.showBorder ? BorderStyle.solid : BorderStyle.none,
@@ -189,7 +187,7 @@ class CustomTextFieldState extends State<CustomTextField> {
                   focusNode: widget.focusNode,
                   textAlign: widget.textAlign,
                   style: robotoRegular.copyWith(
-                    fontSize: Dimensions.fontSizeLarge,
+                    fontSize: 20,
                     color: Theme.of(context).hintColor,
                   ),
                   textInputAction: widget.inputAction,
@@ -214,7 +212,7 @@ class CustomTextFieldState extends State<CustomTextField> {
                     contentPadding: widget.contentPadding,
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
-                        widget.borderRadius ?? Dimensions.paddingSizeSmall,
+                        widget.borderRadius ?? 14,
                       ),
                       borderSide: BorderSide(
                         style: widget.showBorder
@@ -228,7 +226,7 @@ class CustomTextFieldState extends State<CustomTextField> {
                     ),
                     disabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
-                        widget.borderRadius ?? Dimensions.paddingSizeSmall,
+                        widget.borderRadius ?? 14,
                       ),
                       borderSide: BorderSide(
                         style: widget.showBorder
@@ -242,7 +240,7 @@ class CustomTextFieldState extends State<CustomTextField> {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
-                        widget.borderRadius ?? Dimensions.paddingSizeSmall,
+                        widget.borderRadius ?? 14,
                       ),
                       borderSide: BorderSide(
                         style: widget.showBorder
@@ -256,7 +254,7 @@ class CustomTextFieldState extends State<CustomTextField> {
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
-                        Dimensions.paddingSizeSmall,
+                        14,
                       ),
                       borderSide: BorderSide(
                         style: widget.showBorder
@@ -272,7 +270,7 @@ class CustomTextFieldState extends State<CustomTextField> {
                     hintText: widget.hintText,
                     fillColor: widget.colorFill ?? Theme.of(context).cardColor,
                     hintStyle: robotoRegular.copyWith(
-                      fontSize: widget.fontSize ?? Dimensions.fontSizeLarge,
+                      fontSize: widget.fontSize ?? 18,
                       color: Theme.of(context).hintColor,
                     ),
                     filled: true,
@@ -287,27 +285,17 @@ class CustomTextFieldState extends State<CustomTextField> {
                                   decoration: const BoxDecoration(
                                     borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(
-                                        Dimensions.radiusSmall,
+                                        12,
                                       ),
                                       bottomLeft: Radius.circular(
-                                        Dimensions.radiusSmall,
+                                      12,
                                       ),
                                     ),
                                   ),
                                   margin: const EdgeInsets.only(right: 0),
                                   padding: const EdgeInsets.only(left: 5),
                                   child: const Center(
-                                    // child: CodePickerWidget(
-                                    //   boxDecoration: BoxDecoration(color: Theme.of(context).cardColor),
-                                    //   flagWidth: 25,
-                                    //   padding: EdgeInsets.zero,
-                                    //   onChanged: widget.onCountryChanged,
-                                    //   initialSelection: widget.countryDialCode,
-                                    //   favorite: [widget.countryDialCode!],
-                                    //   textStyle: robotoRegular.copyWith(
-                                    //     fontSize: Dimensions.fontSizeDefault, color: Theme.of(context).textTheme.bodyMedium!.color,
-                                    //   ),
-                                    // ),
+                                    
                                   ),
                                 ),
                                 Container(

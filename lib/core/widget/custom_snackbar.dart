@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../constants/dimensions.dart';
 import '../constants/styles.dart';
 
 void showCustomSnackBar(
@@ -19,11 +17,11 @@ void showCustomSnackBar(
           duration: const Duration(seconds: 5),
           snackStyle: SnackStyle.FLOATING,
           margin: const EdgeInsets.only(
-            left: Dimensions.paddingSizeSmall,
-            right: Dimensions.paddingSizeSmall,
+            left: 12,
+            right: 12,
             bottom: 100,
           ),
-          borderRadius: Dimensions.radiusSmall,
+          borderRadius: 14,
           isDismissible: true,
           dismissDirection: DismissDirection.horizontal,
         ),
@@ -33,16 +31,16 @@ void showCustomSnackBar(
         SnackBar(
           dismissDirection: DismissDirection.horizontal,
           margin: const EdgeInsets.only(
-            right: Dimensions.paddingSizeSmall,
-            top: Dimensions.paddingSizeSmall,
-            bottom: Dimensions.paddingSizeSmall,
-            left: Dimensions.paddingSizeSmall,
+            right:12,
+            top: 12,
+            bottom: 12,
+            left: 12,
           ),
           duration: const Duration(seconds: 1),
           backgroundColor: isError ? Colors.red : Colors.green,
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
+            borderRadius: BorderRadius.circular(12),
           ),
           content: Text(
             message,

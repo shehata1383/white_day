@@ -3,8 +3,9 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../constants/dimensions.dart';
+
 import '../constants/styles.dart';
+
 
 class CustomButton extends StatelessWidget {
   final Function? onPressed;
@@ -52,7 +53,7 @@ class CustomButton extends StatelessWidget {
       foregroundColor: Theme.of(context).primaryColor,
       backgroundColor: color ?? Theme.of(context).primaryColor,
       minimumSize: Size(
-        width != null ? width! : Dimensions.webMaxWidth,
+        width != null ? width! : 100,
         height != null ? height! : 50,
       ),
       padding: EdgeInsets.zero,
@@ -63,7 +64,7 @@ class CustomButton extends StatelessWidget {
 
     return Center(
       child: SizedBox(
-        width: width ?? Dimensions.webMaxWidth,
+        width: width ?? double.infinity,
         child: Padding(
           padding: margin == null ? const EdgeInsets.all(0) : margin!,
           child: TextButton(
@@ -85,7 +86,7 @@ class CustomButton extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    width: Dimensions.paddingSizeSmall,
+                    width: 12,
                     height: 25,
                   ),
                   Text(
@@ -101,7 +102,7 @@ class CustomButton extends StatelessWidget {
                 icon != null
                     ? Padding(
                   padding: const EdgeInsets.only(
-                    right: Dimensions.paddingSizeDefault,
+                    right: 12,
                   ),
                   child: Icon(
                     icon,
@@ -115,7 +116,7 @@ class CustomButton extends StatelessWidget {
                 image != null
                     ? Padding(
                   padding: const EdgeInsets.only(
-                    right: Dimensions.paddingSizeDefault,
+                    right: 12,
                   ),
                   child: Image.asset(
                     image!,
@@ -136,7 +137,7 @@ class CustomButton extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: GoogleFonts.inriaSerif(
                     color: textColor ?? (transparent ? Theme.of(context).primaryColor : Colors.white),
-                    fontSize: fontSize ?? Dimensions.fontSizeLarge,
+                    fontSize: fontSize ?? 18,
                     fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
                   ),
                 ),

@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:overlay_kit/overlay_kit.dart';
-import '../../core/functions/checkInternet.dart';
 import '../../core/helper/route_helper.dart';
 import '../../core/widget/custom_snackbar.dart';
 
@@ -22,7 +21,6 @@ class SignUpControllerImp extends SignUpController {
   signUp() async {
     OverlayLoadingProgress.start();
 
-    if (await CheckInternet.checkInternet()) {
       var formdata = formstate.currentState;
       if (formdata == null || !formdata.validate()) {
         showCustomSnackBar(
@@ -35,11 +33,7 @@ class SignUpControllerImp extends SignUpController {
       }
       OverlayLoadingProgress.stop();
       Get.toNamed(RouteHelper.signIn);
-    } else {
-      OverlayLoadingProgress.stop();
-      showCustomSnackBar('Check the internet connection'.tr, isError: true);
-    }
-    OverlayLoadingProgress.stop();
+
   }
 
   @override
