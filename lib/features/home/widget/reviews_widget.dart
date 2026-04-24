@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/constants/colors.dart';
+import '../../../core/model/model_review.dart';
 
 class ReviewsWidget extends StatelessWidget {
   const ReviewsWidget({super.key, required this.review});
-  final Map review;
+  final ModelReview review;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +22,7 @@ class ReviewsWidget extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadiusGeometry.circular(50.w),
             child: Image.asset(
-              review["image"],
+              review.image!,
               width: 55.w,
               height: 55.h,
               fit: BoxFit.fitWidth,
@@ -36,17 +37,17 @@ class ReviewsWidget extends StatelessWidget {
                   children: [
                     const Row(
                       children: [
-                        Icon(Icons.star, color: Colors.yellowAccent, size: 25),
-                        Icon(Icons.star, color: Colors.yellowAccent, size: 25),
-                        Icon(Icons.star, color: Colors.yellowAccent, size: 25),
-                        Icon(Icons.star, color: Colors.yellowAccent, size: 25),
-                        Icon(Icons.star, color: Colors.yellowAccent, size: 25),
+                        Icon(Icons.star, color: AppColors.colorStar, size: 25),
+                        Icon(Icons.star, color: AppColors.colorStar, size: 25),
+                        Icon(Icons.star, color: AppColors.colorStar, size: 25),
+                        Icon(Icons.star, color: AppColors.colorStar, size: 25),
+                        Icon(Icons.star, color: AppColors.colorStar, size: 25),
                       ],
-                    ),                Text(review["review"], style: TextStyle(fontSize: 14.sp)),
-
+                    ),
+                    Text(review.rate!, style: TextStyle(fontSize: 14.sp)),
                   ],
                 ),
-                Text(review["text"], style: TextStyle(fontSize: 14.sp)),
+                Text(review.comment!, style: TextStyle(fontSize: 14.sp)),
               ],
             ),
           ),

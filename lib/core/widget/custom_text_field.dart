@@ -102,36 +102,15 @@ class CustomTextFieldState extends State<CustomTextField> {
   bool _obscureText = true;
   bool _change = true;
   String? errorMessage(String str) {
-    if (widget.hintText == "serialNumberHint".tr) {
-      return "serialNumberRequired".tr;
-    } else if (widget.hintText == "password".tr) {
+   if (widget.hintText == "Password".tr) {
       return "passwordRequired".tr;
-    } else if (widget.hintText == "ConfirmPassword".tr) {
-      return "passwordRequired".tr;
-    } else if (widget.hintText == "name".tr) {
+    }  else if (widget.hintText == "Full Name".tr) {
       return "nameRequired".tr;
-    } else if (widget.hintText == "phone".tr ||
-        widget.hintText == '+970 2458712556') {
+    } else if (widget.hintText == "Phone number".tr ||
+        widget.hintText == '01117087337') {
       return "phoneRequired".tr;
-    } else if (widget.hintText == "address".tr ||
-        widget.hintText == "Enter the address in detail.".tr) {
-      return "addressRequired".tr;
-    } else if (widget.hintText == "trade_name".tr) {
-      return "commercial_registerRequired".tr;
-    } else if (widget.hintText == "tax_number".tr) {
-      return "Tax_registerRequired".tr;
-    } else if (widget.hintText == "region".tr) {
-      return "regionRequired".tr;
-    } else if (widget.hintText == "current_user".tr) {
-      return "Enter_name".tr;
-    } else if (widget.hintText == "20-3-2023".tr) {
-      return "Enter_date".tr;
-    } else if (widget.hintText == "email".tr) {
+    }  else if (widget.hintText == "Email".tr) {
       return "emailRequired".tr;
-    } else if (widget.hintText == "title_message".tr) {
-      return "title_messageRequired".tr;
-    } else if (widget.hintText == "message".tr) {
-      return "messageRequired".tr;
     }
 
     return null;

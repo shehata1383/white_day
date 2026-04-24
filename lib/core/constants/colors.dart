@@ -6,6 +6,7 @@ class AppColors {
   static const Color colorInput = Color(0xFFD9D9D9);
   static const Color colorDetails = Color(0xFFEBD0C2);
   static const Color colorfilter = Color(0xFFCFB0A2);
+  static const Color colorStar = Color(0xffFFCC00);
 
 }
 

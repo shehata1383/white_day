@@ -51,8 +51,8 @@ class Images {
   static const String photo5 = 'assets/images/photo5.png';
   static const String photo6 = 'assets/images/photo6.png';
   static const String ourServices = 'assets/images/our services.png';
-  static const String review1= 'assets/images/review1.jpg';
-  static const String review2 = 'assets/images/review2.jpg';
+  static const String review1= 'assets/images/review2.jpg';
+  static const String review2 = 'assets/images/review1.jpg';
   static const String review3 = 'assets/images/review3.jpg';
   static const String diamondGlow1 = 'assets/images/Diamond Glow1.jpg';
   static const String diamondGlow2 = 'assets/images/Diamond Glow2.jpg';
