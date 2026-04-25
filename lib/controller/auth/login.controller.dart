@@ -36,7 +36,7 @@ class LoginControllerImp extends LoginController {
 
   @override
   goToSignUp() {
-    Get.offNamed(RouteHelper.signUp);
+    Get.offNamed(RouteHelper.signUpChooseScreen);
   }
 
   @override

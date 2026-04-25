@@ -8,48 +8,35 @@ import '../../../core/helper/route_helper.dart';
 import '../../widget/appbar_logo_screen.dart';
 import '../../widget/filtter_screen/fillter_screen.dart';
 
-class PhotographerScreen extends StatefulWidget {
-  const PhotographerScreen({super.key});
+class ArtistScreen extends StatelessWidget {
+   ArtistScreen({super.key});
 
-  @override
-  State<PhotographerScreen> createState() => _PhotographerScreenState();
-}
-
-class _PhotographerScreenState extends State<PhotographerScreen> {
   List listSubCategoryes = [
     {
-      "nameCategores": "By- Agha Wedding",
-      "price": "Starting from 3000 L.E",
-      "imageSubCategores": Images.photo1,
-      "route": RouteHelper.aghaWedding,
+      "nameCategores": "Bahaa Sultan",
+      "price": "400,000 L.E",
+      "imageSubCategores": Images.artist1,
+      "route": RouteHelper.bahaaSultan,
     },
     {
-      "nameCategores": "By- Dart Wedding",
-      "price": "Starting from 12,000 L.E",
-      "imageSubCategores": Images.dart2,
-      "route": RouteHelper.dartWedding,
+      "nameCategores": "Mahmoud Al-Laithi",
+      "price": "300,000 L.E",
+      "imageSubCategores": Images.artist2,
+      "route": RouteHelper.mahmoudAlLaithi,
     },
     {
-      "nameCategores": "By-Aboutaleb Wedding",
-      "price": "Starting from 15,000 L.E",
-      "imageSubCategores": Images.aboutaleb3,
-      "route": RouteHelper.aboutalebWedding,
+      "nameCategores": "Tamer Hosny",
+      "price": "3,000,000 L.E",
+      "imageSubCategores": Images.artist3,
+      "route": RouteHelper.tamerHosny,
     },
     {
-      "nameCategores": "By- Omar ahmed",
-      "price": "Starting from 4500 L.E",
-      "imageSubCategores": Images.photo4,
+      "nameCategores": "Amr Diab",
+      "price": "5,000,000 L.E",
+      "imageSubCategores": Images.artist4,
+      "route": RouteHelper.amrDiab,
     },
-    {
-      "nameCategores": "By- Wael ameen",
-      "price": "Starting from 2500 L.E",
-      "imageSubCategores": Images.photo5,
-    },
-    {
-      "nameCategores": "By- Youssef ali",
-      "price": "Starting from 4500 L.E",
-      "imageSubCategores": Images.photo6,
-    },
+   
   ];
 
   @override
@@ -62,7 +49,7 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
             appBarLogoScreen(),
 
             Text(
-              "Photographers",
+              "Artists",
               style: GoogleFonts.inriaSerif(
                 fontSize: 28.sp,
                 fontWeight: FontWeight.bold,
@@ -71,9 +58,6 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
             ),
 
             SizedBox(height: 10.h),
-
-            FillterScreen(),
-
             SizedBox(height: 15.h),
 
             Expanded(
@@ -84,7 +68,7 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
                   crossAxisCount: 2,
                   crossAxisSpacing: 10.w,
                   mainAxisSpacing: 10.h,
-                  mainAxisExtent: 205.h,
+                  mainAxisExtent: 200.h,
                 ),
                 itemBuilder: (context, index) {
                   return GestureDetector(
@@ -103,7 +87,7 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
                                 color: AppColors.colorDetails,
                                 width: 1.5,
                               ),
-                              borderRadius: BorderRadius.circular(0.r),
+                              borderRadius: BorderRadius.circular(15.r),
                             ),
                             child: ClipRRect(
                               borderRadius: BorderRadiusDirectional.only(
@@ -118,26 +102,35 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 8.h),
-                          Text(
-                            listSubCategoryes[index]['nameCategores'],
-                            style: GoogleFonts.inriaSerif(
-                              fontSize: 18.sp,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          SizedBox(height: 2.h),
-                          Text(
-                            listSubCategoryes[index]['price'],
-                            style: GoogleFonts.inriaSerif(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.black,
+                          Padding(
+                            padding:  EdgeInsetsDirectional.symmetric(horizontal: 2.w),
+                            child: Text(
+                              listSubCategoryes[index]['nameCategores'],
+                              style: GoogleFonts.inriaSerif(
+                                fontSize: 17.sp,
+                                
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
+                          SizedBox(height: 10.h),
+                          Align(alignment: AlignmentDirectional.centerEnd,
+                            child: Padding(
+                              padding:  EdgeInsetsDirectional.only(end: 2.w),
+                              child: Text(
+                                listSubCategoryes[index]['price'],
+                                style: GoogleFonts.inriaSerif(
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 5,)
                         ],
                       ),
                     ),
@@ -151,5 +144,5 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
     );
   }
 
- 
+  
 }

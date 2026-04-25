@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:white_day/core/constants/images.dart';
-
 import '../../../core/constants/colors.dart';
 
-class GroomGlowPackage extends StatelessWidget {
-  const GroomGlowPackage({super.key});
+class TamerHosny extends StatelessWidget {
+  const TamerHosny({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +13,20 @@ class GroomGlowPackage extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
-            children: [Image.asset(Images.groomGlowPackage,width: double.infinity,fit: BoxFit.fitWidth,),
+            children: [Row(mainAxisAlignment: MainAxisAlignment
+            .spaceEvenly,
+              children: [
+                Image.asset(Images.tamerHosny1,height: 200.h,fit: BoxFit.fitWidth,),
+                Image.asset(Images.tamerHosny2,height: 200.h,fit: BoxFit.fitWidth,),
+              ],
+            ),
           
               _buildRatingCard(),
                               const Divider(color: Colors.grey, thickness: 1),
           
                   const _SectionTitle(title: "Price"),
                    Text(
-                    "1,450 L.E",
+                    "3,000,000 L.E",
                     style: GoogleFonts.inriaSerif(
                       fontSize: 23.sp,
                       fontWeight: FontWeight.w400,
@@ -33,12 +38,11 @@ class GroomGlowPackage extends StatelessWidget {
               _buildDetailsList(),
                const Divider(color: Colors.grey, thickness: 1),
           
-                  const _SectionTitle(title: "About"),
+                  const _SectionTitle(title: "About Tamer Hosny "),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
                     child: Text(
-                      "Your go-to place for clean cuts, fresh fades, and a look that speaks confidence.",
-                      textAlign: TextAlign.left,
+"A talented and experienced wedding singer known for creating unforgettable moments With a unique voice and engaging stage presence, he brings energy and emotion to every event, making your special day truly magical.",                      textAlign: TextAlign.left,
                       style: GoogleFonts.inriaSerif(
                         fontSize: 16.sp,
                         height: 1.4,
@@ -49,9 +53,9 @@ class GroomGlowPackage extends StatelessWidget {
                   ),
                   const Divider(color: Colors.grey, thickness: 1),
           
-                  const _SectionTitle(title: "4,7 Rating"),
+                  const _SectionTitle(title: "5,5 Rating"),
                   Text(
-                    "Based on 100 reviews",
+                    "Based on 1000 reviews",
                     style: GoogleFonts.inriaSerif(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w500,
@@ -93,10 +97,10 @@ class GroomGlowPackage extends StatelessWidget {
   
   Widget _buildDetailsList() {
     List<String> makeupServices = [
-      "Haircut",
-      "Beard trim",
-      "Hot oil treatmet",
-      "Facial cleansing"
+      "Duration:2 Hours",
+      "Music style: Romantic/Party",
+      "Band members:10",
+      "Available in all governorates",
 
     ];
     return Column(
@@ -134,7 +138,7 @@ class GroomGlowPackage extends StatelessWidget {
     return Column(
       children: [
          Text(
-          "Groom Glow Package",
+          "Tamer Hosny",
           style: GoogleFonts.inriaSerif(
             color: Colors.black,
             fontWeight: FontWeight.w400,
@@ -154,7 +158,7 @@ class GroomGlowPackage extends StatelessWidget {
             ),
             SizedBox(width: 5),
             Text(
-              "4,7",
+              "5,5",
               style: GoogleFonts.inter(
                 color: Colors.black,
                 fontWeight: FontWeight.w400,

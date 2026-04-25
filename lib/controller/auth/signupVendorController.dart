@@ -6,17 +6,19 @@ import 'package:overlay_kit/overlay_kit.dart';
 import '../../core/helper/route_helper.dart';
 import '../../core/widget/custom_snackbar.dart';
 
-abstract class SignUpController extends GetxController {
+abstract class Signupvendorcontroller extends GetxController {
   signUp();
   goToSignIn();
 }
 
-class SignUpControllerImp extends SignUpController {
+class SignupvendorcontrollerImp extends Signupvendorcontroller {
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
   late TextEditingController NameController;
   late TextEditingController EmailController;
   late TextEditingController PasswordController;
   late TextEditingController MobileNumberController;
+  late TextEditingController JobController;
+  late TextEditingController GovernorateController;
   @override
   signUp() async {
     OverlayLoadingProgress.start();
@@ -47,6 +49,8 @@ class SignUpControllerImp extends SignUpController {
     PasswordController = TextEditingController();
     MobileNumberController = TextEditingController();
     NameController = TextEditingController();
+    JobController = TextEditingController();
+    GovernorateController = TextEditingController();
     super.onInit();
   }
 
@@ -56,6 +60,8 @@ class SignUpControllerImp extends SignUpController {
     PasswordController.dispose();
     MobileNumberController.dispose();
     NameController.dispose();
+    JobController.dispose();
+    GovernorateController.dispose();
     super.dispose();
   }
 }

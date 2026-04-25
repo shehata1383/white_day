@@ -77,7 +77,8 @@ class HomeControllImp extends HomeControll {
       page: "",
     ),
 
-    ModelCategory(image: Images.artists, nameCategory: "Artists", page: ""),
+    ModelCategory(image: Images.artists, nameCategory: "Artists",       page: RouteHelper.artistScreen,
+),
     ModelCategory(
       image: Images.emergencyBag,
       nameCategory: "Emergency Bag",
@@ -88,7 +89,8 @@ class HomeControllImp extends HomeControll {
       nameCategory: "Bridesmaid",
       page: RouteHelper.bookBridesmaidScreen,
     ),
-    ModelCategory(image: Images.cars, nameCategory: "Cars", page: ""),
+    ModelCategory(image: Images.cars, nameCategory: "Cars",       page: RouteHelper.carsScreen,
+),
   ];
   List<ModelReview> reviews = [
     ModelReview(
@@ -107,13 +109,5 @@ class HomeControllImp extends HomeControll {
       rate: "4.10",
     ),
   ];
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
 }

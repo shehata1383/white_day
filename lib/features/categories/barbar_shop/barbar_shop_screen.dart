@@ -144,42 +144,5 @@ class _BarbarShopScreenState extends State<BarbarShopScreen> {
     );
   }
 
-  Widget _buildFilterButton(
-    String label,
-    String? value,
-    List<DropdownMenuItem<Object>>? items,
-    Function(Object?) onChanged,
-  ) {
-    return Container(
-      width: 120.w,
-      height: 30.h,
-      padding: EdgeInsets.symmetric(horizontal: 8.w),
-      decoration: BoxDecoration(
-        color: AppColors.colorfilter,
-        borderRadius: BorderRadius.circular(4),
-      ),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton(
-          value: value,
-          hint: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                label,
-                style: GoogleFonts.inriaSerif(
-                  fontSize: 22.sp,
-                  color: Colors.black,
-                ),
-              ),
-              const Icon(Icons.unfold_more, size: 18, color: Colors.black),
-            ],
-          ),
-          isExpanded: true,
-          icon: const SizedBox.shrink(),
-          items: items,
-          onChanged: onChanged,
-        ),
-      ),
-    );
-  }
+  
 }

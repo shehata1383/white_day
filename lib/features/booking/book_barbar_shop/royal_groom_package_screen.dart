@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:white_day/core/constants/images.dart';
 
 import '../../../core/constants/colors.dart';
-import '../../widget/appbar_logo_screen.dart';
 
 class RoyalGroomPackageScreen extends StatelessWidget {
   const RoyalGroomPackageScreen({super.key});

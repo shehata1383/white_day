@@ -167,7 +167,7 @@ class HomeScreenStart extends StatelessWidget {
                           textColor: Colors.black,
                         ),
                         CustomButton(
-                          onPressed: () => Get.toNamed(RouteHelper.signUp),
+                          onPressed: () => Get.toNamed(RouteHelper.signUpChooseScreen),
                           buttonText: "Create account",
                           color: AppColors.colorButton,
                           fontSize: 20,

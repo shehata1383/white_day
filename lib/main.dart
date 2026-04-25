@@ -8,7 +8,6 @@ import 'core/helper/route_helper.dart';
 import 'core/theme/light.dart';
 
 void main() async {
-  // Initialize controller
   WidgetsFlutterBinding.ensureInitialized();
   await init();
   runApp(MyApp());

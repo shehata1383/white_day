@@ -97,6 +97,7 @@ class Images {
   static const String velet3 = 'assets/Suits/Velet3.jpg';
   static const String velet4 = 'assets/Suits/Velet4.jpg';
   static const String velet5 = 'assets/Suits/Velet5.jpg';
+  static const String vendor = 'assets/images/Vendor.png';
 
 
   static const String Arkan_Hall = 'assets/images/Arkan_Hall.png';
@@ -125,6 +126,22 @@ class Images {
   static const String groomGlowPackage = 'assets/images/Groom Glow Package.png';
   static const String theGentelmanPackage = 'assets/images/The Gentelman Package.png';
   static const String theGentelmanPackage2 = 'assets/images/The Gentelman Package2.png';
+
+  static const String artist1 = 'assets/images/artist1.png';
+  static const String artist2 = 'assets/images/artist2.png';
+  static const String artist3 = 'assets/images/artist3.png';
+  static const String artist4 = 'assets/images/artist4.png';
+  static const String bahaaSultan1 = 'assets/images/bahaaSultan1.png';
+  static const String bahaaSultan2 = 'assets/images/bahaaSultan2.png';
+  static const String mahmoudAlLaithi1 = 'assets/images/mahmoudAlLaithi1.png';
+  static const String mahmoudAlLaithi2 = 'assets/images/mahmoudAlLaithi2.png';
+  static const String tamerHosny1 = 'assets/images/tamerHosny1.png';
+  static const String tamerHosny2 = 'assets/images/tamerHosny2.png';
+  static const String amrDiab1 = 'assets/images/amrDiab1.png';
+  static const String amrDiab2 = 'assets/images/amrDiab2.png';
+  static const String cars1 = 'assets/images/Cars1.png';
+  static const String cars2 = 'assets/images/Cars2.png';
+  static const String cars3 = 'assets/images/Cars3.png';
 
 
 

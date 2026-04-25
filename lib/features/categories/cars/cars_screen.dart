@@ -8,52 +8,34 @@ import '../../../core/helper/route_helper.dart';
 import '../../widget/appbar_logo_screen.dart';
 import '../../widget/filtter_screen/fillter_screen.dart';
 
-class PhotographerScreen extends StatefulWidget {
-  const PhotographerScreen({super.key});
+class CarsScreen extends StatelessWidget {
+  const CarsScreen({super.key});
 
-  @override
-  State<PhotographerScreen> createState() => _PhotographerScreenState();
-}
-
-class _PhotographerScreenState extends State<PhotographerScreen> {
-  List listSubCategoryes = [
-    {
-      "nameCategores": "By- Agha Wedding",
-      "price": "Starting from 3000 L.E",
-      "imageSubCategores": Images.photo1,
-      "route": RouteHelper.aghaWedding,
-    },
-    {
-      "nameCategores": "By- Dart Wedding",
-      "price": "Starting from 12,000 L.E",
-      "imageSubCategores": Images.dart2,
-      "route": RouteHelper.dartWedding,
-    },
-    {
-      "nameCategores": "By-Aboutaleb Wedding",
-      "price": "Starting from 15,000 L.E",
-      "imageSubCategores": Images.aboutaleb3,
-      "route": RouteHelper.aboutalebWedding,
-    },
-    {
-      "nameCategores": "By- Omar ahmed",
-      "price": "Starting from 4500 L.E",
-      "imageSubCategores": Images.photo4,
-    },
-    {
-      "nameCategores": "By- Wael ameen",
-      "price": "Starting from 2500 L.E",
-      "imageSubCategores": Images.photo5,
-    },
-    {
-      "nameCategores": "By- Youssef ali",
-      "price": "Starting from 4500 L.E",
-      "imageSubCategores": Images.photo6,
-    },
-  ];
+  
 
   @override
   Widget build(BuildContext context) {
+    List listSubCategoryes = [
+    {
+      "nameCategores": "Dream Car",
+      "price": "1,700 L.E",
+      "imageSubCategores": Images.cars1,
+      "route": RouteHelper.royalGroomPackageScreen,
+    },
+    {
+      "nameCategores": "Royal Crown",
+      "price": "2,200 L.E",
+      "imageSubCategores": Images.cars2,
+      "route": RouteHelper.groomGlowPackage,
+    },
+    {
+      "nameCategores": "White Pearl",
+      "price": "3,500 L.E",
+      "imageSubCategores": Images.cars3,
+      "route": RouteHelper.theGentelmanPackage,
+    },
+   
+  ];
     return Scaffold(
       backgroundColor: AppColors.backGround,
       body: SafeArea(
@@ -62,7 +44,7 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
             appBarLogoScreen(),
 
             Text(
-              "Photographers",
+              "Cars",
               style: GoogleFonts.inriaSerif(
                 fontSize: 28.sp,
                 fontWeight: FontWeight.bold,
@@ -84,7 +66,7 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
                   crossAxisCount: 2,
                   crossAxisSpacing: 10.w,
                   mainAxisSpacing: 10.h,
-                  mainAxisExtent: 205.h,
+                  mainAxisExtent: 200.h,
                 ),
                 itemBuilder: (context, index) {
                   return GestureDetector(
@@ -103,7 +85,7 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
                                 color: AppColors.colorDetails,
                                 width: 1.5,
                               ),
-                              borderRadius: BorderRadius.circular(0.r),
+                              borderRadius: BorderRadius.circular(15.r),
                             ),
                             child: ClipRRect(
                               borderRadius: BorderRadiusDirectional.only(
@@ -118,26 +100,35 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 8.h),
-                          Text(
-                            listSubCategoryes[index]['nameCategores'],
-                            style: GoogleFonts.inriaSerif(
-                              fontSize: 18.sp,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                          Padding(
+                            padding:  EdgeInsetsDirectional.symmetric(horizontal: 2.w),
+                            child: Text(
+                              listSubCategoryes[index]['nameCategores'],
+                              style: GoogleFonts.inriaSerif(
+                                fontSize: 18.sp,
+                                
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
                           ),
                           SizedBox(height: 2.h),
-                          Text(
-                            listSubCategoryes[index]['price'],
-                            style: GoogleFonts.inriaSerif(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.black,
+                          Align(alignment: AlignmentDirectional.centerEnd,
+                            child: Padding(
+                              padding:  EdgeInsetsDirectional.only(end: 2.w),
+                              child: Text(
+                                listSubCategoryes[index]['price'],
+                                style: GoogleFonts.inriaSerif(
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.black,
+                                ),
+                              ),
                             ),
                           ),
+                          SizedBox(height: 5,)
                         ],
                       ),
                     ),
@@ -151,5 +142,5 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
     );
   }
 
- 
+  
 }

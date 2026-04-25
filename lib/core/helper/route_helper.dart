@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../../features/auth/sign up/sign_up_choose_screen.dart';
+import '../../features/auth/sign up/sign_up_vendor_screen.dart';
 import '../../features/booking/Book_Dress/Diamond_Glow.dart';
 import '../../features/booking/Book_Dress/Golden_Queen.dart';
 import '../../features/booking/Book_Dress/Royal_Dream.dart';
@@ -18,15 +20,21 @@ import '../../features/booking/Book_the_halls/Arkan_Wedding_Hall.dart';
 import '../../features/booking/Book_the_halls/Askar_Wedding_Hall.dart';
 import '../../features/booking/Book_the_halls/Cinderella_Wedding_Hall.dart';
 import '../../features/booking/Book_the_halls/Rixos_Plaza_Wedding_Hall.dart';
+import '../../features/booking/book_artist/amr_diab.dart';
+import '../../features/booking/book_artist/bahaa_sultan.dart';
+import '../../features/booking/book_artist/mahmoud_al_Laithi.dart';
+import '../../features/booking/book_artist/tamer_hosny.dart';
 import '../../features/booking/book_barbar_shop/groom_glow_package.dart';
 import '../../features/booking/book_barbar_shop/royal_groom_package_screen.dart';
 import '../../features/booking/book_barbar_shop/the_gentelman_package.dart';
+import '../../features/categories/Artists/artist_screen.dart';
 import '../../features/categories/WeddingHall/wedding_hall_screen.dart';
 import '../../features/auth/sign in/sign_in_screen.dart';
-import '../../features/auth/sign out/sign_out_screen.dart';
+import '../../features/auth/sign up/sign_up_client_screen.dart';
 import '../../features/booking/book_bridesmaid/book_bridesmaid_screen.dart';
 import '../../features/booking/book_emergency_bag/book_emergency_bag.dart';
 import '../../features/categories/barbar_shop/barbar_shop_screen.dart';
+import '../../features/categories/cars/cars_screen.dart';
 import '../../features/home/home_screen.dart';
 import '../../features/home/home_screen_start.dart';
 import '../../features/categories/makeup artist/makeup_artist_screen.dart';
@@ -37,7 +45,9 @@ import '../../features/categories/weddingDress/wedding_dress_screen.dart';
 class RouteHelper {
   // static const String initial = '/';
   static const String signIn = '/SignInScreen';
-  static const String signUp = '/SignUpScreen';
+  static const String signUpClientScreen = '/SignUpClientScreen';
+  static const String signUpChooseScreen = '/SignUpChooseScreen';
+  static const String signUpVendorScreen = '/SignUpVendorScreen';
 
   static const String homeScreen = '/HomeScreen';
   static const String homeScreenStart = '/HomeScreenStart';
@@ -73,6 +83,12 @@ class RouteHelper {
   static const String royalGroomPackageScreen = '/RoyalGroomPackageScreen';
   static const String groomGlowPackage = '/GroomGlowPackage';
   static const String theGentelmanPackage = '/TheGentelmanPackage';
+  static const String artistScreen = '/artistScreen';
+  static const String amrDiab = '/AmrDiab';
+  static const String bahaaSultan = '/BahaaSultan';
+  static const String mahmoudAlLaithi = '/MahmoudAlLaithi';
+  static const String tamerHosny = '/TamerHosny';
+  static const String carsScreen = '/CarsScreen';
 
   static List<GetPage> routes = [
     GetPage(
@@ -81,9 +97,19 @@ class RouteHelper {
       transition: Transition.leftToRight,
     ),
     GetPage(
-      name: signUp,
-      page: () => const SignOutScreen(),
+      name: signUpClientScreen,
+      page: () => const SignUpClientScreen(),
       transition: Transition.rightToLeft,
+    ),
+    GetPage(
+      name: signUpVendorScreen,
+      page: () => const SignUpVendorScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: signUpChooseScreen,
+      page: () => const SignUpChooseScreen(),
+      transition: Transition.downToUp,
     ),
     GetPage(
       name: homeScreen,
@@ -241,6 +267,30 @@ class RouteHelper {
       name: theGentelmanPackage,
       page: () => const TheGentelmanPackage(),
       transition: Transition.fade,
+    ),
+    GetPage(
+      name: artistScreen,
+      page: () =>  ArtistScreen(),
+    ),
+    GetPage(
+      name: amrDiab,
+      page: () =>  AmrDiab(),
+    ),GetPage(
+      name: bahaaSultan,
+      page: () =>  BahaaSultan(),
+    ),
+    GetPage(
+      name: mahmoudAlLaithi,
+      page: () =>  MahmoudAlLaithi(),
+    ),
+    
+    GetPage(
+      name: tamerHosny,
+      page: () =>  TamerHosny(),
+    ),
+    GetPage(
+      name: carsScreen,
+      page: () =>  CarsScreen(),
     ),
   ];
 }
