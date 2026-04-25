@@ -142,6 +142,18 @@ class Images {
   static const String cars1 = 'assets/images/Cars1.png';
   static const String cars2 = 'assets/images/Cars2.png';
   static const String cars3 = 'assets/images/Cars3.png';
+  static const String mg520231 = 'assets/images/mg520231.png';
+  static const String mg520232 = 'assets/images/mg520232.png';
+  static const String mg520233 = 'assets/images/mg520233.png';
+  static const String hyundaiElantra20261 = 'assets/images/hyundaiElantra20261.png';
+  static const String hyundaiElantra20262 = 'assets/images/hyundaiElantra20262.png';
+  static const String hyundaiElantra20263 = 'assets/images/hyundaiElantra20263.png';
+  static const String kiaSportageGtLine1 = 'assets/images/kiaSportageGtLine1.png';
+  static const String kiaSportageGtLine2 = 'assets/images/kiaSportageGtLine2.png';
+  static const String kiaSportageGtLine3 = 'assets/images/kiaSportageGtLine3.png';
+  static const String bridesBreakfast1 = 'assets/images/bridesBreakfast1.png';
+  static const String bridesBreakfast2 = 'assets/images/bridesBreakfast2.png';
+  static const String relaxGlowPackage = 'assets/images/RelaxGlowPackage.png';
 
 
 

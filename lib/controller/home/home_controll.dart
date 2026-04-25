@@ -70,11 +70,11 @@ class HomeControllImp extends HomeControll {
       page: RouteHelper.barbarShopScreen,
     ),
 
-    ModelCategory(image: Images.catering, nameCategory: "Catering", page: ""),
+    ModelCategory(image: Images.catering, nameCategory: "Catering", page: RouteHelper.bridesBreakfastSnakPackages),
     ModelCategory(
       image: Images.extraServices,
       nameCategory: "Extra Services",
-      page: "",
+      page:RouteHelper.relaxGlowPackage,
     ),
 
     ModelCategory(image: Images.artists, nameCategory: "Artists",       page: RouteHelper.artistScreen,

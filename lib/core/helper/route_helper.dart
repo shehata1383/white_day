@@ -27,6 +27,11 @@ import '../../features/booking/book_artist/tamer_hosny.dart';
 import '../../features/booking/book_barbar_shop/groom_glow_package.dart';
 import '../../features/booking/book_barbar_shop/royal_groom_package_screen.dart';
 import '../../features/booking/book_barbar_shop/the_gentelman_package.dart';
+import '../../features/booking/book_car/MG_5_2023.dart';
+import '../../features/booking/book_car/hyundai_elantra_2026.dart';
+import '../../features/booking/book_car/kia_sportage_gt_line.dart';
+import '../../features/booking/book_catering/brides_breakfast_snak_packages.dart';
+import '../../features/booking/book_relax_glow/relax_glow_package.dart';
 import '../../features/categories/Artists/artist_screen.dart';
 import '../../features/categories/WeddingHall/wedding_hall_screen.dart';
 import '../../features/auth/sign in/sign_in_screen.dart';
@@ -89,6 +94,11 @@ class RouteHelper {
   static const String mahmoudAlLaithi = '/MahmoudAlLaithi';
   static const String tamerHosny = '/TamerHosny';
   static const String carsScreen = '/CarsScreen';
+  static const String kiaSportageGtLine = '/KiaSportageGtLine';
+  static const String hyundaiElantra2026 = '/HyundaiElantra2026';
+  static const String mg52023 = '/Mg52023';
+  static const String bridesBreakfastSnakPackages = '/BridesBreakfastSnakPackages';
+  static const String relaxGlowPackage = '/RelaxGlowPackage';
 
   static List<GetPage> routes = [
     GetPage(
@@ -291,6 +301,26 @@ class RouteHelper {
     GetPage(
       name: carsScreen,
       page: () =>  CarsScreen(),
+    ),
+    GetPage(
+      name: kiaSportageGtLine,
+      page: () =>  KiaSportageGtLine(),
+    ),
+    GetPage(
+      name: hyundaiElantra2026,
+      page: () =>  HyundaiElantra2026(),
+    ),
+    GetPage(
+      name: mg52023,
+      page: () =>  Mg52023(),
+    ),
+    GetPage(
+      name: bridesBreakfastSnakPackages,
+      page: () =>  BridesBreakfastSnakPackages(),
+    ),
+    GetPage(
+      name: relaxGlowPackage,
+      page: () =>  RelaxGlowPackage(),
     ),
   ];
 }

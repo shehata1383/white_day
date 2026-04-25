@@ -20,19 +20,19 @@ class CarsScreen extends StatelessWidget {
       "nameCategores": "Dream Car",
       "price": "1,700 L.E",
       "imageSubCategores": Images.cars1,
-      "route": RouteHelper.royalGroomPackageScreen,
+      "route": RouteHelper.mg52023,
     },
     {
       "nameCategores": "Royal Crown",
       "price": "2,200 L.E",
       "imageSubCategores": Images.cars2,
-      "route": RouteHelper.groomGlowPackage,
+      "route": RouteHelper.hyundaiElantra2026,
     },
     {
       "nameCategores": "White Pearl",
       "price": "3,500 L.E",
       "imageSubCategores": Images.cars3,
-      "route": RouteHelper.theGentelmanPackage,
+      "route": RouteHelper.kiaSportageGtLine,
     },
    
   ];
