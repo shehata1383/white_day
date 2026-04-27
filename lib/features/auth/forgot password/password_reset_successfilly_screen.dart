@@ -40,7 +40,7 @@ class PasswordResetSuccessfillyScreen extends StatelessWidget {
               width: MediaQuery.of(context).size.width*0.85,
               height: 68,
               onPressed: () {
-                Get.offAllNamed(RouteHelper.signIn);
+                Get.offAllNamed(RouteHelper.homeScreenStart);
               },
               buttonText: "Back to login",
               color: AppColors.colorButton,
