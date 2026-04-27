@@ -11,27 +11,28 @@ abstract class LoginController extends GetxController {
 }
 
 class LoginControllerImp extends LoginController {
-  GlobalKey<FormState> formstate = GlobalKey<FormState>();
+  late GlobalKey<FormState> formKey;
   late TextEditingController email;
   late TextEditingController password;
 
-   LoginControllerImp();
+  LoginControllerImp();
   @override
   login() async {
     OverlayLoadingProgress.start();
-      var formdata = formstate.currentState;
-      if (formdata == null || !formdata.validate()) {
-        showCustomSnackBar(
-          'Please fill in all required fields'.tr,
-          isError: true,
-        );
-        OverlayLoadingProgress.stop();
-
-        return;
-      }
+    var formdata = formKey.currentState;
+    if (formdata!.validate()) {
       OverlayLoadingProgress.stop();
-      Get.toNamed(RouteHelper.signIn);
+    Get.offAllNamed(RouteHelper.homeScreenStart);
 
+    }else{ showCustomSnackBar(
+        'Please fill in all required fields'.tr,
+        isError: true,
+      );
+
+      OverlayLoadingProgress.stop();
+ 
+    }
+  
   }
 
   @override
@@ -41,6 +42,7 @@ class LoginControllerImp extends LoginController {
 
   @override
   void onInit() {
+    formKey = GlobalKey<FormState>();
     email = TextEditingController();
     password = TextEditingController();
     super.onInit();

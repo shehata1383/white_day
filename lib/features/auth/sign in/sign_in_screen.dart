@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:white_day/controller/auth/login.controller.dart';
 import 'package:white_day/core/constants/colors.dart';
+import 'package:white_day/core/helper/route_helper.dart';
 import '../../../core/constants/images.dart';
 import '../../../core/widget/custom_button.dart';
 import '../../../core/widget/custom_text_field.dart';
@@ -14,6 +15,7 @@ class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<LoginControllerImp>(
+      init: LoginControllerImp(),
       builder: (loginControllerImp) {
         return Scaffold(
           backgroundColor: AppColors.backGround,
@@ -22,7 +24,7 @@ class SignInScreen extends StatelessWidget {
               horizontal: 20,
             ),
             child: Form(
-              key: loginControllerImp.formstate,
+              key: loginControllerImp.formKey,
               child: SafeArea(
                 child: SingleChildScrollView(
                   child: Column(
@@ -59,7 +61,7 @@ class SignInScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {Get.toNamed(RouteHelper.forgotPasswordScreen);},
                             child: Text(
                               'Forgot password?',
                               style: GoogleFonts.inriaSerif(

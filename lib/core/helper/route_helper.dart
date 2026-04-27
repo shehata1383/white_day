@@ -1,10 +1,16 @@
 import 'package:get/get.dart';
 
+import '../../controller/auth/login.controller.dart';
+import '../../features/auth/forgot password/forgot_password_screen.dart';
+import '../../features/auth/forgot password/password_reset_successfilly_screen.dart';
+import '../../features/auth/forgot password/reset_password_screen.dart';
+import '../../features/auth/forgot password/verify_code_screen.dart';
 import '../../features/auth/sign up/sign_up_choose_screen.dart';
 import '../../features/auth/sign up/sign_up_vendor_screen.dart';
 import '../../features/booking/Book_Dress/Diamond_Glow.dart';
 import '../../features/booking/Book_Dress/Golden_Queen.dart';
 import '../../features/booking/Book_Dress/Royal_Dream.dart';
+import '../../features/booking/Book_Dress/booking_dress_screen.dart';
 import '../../features/booking/Book_Dress/moon_light_screen.dart';
 import '../../features/booking/Book_Photographer/Aboutaleb_Wedding.dart';
 import '../../features/booking/Book_Photographer/Dart_Wedding.dart';
@@ -99,12 +105,36 @@ class RouteHelper {
   static const String mg52023 = '/Mg52023';
   static const String bridesBreakfastSnakPackages = '/BridesBreakfastSnakPackages';
   static const String relaxGlowPackage = '/RelaxGlowPackage';
+  static const String forgotPasswordScreen = '/ForgotPasswordScreen';
+  static const String verifyCodeScreen = '/VerifyCodeScreen';
+  static const String resetPasswordScreen = '/ResetPasswordScreen';
+  static const String passwordResetSuccessfillyScreen = '/PasswordResetSuccessfillyScreen';
+  static const String bookingDressScreen = '/BookingDressScreen';
 
   static List<GetPage> routes = [
     GetPage(
       name: signIn,
       page: () => const SignInScreen(),
       transition: Transition.leftToRight,
+      binding: BindingsBuilder(() {
+    Get.lazyPut<LoginControllerImp>(() => LoginControllerImp());
+  }),
+    ),
+    GetPage(
+      name: forgotPasswordScreen,
+      page: () => const ForgotPasswordScreen(),
+    ),
+    GetPage(
+      name: verifyCodeScreen,
+      page: () => const VerifyCodeScreen(),
+    ),
+    GetPage(
+      name: resetPasswordScreen,
+      page: () => const ResetPasswordScreen(),
+    ),
+    GetPage(
+      name: passwordResetSuccessfillyScreen,
+      page: () => const PasswordResetSuccessfillyScreen(),
     ),
     GetPage(
       name: signUpClientScreen,
@@ -321,6 +351,10 @@ class RouteHelper {
     GetPage(
       name: relaxGlowPackage,
       page: () =>  RelaxGlowPackage(),
+    ),
+    GetPage(
+      name: bookingDressScreen,
+      page: () =>  BookingDressScreen(),
     ),
   ];
 }

@@ -6,7 +6,6 @@ import '../../../core/constants/colors.dart';
 import '../../../core/constants/images.dart';
 import '../../../core/helper/route_helper.dart';
 import '../../widget/appbar_logo_screen.dart';
-import '../../widget/filtter_screen/fillter_screen.dart';
 
 class ArtistScreen extends StatelessWidget {
    ArtistScreen({super.key});

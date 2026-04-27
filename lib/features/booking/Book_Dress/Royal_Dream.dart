@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:white_day/core/constants/colors.dart';
+import 'package:white_day/core/helper/route_helper.dart';
 
 class RoyalDream extends StatelessWidget {
   const RoyalDream({super.key});
@@ -64,7 +66,9 @@ class RoyalDream extends StatelessWidget {
                 const Divider(color: Colors.grey, thickness: 1),
                 SizedBox(height: 30.h),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed(RouteHelper.bookingDressScreen);
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.colorButton,
                     foregroundColor: Colors.black,

@@ -154,6 +154,8 @@ class Images {
   static const String bridesBreakfast1 = 'assets/images/bridesBreakfast1.png';
   static const String bridesBreakfast2 = 'assets/images/bridesBreakfast2.png';
   static const String relaxGlowPackage = 'assets/images/RelaxGlowPackage.png';
+  static const String royalDreem1 = 'assets/images/Royal Dreem 1.png';
+  static const String royalDreem2 = 'assets/images/Royal Dreem 2.png';
 
 
 
