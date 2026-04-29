@@ -10,7 +10,6 @@ import '../../features/auth/sign up/sign_up_vendor_screen.dart';
 import '../../features/booking/Book_Dress/Diamond_Glow.dart';
 import '../../features/booking/Book_Dress/Golden_Queen.dart';
 import '../../features/booking/Book_Dress/Royal_Dream.dart';
-import '../../features/booking/Book_Dress/booking_dress_screen.dart';
 import '../../features/booking/Book_Dress/moon_light_screen.dart';
 import '../../features/booking/Book_Photographer/Aboutaleb_Wedding.dart';
 import '../../features/booking/Book_Photographer/Dart_Wedding.dart';
@@ -109,7 +108,6 @@ class RouteHelper {
   static const String verifyCodeScreen = '/VerifyCodeScreen';
   static const String resetPasswordScreen = '/ResetPasswordScreen';
   static const String passwordResetSuccessfillyScreen = '/PasswordResetSuccessfillyScreen';
-  static const String bookingDressScreen = '/BookingDressScreen';
 
   static List<GetPage> routes = [
     GetPage(
@@ -352,9 +350,6 @@ class RouteHelper {
       name: relaxGlowPackage,
       page: () =>  RelaxGlowPackage(),
     ),
-    GetPage(
-      name: bookingDressScreen,
-      page: () =>  BookingDressScreen(),
-    ),
+    
   ];
 }

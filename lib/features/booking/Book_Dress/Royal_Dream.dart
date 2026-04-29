@@ -7,6 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:white_day/core/constants/colors.dart';
 import 'package:white_day/core/helper/route_helper.dart';
 
+import 'booking_dresses_screen.dart';
+
 class RoyalDream extends StatelessWidget {
   const RoyalDream({super.key});
 
@@ -67,7 +69,17 @@ class RoyalDream extends StatelessWidget {
                 SizedBox(height: 30.h),
                 ElevatedButton(
                   onPressed: () {
-                    Get.toNamed(RouteHelper.bookingDressScreen);
+                    // Get.toNamed(RouteHelper.bookingDressScreen);
+                    Get.to(
+                      () => BookingDressScreen(
+                        onPressed: () {},
+                        image1: 'assets/Royal_Dream/RoyalDream1.png',
+                        image2: 'assets/Royal_Dream/RoyalDream2.png',
+                        title: "Royal Dreem Wedding Dress",
+                        listSize: ['s', 'm', 'l'],
+                        
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.colorButton,
@@ -107,9 +119,7 @@ class RoyalDream extends StatelessWidget {
           Expanded(
             child: Container(
               decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(12),
-                ),
+                borderRadius: BorderRadius.all(Radius.circular(12)),
                 image: DecorationImage(
                   image: AssetImage('assets/Royal_Dream/RoyalDream1.png'),
                   fit: BoxFit.cover,
@@ -120,9 +130,7 @@ class RoyalDream extends StatelessWidget {
           Expanded(
             child: Container(
               decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(12),
-                ),
+                borderRadius: BorderRadius.all(Radius.circular(12)),
                 image: DecorationImage(
                   image: AssetImage('assets/Royal_Dream/RoyalDream2.png'),
                   fit: BoxFit.cover,
@@ -271,6 +279,3 @@ class _SectionTitle extends StatelessWidget {
     );
   }
 }
-
-
-

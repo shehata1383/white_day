@@ -2,8 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:white_day/core/constants/colors.dart';
+
+import 'booking_dresses_screen.dart';
 
 class GoldenQueen extends StatelessWidget {
   const GoldenQueen({super.key});
@@ -64,7 +67,18 @@ class GoldenQueen extends StatelessWidget {
                 const Divider(color: Colors.grey, thickness: 1),
                 SizedBox(height: 30.h),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(
+                      () => BookingDressScreen(
+                        onPressed: (){},
+                        image1: 'assets/Golden_Queen/GoldenQueen1.png',
+                        image2: 'assets/Golden_Queen/GoldenQueen2.png',
+                        title:   "Golden Queen Engagement Dress",
+                        listSize: ['s','m','l','xl'],
+                        listColors: ['Gold','Baby blue'],
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.colorButton,
                     foregroundColor: Colors.black,
@@ -103,9 +117,7 @@ class GoldenQueen extends StatelessWidget {
           Expanded(
             child: Container(
               decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(12),
-                ),
+                borderRadius: BorderRadius.all(Radius.circular(12)),
                 image: DecorationImage(
                   image: AssetImage('assets/Golden_Queen/GoldenQueen1.png'),
                   fit: BoxFit.cover,
@@ -116,9 +128,7 @@ class GoldenQueen extends StatelessWidget {
           Expanded(
             child: Container(
               decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(12),
-                ),
+                borderRadius: BorderRadius.all(Radius.circular(12)),
                 image: DecorationImage(
                   image: AssetImage('assets/Golden_Queen/GoldenQueen2.png'),
                   fit: BoxFit.cover,
@@ -148,7 +158,7 @@ class GoldenQueen extends StatelessWidget {
             Row(
               children: List.generate(
                 4,
-                    (index) =>
+                (index) =>
                     Icon(Icons.star, color: Colors.yellow[700], size: 25.r),
               ),
             ),
@@ -211,28 +221,28 @@ class GoldenQueen extends StatelessWidget {
       children: makeupServices
           .map(
             (text) => Padding(
-          padding: EdgeInsets.only(left: 125, top: 4),
-          child: Row(
-            children: [
-              CircleAvatar(
-                radius: 8.r,
-                backgroundColor: AppColors.colorButton.withOpacity(0.6),
-              ),
-              SizedBox(width: 10.w),
-              Expanded(
-                child: Text(
-                  text,
-                  style: GoogleFonts.inriaSerif(
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black,
+              padding: EdgeInsets.only(left: 125, top: 4),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 8.r,
+                    backgroundColor: AppColors.colorButton.withOpacity(0.6),
                   ),
-                ),
+                  SizedBox(width: 10.w),
+                  Expanded(
+                    child: Text(
+                      text,
+                      style: GoogleFonts.inriaSerif(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),
-      )
+            ),
+          )
           .toList(),
     );
   }
@@ -266,6 +276,3 @@ class _SectionTitle extends StatelessWidget {
     );
   }
 }
-
-
-

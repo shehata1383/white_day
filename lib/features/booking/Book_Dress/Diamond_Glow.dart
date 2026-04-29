@@ -2,9 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:white_day/core/constants/colors.dart';
 import 'package:white_day/core/constants/images.dart';
+
+import 'booking_dresses_screen.dart';
 
 class DiamondGlow extends StatelessWidget {
   const DiamondGlow({super.key});
@@ -65,7 +68,17 @@ class DiamondGlow extends StatelessWidget {
                 const Divider(color: Colors.grey, thickness: 1),
                 SizedBox(height: 30.h),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {Get.to(
+                      () => BookingDressScreen(
+                        onPressed: (){},
+                        image1: Images.diamondGlow1,
+                        image2: Images.diamondGlow2,
+                        title:    "Diamond Glow Soiree Dress",
+                        listSize: ['s','m'],
+                        listColors: ['Off wihte','Rose Pink'],
+                      
+                      ),
+                    );},
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.colorButton,
                     foregroundColor: Colors.black,
