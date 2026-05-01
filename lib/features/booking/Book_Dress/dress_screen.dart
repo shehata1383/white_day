@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:white_day/core/constants/colors.dart';
-import 'package:white_day/core/helper/route_helper.dart';
-
+import '../../../core/model/model_dresses_category.dart';
 import 'booking_dresses_screen.dart';
 
-class RoyalDream extends StatelessWidget {
-  const RoyalDream({super.key});
-
+class DressScreen extends StatelessWidget {
+  const DressScreen({super.key,required this.data});
+final ModelDressesCategory data;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,16 +23,16 @@ class RoyalDream extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 15.h),
-                _buildMainImage(),
+                _buildMainImage(image:  data.mainImage),
                 SizedBox(height: 10.h),
-                _buildRatingCard(),
+                _buildRatingCard( title: data.name, address: data.address, rate: data.rate),
                 SizedBox(height: 15.h),
-                _buildImagesGrid(),
+                _buildImagesGrid(workImages: data.listImage),
                 SizedBox(height: 5),
                 const Divider(color: Colors.grey, thickness: 1),
                 const _SectionTitle(title: "Price"),
                 Text(
-                  "10,000 L.E",
+                  "${NumberFormat('#,###').format(data.price)} L.E",
                   style: GoogleFonts.inriaSerif(
                     fontSize: 23.sp,
                     fontWeight: FontWeight.w600,
@@ -40,14 +40,13 @@ class RoyalDream extends StatelessWidget {
                 ),
                 const Divider(color: Colors.grey, thickness: 1),
                 const _SectionTitle(title: "Details"),
-                _buildDetailsList(),
+                _buildDetailsList(makeupServices: data.details),
                 const Divider(color: Colors.grey, thickness: 1),
                 const _SectionTitle(title: "Description"),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
                   child: Text(
-                    "This elegant wedding dress features delicate lace details, perfect for brides looking for a romantic and classic look.",
-                    textAlign: TextAlign.left,
+                data.description ,   textAlign: TextAlign.left,
                     style: GoogleFonts.inriaSerif(
                       fontSize: 16.sp,
                       height: 1.4,
@@ -57,9 +56,9 @@ class RoyalDream extends StatelessWidget {
                   ),
                 ),
                 const Divider(color: Colors.grey, thickness: 1),
-                const _SectionTitle(title: "4,8 Rating"),
+                 _SectionTitle(title: "${data.rate} Rating"),
                 Text(
-                  "Based on 80 reviews",
+                  "Based on ${data.reviews} reviews",
                   style: GoogleFonts.inriaSerif(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.w500,
@@ -69,15 +68,13 @@ class RoyalDream extends StatelessWidget {
                 SizedBox(height: 30.h),
                 ElevatedButton(
                   onPressed: () {
-                    // Get.toNamed(RouteHelper.bookingDressScreen);
                     Get.to(
                       () => BookingDressScreen(
-                        onPressed: () {},
-                        image1: 'assets/Royal_Dream/RoyalDream1.png',
-                        image2: 'assets/Royal_Dream/RoyalDream2.png',
-                        title: "Royal Dreem Wedding Dress",
-                        listSize: ['s', 'm', 'l'],
-                        
+                        image1: data.mainImage[0],
+                        image2: data.mainImage[1],
+                        title:  data.name,
+                        listSize: data.listSize,
+                        listColors:data.listColors,
                       ),
                     );
                   },
@@ -110,7 +107,7 @@ class RoyalDream extends StatelessWidget {
     );
   }
 
-  Widget _buildMainImage() {
+  Widget _buildMainImage({required List<String> image}) {
     return SizedBox(
       height: 290,
       width: 430,
@@ -118,10 +115,10 @@ class RoyalDream extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              decoration: const BoxDecoration(
+              decoration:  BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(12)),
                 image: DecorationImage(
-                  image: AssetImage('assets/Royal_Dream/RoyalDream1.png'),
+                  image: AssetImage(image[0]),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -129,10 +126,10 @@ class RoyalDream extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              decoration: const BoxDecoration(
+              decoration:  BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(12)),
                 image: DecorationImage(
-                  image: AssetImage('assets/Royal_Dream/RoyalDream2.png'),
+                  image: AssetImage(image[1]),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -143,11 +140,11 @@ class RoyalDream extends StatelessWidget {
     );
   }
 
-  Widget _buildRatingCard() {
+  Widget _buildRatingCard({required String title,required String address,required double rate}) {
     return Column(
       children: [
         Text(
-          "Royal Dreem Wedding Dress",
+        title  ,
           style: GoogleFonts.inriaSerif(
             color: Colors.black,
             fontWeight: FontWeight.w400,
@@ -166,7 +163,7 @@ class RoyalDream extends StatelessWidget {
             ),
             SizedBox(width: 5),
             Text(
-              "4,8",
+              rate.toString(),
               style: GoogleFonts.inriaSerif(
                 color: Colors.black,
                 fontWeight: FontWeight.w400,
@@ -176,7 +173,7 @@ class RoyalDream extends StatelessWidget {
           ],
         ),
         Text(
-          "Cairo, Egypt",
+         address ,
           style: GoogleFonts.inriaSerif(
             color: Colors.black,
             fontWeight: FontWeight.w400,
@@ -187,13 +184,8 @@ class RoyalDream extends StatelessWidget {
     );
   }
 
-  Widget _buildImagesGrid() {
-    List<String> workImages = [
-      'assets/Royal_Dream/RoyalDream3.png',
-      'assets/Royal_Dream/RoyalDream4.png',
-      'assets/Royal_Dream/RoyalDream5.png',
-      'assets/Royal_Dream/RoyalDream6.png',
-    ];
+  Widget _buildImagesGrid({required List<String> workImages}) {
+     
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -211,14 +203,7 @@ class RoyalDream extends StatelessWidget {
     );
   }
 
-  Widget _buildDetailsList() {
-    List<String> makeupServices = [
-      "Size: S/M/L",
-      "Color:White",
-      "Fabric:Lace & Tulle",
-      "Style:Straight",
-      "Extension",
-    ];
+  Widget _buildDetailsList( {required List<String> makeupServices}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: makeupServices

@@ -7,16 +7,10 @@ import '../../features/auth/forgot password/reset_password_screen.dart';
 import '../../features/auth/forgot password/verify_code_screen.dart';
 import '../../features/auth/sign up/sign_up_choose_screen.dart';
 import '../../features/auth/sign up/sign_up_vendor_screen.dart';
-import '../../features/booking/Book_Dress/Diamond_Glow.dart';
-import '../../features/booking/Book_Dress/Golden_Queen.dart';
-import '../../features/booking/Book_Dress/Royal_Dream.dart';
-import '../../features/booking/Book_Dress/moon_light_screen.dart';
 import '../../features/booking/Book_Photographer/Aboutaleb_Wedding.dart';
 import '../../features/booking/Book_Photographer/Dart_Wedding.dart';
 import '../../features/booking/Book_Photographer/agha_wedding.dart';
-import '../../features/booking/Book_makeup_artist/Hend_Mohamed.dart';
-import '../../features/booking/Book_makeup_artist/Sara_Salama.dart';
-import '../../features/booking/Book_makeup_artist/Yasmin_Ahmed.dart';
+import '../../features/booking/Book_makeup_artist/make_up_screen.dart';
 import '../../features/booking/Book_suit_store/Noble_White.dart';
 import '../../features/booking/Book_suit_store/Royal_Black .dart';
 import '../../features/booking/Book_suit_store/Shadow_Royal.dart';
@@ -72,14 +66,6 @@ class RouteHelper {
   static const String askarWeddingHall = '/AskarWeddingHall';
   static const String arkanWeddingHalldart = '/ArkanWeddingHalldart';
 
-  static const String saraSAlama = '/SaraSalama';
-  static const String yasminAhmed = '/YasminAhmed';
-  static const String hendMohamed = '/HendMohamed';
-
-  static const String royalDream = '/RoyalDream';
-  static const String goldenQueen = '/GoldenQueen';
-  static const String moonLightScreen = '/MoonLightScreen';
-  static const String diamondGlow = '/DiamondGlow';
   static const String dartWedding = '/DartWedding';
   static const String aghaWedding = '/AghaWedding';
   static const String aboutalebWedding = '/AboutalebWedding';
@@ -203,42 +189,6 @@ class RouteHelper {
     GetPage(
       name: arkanWeddingHalldart,
       page: () => const ArkanWeddingHalldart(),
-      transition: Transition.fade,
-    ),
-
-    GetPage(
-      name: saraSAlama,
-      page: () => const SaraSalama(),
-      transition: Transition.fade,
-    ),
-    GetPage(
-      name: yasminAhmed,
-      page: () => const YasminAhmed(),
-      transition: Transition.fade,
-    ),
-    GetPage(
-      name: hendMohamed,
-      page: () => const HendMohamed(),
-      transition: Transition.fade,
-    ),
-    GetPage(
-      name: royalDream,
-      page: () => const RoyalDream(),
-      transition: Transition.fade,
-    ),
-    GetPage(
-      name: goldenQueen,
-      page: () => const GoldenQueen(),
-      transition: Transition.fade,
-    ),
-    GetPage(
-      name: moonLightScreen,
-      page: () => const MoonLightScreen(),
-      transition: Transition.fade,
-    ),
-    GetPage(
-      name: diamondGlow,
-      page: () => const DiamondGlow(),
       transition: Transition.fade,
     ),
     GetPage(

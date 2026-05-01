@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/images.dart';
-import '../../../core/helper/route_helper.dart';
+import '../../../core/model/model_dresses_category.dart';
+import '../../booking/Book_Dress/dress_screen.dart';
 import '../../widget/appbar_logo_screen.dart';
 import '../../widget/filtter_screen/fillter_screen.dart';
 
@@ -17,30 +17,148 @@ class WeddingDressScreen extends StatefulWidget {
 }
 
 class _WeddingDressScreenState extends State<WeddingDressScreen> {
-  List listSubCategoryes = [
+  List<Map<String, dynamic>> listSubCategoryes = [
     {
       "nameCategores": "Royal Dream",
       "price": "10,000 L.E",
       "imageSubCategores": Images.dress1,
-      "route": RouteHelper.royalDream,
+      "route": DressScreen(
+        data: ModelDressesCategory(
+          name: "Royal Dreem Wedding Dress",
+          rate: 4.8,
+          address: "Cairo, Egypt",
+          mainImage: [
+            'assets/Royal_Dream/RoyalDream1.png',
+            'assets/Royal_Dream/RoyalDream2.png',
+          ],
+          listImage: [
+            'assets/Royal_Dream/RoyalDream3.png',
+            'assets/Royal_Dream/RoyalDream4.png',
+            'assets/Royal_Dream/RoyalDream5.png',
+            'assets/Royal_Dream/RoyalDream6.png',
+          ],
+          price: 10000,
+          details: [
+            "Size: S/M/L",
+            "Color:White",
+            "Fabric:Lace & Tulle",
+            "Style:Straight",
+            "Extension",
+          ],
+          description:
+              "This elegant wedding dress features delicate lace details, perfect for brides looking for a romantic and classic look.",
+
+          reviews: 80,
+          listSize: ['s', 'm', 'l'],
+          listColors: [],
+        ),
+      ),
     },
     {
       "nameCategores": "Golden Queen",
       "price": "15,000 L.E",
       "imageSubCategores": Images.dress2,
-      "route": RouteHelper.goldenQueen,
+      "route": DressScreen(
+        data: ModelDressesCategory(
+          name: "Golden Queen Engagement Dress",
+          rate: 4.9,
+          address: "Cairo, Egypt",
+          mainImage: [
+            'assets/Golden_Queen/GoldenQueen1.png',
+            'assets/Golden_Queen/GoldenQueen2.png',
+          ],
+          listImage: [
+            'assets/Golden_Queen/GoldenQueen3.png',
+            'assets/Golden_Queen/GoldenQueen4.png',
+            'assets/Golden_Queen/GoldenQueen5.png',
+            'assets/Golden_Queen/GoldenQueen6.png',
+          ],
+          price: 15000,
+          details: [
+            "Size: S/M/L/XL",
+            "Color:Gold/ Baby Blue",
+            "Fabric:Lace & Tulle",
+            "Style:Straight",
+          ],
+          description:
+              "An elegant, soft dress with a romantic touch, perfect for an engagement or a classy look for the bride or groom's sister, giving you a calm and charming appearance.",
+
+          reviews: 90,
+          listSize: ['s', 'm', 'l', 'xl'],
+          listColors: ['Gold', 'Baby blue'],
+        ),
+      ),
     },
     {
       "nameCategores": "Moonlight",
       "price": "17,000 L.E",
       "imageSubCategores": Images.dress3,
-          "route": RouteHelper.moonLightScreen,
+      "route": DressScreen(
+        data: ModelDressesCategory(
+          name: "Moonlight Wedding Dress",
+          rate: 4.9,
+          address: "Cairo, Egypt",
+          mainImage: [
+            'assets/images/moonLight1.jpg',
+            'assets/images/moonLight2.jpg',
+          ],
+          listImage: [
+      'assets/images/moonLight3.jpg',
+      'assets/images/moonLight4.jpg',
+      'assets/images/moonLight5.jpg',
+      'assets/images/moonLight6.jpg',
+    ],
+          price: 17000,
+          details: [
+      "Size: S/M/L",
+      "Color:White",
+      "Fabric:Lace & Tulle",
+      "Style:Straight",
+      "Extension /Long Wedding Veil",
+    ],
+          description:
+"This is a bridal dress, perfect for a Katb Kitab. It's elegant, soft, and beautifully designed for a simple yet classy look.",               
+
+          reviews: 75,
+          listSize: ['s','m','l'],
+          listColors: [],
+        ),
+      ),
     },
     {
       "nameCategores": "Diamond Glow",
       "price": "11,500 L.E",
       "imageSubCategores": Images.dress4,
-       "route": RouteHelper.diamondGlow,
+      "route": DressScreen(
+        data: ModelDressesCategory(
+          name:  "Diamond Glow Soiree Dress",
+          rate: 4.6,
+          address: "Cairo, Egypt",
+          mainImage: [
+            Images.diamondGlow1,
+            Images.diamondGlow2,
+          ],
+          listImage: [
+      Images.diamondGlow3,
+  Images.diamondGlow4,
+    Images.diamondGlow5,
+     Images.diamondGlow6,
+    ],
+          price: 11500,
+          details:[
+      "Size: S/M/L/XL",
+      "Color Off:White/Rose Pink",
+      "Fabric:Lace & Tulle",
+      "Style:Straight",
+    ],
+          description:
+                    "A soft, elegant dress designed for engagements or special wedding moments.Its romantic style and delicate details create a graceful, feminine look.",
+
+          reviews: 100,
+          listSize: ['s','m'],
+          listColors: ['Off wihte','Rose Pink'],
+        ),
+      ),
     },
     {
       "nameCategores": "Lavender Dream",
@@ -62,28 +180,6 @@ class _WeddingDressScreenState extends State<WeddingDressScreen> {
       "price": "16,500 L.E",
       "imageSubCategores": Images.dress8,
     },
-  ];
-
-  String? selectPrice;
-  String? selectLocation;
-  String? selectRate;
-
-  List<DropdownMenuItem<Object>>? selectPriceList = [
-    DropdownMenuItem(value: "lessThan2999", child: Text("Less than 2999")),
-    DropdownMenuItem(value: "3000to5000", child: Text("3000 - 5000")),
-    DropdownMenuItem(value: "moreThan5000", child: Text("More than 5000")),
-  ];
-  List<DropdownMenuItem<Object>>? selectLocationList = [
-    DropdownMenuItem(value: "cairo", child: Text("Cairo")),
-    DropdownMenuItem(value: "El maadi", child: Text("El maadi")),
-    DropdownMenuItem(value: "10th of ramadan", child: Text("10th of ramadan")),
-  ];
-  List<DropdownMenuItem<Object>>? selectRateList = [
-    DropdownMenuItem(value: "1.0", child: Text("1 star")),
-    DropdownMenuItem(value: "2.0", child: Text("2 stars")),
-    DropdownMenuItem(value: "3.0", child: Text("3 stars")),
-    DropdownMenuItem(value: "4.0", child: Text("4 stars")),
-    DropdownMenuItem(value: "5.0", child: Text("5 stars")),
   ];
 
   @override
@@ -121,7 +217,7 @@ class _WeddingDressScreenState extends State<WeddingDressScreen> {
                   return InkWell(
                     onTap: () {
                       if (item['route'] != null) {
-                        Get.toNamed(item['route']);
+                        Get.to(item['route']);
                       }
                     },
                     child: Container(
@@ -133,10 +229,11 @@ class _WeddingDressScreenState extends State<WeddingDressScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           ClipRRect(
-borderRadius: BorderRadiusDirectional.only(
+                            borderRadius: BorderRadiusDirectional.only(
                               topStart: Radius.circular(15.r),
                               topEnd: Radius.circular(15.r),
-                            ),                            child: Image.asset(
+                            ),
+                            child: Image.asset(
                               item['imageSubCategores'],
                               width: double.infinity,
                               height: 140.h,
@@ -184,8 +281,4 @@ borderRadius: BorderRadiusDirectional.only(
       ),
     );
   }
-
-  
 }
-
-

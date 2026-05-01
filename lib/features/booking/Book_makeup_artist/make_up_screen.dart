@@ -2,11 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:white_day/core/constants/colors.dart';
+import '../../../core/model/model_makeup_category.dart';
+import 'booking_makeup_artist_screen.dart';
 
-class HendMohamed extends StatelessWidget {
-  const HendMohamed({super.key});
+class MakeUpScreen extends StatelessWidget {
+  const MakeUpScreen({super.key, required this.data});
+  final ModelMakeupCategory data;
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +25,19 @@ class HendMohamed extends StatelessWidget {
               children: [
                 SizedBox(height: 15.h),
 
-                _buildMainImage(),
+                _buildMainImage(mainImage: data.mainImage),
 
                 SizedBox(height: 10.h),
 
-                _buildRatingCard(),
+                _buildRatingCard(
+                  name: data.name,
+                  address: data.address,
+                  rate: data.rate,
+                ),
 
                 SizedBox(height: 15.h),
 
-                _buildImagesGrid(),
+                _buildImagesGrid(workImages: data.listImage),
 
                 SizedBox(height: 5),
 
@@ -36,7 +45,7 @@ class HendMohamed extends StatelessWidget {
 
                 const _SectionTitle(title: "Price"),
                 Text(
-                  "Starting from 7,000 L.E",
+                  "Starting from ${NumberFormat('#,###').format(data.price)} L.E",
                   style: GoogleFonts.inriaSerif(
                     fontSize: 23.sp,
                     fontWeight: FontWeight.w600,
@@ -45,14 +54,14 @@ class HendMohamed extends StatelessWidget {
                 const Divider(color: Colors.grey, thickness: 1),
 
                 const _SectionTitle(title: "Details"),
-                _buildDetailsList(),
+                _buildDetailsList(makeupServices: data.details),
                 const Divider(color: Colors.grey, thickness: 1),
 
-                const _SectionTitle(title: "About Hend"),
+                _SectionTitle(title: "About ${data.name.split(' ').first}"),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
                   child: Text(
-                    "hend Mohamed combines creativity, skill, and high-quality products to craft personalized looks that make every client feel confident, radiant, and unforgettable.",
+                    data.about,
                     textAlign: TextAlign.left,
                     style: GoogleFonts.inriaSerif(
                       fontSize: 16.sp,
@@ -64,9 +73,9 @@ class HendMohamed extends StatelessWidget {
                 ),
                 const Divider(color: Colors.grey, thickness: 1),
 
-                const _SectionTitle(title: "5,1 Rating"),
+                _SectionTitle(title: "${data.rate} Rating"),
                 Text(
-                  "Based on 100 reviews",
+                  "Based on ${data.reviews} reviews",
                   style: GoogleFonts.inriaSerif(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.w500,
@@ -77,7 +86,18 @@ class HendMohamed extends StatelessWidget {
                 SizedBox(height: 30.h),
 
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(
+                      () => BookingMakeupArtistScreen(
+                        onPressed: () {},
+                        image1: data.listImage[0],
+
+                        image2: data.listImage[1],
+
+                        listService: data.listService,
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.colorButton,
                     foregroundColor: Colors.black,
@@ -107,25 +127,26 @@ class HendMohamed extends StatelessWidget {
     );
   }
 
-  Widget _buildMainImage() {
+  Widget _buildMainImage({required String mainImage}) {
     return Container(
       width: 396,
       height: 264,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        image: const DecorationImage(
-          image: AssetImage('assets/Hend_Mohamed/HendMohamed_1.png'),
-          fit: BoxFit.cover,
-        ),
+        image: DecorationImage(image: AssetImage(mainImage), fit: BoxFit.cover),
       ),
     );
   }
 
-  Widget _buildRatingCard() {
+  Widget _buildRatingCard({
+    required String name,
+    required String address,
+    required double rate,
+  }) {
     return Column(
       children: [
         Text(
-          "Hend Mohamed",
+          name,
           style: GoogleFonts.inter(
             color: Colors.black,
             fontWeight: FontWeight.w400,
@@ -137,14 +158,14 @@ class HendMohamed extends StatelessWidget {
           children: [
             Row(
               children: List.generate(
-                5,
-                    (index) =>
+                4,
+                (index) =>
                     Icon(Icons.star, color: Colors.yellow[700], size: 25.r),
               ),
             ),
             SizedBox(width: 5),
             Text(
-              "5,1",
+              rate.toString(),
               style: GoogleFonts.inter(
                 color: Colors.black,
                 fontWeight: FontWeight.w400,
@@ -154,7 +175,7 @@ class HendMohamed extends StatelessWidget {
           ],
         ),
         Text(
-          "Cairo, Egypt",
+          address,
           style: GoogleFonts.inriaSerif(
             color: Colors.black,
             fontWeight: FontWeight.w400,
@@ -165,13 +186,7 @@ class HendMohamed extends StatelessWidget {
     );
   }
 
-  Widget _buildImagesGrid() {
-    List<String> workImages = [
-      'assets/Hend_Mohamed/HendMohamed_2.png',
-      'assets/Hend_Mohamed/HendMohamed_3.png',
-      'assets/Hend_Mohamed/HendMohamed_4.png',
-      'assets/Hend_Mohamed/HendMohamed_5.png',
-    ];
+  Widget _buildImagesGrid({required List<String> workImages}) {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -189,42 +204,34 @@ class HendMohamed extends StatelessWidget {
     );
   }
 
-  Widget _buildDetailsList() {
-    List<String> makeupServices = [
-      "Bridal Makeup",
-      "Engagement Makeup",
-      "Party & Event makeup",
-      "Hairstyling",
-      "Veil Stylists"
-
-    ];
+  Widget _buildDetailsList({required List<String> makeupServices}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: makeupServices
           .map(
             (text) => Padding(
-          padding: EdgeInsets.only(left: 125,top: 4),
-          child: Row(
-            children: [
-              CircleAvatar(
-                radius: 8.r,
-                backgroundColor: AppColors.colorButton.withOpacity(0.6),
-              ),
-              SizedBox(width: 10.w),
-              Expanded(
-                child: Text(
-                  text,
-                  style: GoogleFonts.inriaSerif(
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black,
+              padding: EdgeInsets.only(left: 125, top: 4),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 8.r,
+                    backgroundColor: AppColors.colorButton.withOpacity(0.6),
                   ),
-                ),
+                  SizedBox(width: 10.w),
+                  Expanded(
+                    child: Text(
+                      text,
+                      style: GoogleFonts.inriaSerif(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),
-      )
+            ),
+          )
           .toList(),
     );
   }
@@ -258,5 +265,3 @@ class _SectionTitle extends StatelessWidget {
     );
   }
 }
-
-
