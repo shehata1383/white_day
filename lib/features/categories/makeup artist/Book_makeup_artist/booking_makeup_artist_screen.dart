@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import '../../../core/constants/colors.dart';
-import '../../../core/model/model_make_up_artist_service.dart';
-import '../../../core/widget/custom_button.dart';
-import '../../widget/appbar_logo_screen.dart';
+import '../../../../core/constants/colors.dart';
+import '../../../../core/model/make_up/model_make_up_artist_service.dart';
+import '../../../../core/widget/custom_button.dart';
+import '../../../widget/appbar_logo_screen.dart';
 
 class BookingMakeupArtistScreen extends StatefulWidget {
   BookingMakeupArtistScreen({

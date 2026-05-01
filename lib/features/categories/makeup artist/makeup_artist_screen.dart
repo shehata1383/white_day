@@ -5,9 +5,9 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/images.dart';
 import '../../../core/helper/route_helper.dart';
-import '../../../core/model/model_make_up_artist_service.dart';
-import '../../../core/model/model_makeup_category.dart';
-import '../../booking/Book_makeup_artist/make_up_screen.dart';
+import '../../../core/model/make_up/model_make_up_artist_service.dart';
+import '../../../core/model/make_up/model_makeup_category.dart';
+import 'Book_makeup_artist/make_up_screen.dart';
 import '../../widget/appbar_logo_screen.dart';
 import '../../widget/filtter_screen/fillter_screen.dart';
 

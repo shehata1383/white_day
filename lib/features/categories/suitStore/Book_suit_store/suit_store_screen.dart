@@ -2,17 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:white_day/core/constants/colors.dart';
-import '../../../core/model/model_makeup_category.dart';
-import 'booking_makeup_artist_screen.dart';
+import 'package:white_day/core/constants/images.dart';
 
-class MakeUpScreen extends StatelessWidget {
-  const MakeUpScreen({super.key, required this.data});
-  final ModelMakeupCategory data;
+import '../../../../core/model/suit_store/model_suit_store.dart';
 
+class SuitStoreScreen extends StatelessWidget {
+  const SuitStoreScreen({super.key,required this.data });
+final ModelSuitStore data;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,45 +23,45 @@ class MakeUpScreen extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 15.h),
-
-                _buildMainImage(mainImage: data.mainImage),
-
+                _buildMainImage(image:[ Images.noble1,Images.noble2]),
                 SizedBox(height: 10.h),
-
                 _buildRatingCard(
-                  name: data.name,
-                  address: data.address,
+                  title: data.name,
                   rate: data.rate,
+                  address:data.address ,
                 ),
-
                 SizedBox(height: 15.h),
-
-                _buildImagesGrid(workImages: data.listImage),
-
+                _buildImagesGrid(workImages:data.listImage ),
+                SizedBox(height: 5.h),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12.r),
+                  child: Image.asset(
+                    data.listImage [2],
+                    fit: BoxFit.cover,
+                    height: 210.h,
+                  ),
+                ),
                 SizedBox(height: 5),
-
                 const Divider(color: Colors.grey, thickness: 1),
-
                 const _SectionTitle(title: "Price"),
                 Text(
-                  "Starting from ${NumberFormat('#,###').format(data.price)} L.E",
+                  "${NumberFormat('#,###').format(data.price)} L.E",
                   style: GoogleFonts.inriaSerif(
                     fontSize: 23.sp,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
                 const Divider(color: Colors.grey, thickness: 1),
-
                 const _SectionTitle(title: "Details"),
-                _buildDetailsList(makeupServices: data.details),
+                _buildDetailsList(
+                  makeupServices: data.details,
+                ),
                 const Divider(color: Colors.grey, thickness: 1),
-
-                _SectionTitle(title: "About ${data.name.split(' ').first}"),
+                const _SectionTitle(title: "Description"),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
                   child: Text(
-                    data.about,
-                    textAlign: TextAlign.left,
+                   data.about, textAlign: TextAlign.left,
                     style: GoogleFonts.inriaSerif(
                       fontSize: 16.sp,
                       height: 1.4,
@@ -72,8 +71,7 @@ class MakeUpScreen extends StatelessWidget {
                   ),
                 ),
                 const Divider(color: Colors.grey, thickness: 1),
-
-                _SectionTitle(title: "${data.rate} Rating"),
+                 _SectionTitle(title: "${data.rate} Rating"),
                 Text(
                   "Based on ${data.reviews} reviews",
                   style: GoogleFonts.inriaSerif(
@@ -82,22 +80,9 @@ class MakeUpScreen extends StatelessWidget {
                   ),
                 ),
                 const Divider(color: Colors.grey, thickness: 1),
-
                 SizedBox(height: 30.h),
-
                 ElevatedButton(
-                  onPressed: () {
-                    Get.to(
-                      () => BookingMakeupArtistScreen(
-                        onPressed: () {},
-                        image1: data.listImage[0],
-
-                        image2: data.listImage[1],
-
-                        listService: data.listService,
-                      ),
-                    );
-                  },
+                  onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.colorButton,
                     foregroundColor: Colors.black,
@@ -127,30 +112,52 @@ class MakeUpScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildMainImage({required String mainImage}) {
-    return Container(
-      width: 396,
-      height: 264,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        image: DecorationImage(image: AssetImage(mainImage), fit: BoxFit.cover),
+  Widget _buildMainImage({required List<String> image}) {
+    return SizedBox(
+      height: 290,
+      width: 430,
+      child: Row(
+        children: [
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(12)),
+                image: DecorationImage(
+                  image: AssetImage(image[0]),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              decoration:  BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(12)),
+                image: DecorationImage(
+                  image: AssetImage(image[1]),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
 
   Widget _buildRatingCard({
-    required String name,
+    required String title,
     required String address,
     required double rate,
   }) {
     return Column(
       children: [
         Text(
-          name,
-          style: GoogleFonts.inter(
+          title,
+          style: GoogleFonts.inriaSerif(
             color: Colors.black,
             fontWeight: FontWeight.w400,
-            fontSize: 32,
+            fontSize: 30,
           ),
         ),
         Row(
@@ -158,7 +165,7 @@ class MakeUpScreen extends StatelessWidget {
           children: [
             Row(
               children: List.generate(
-                4,
+                5,
                 (index) =>
                     Icon(Icons.star, color: Colors.yellow[700], size: 25.r),
               ),
@@ -166,7 +173,7 @@ class MakeUpScreen extends StatelessWidget {
             SizedBox(width: 5),
             Text(
               rate.toString(),
-              style: GoogleFonts.inter(
+              style: GoogleFonts.inriaSerif(
                 color: Colors.black,
                 fontWeight: FontWeight.w400,
                 fontSize: 24.sp,
@@ -193,12 +200,12 @@ class MakeUpScreen extends StatelessWidget {
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         mainAxisSpacing: 10.h,
-        crossAxisSpacing: 10.w,
-        childAspectRatio: 1.1,
+        crossAxisSpacing: 25.w,
+        childAspectRatio: 0.75,
       ),
-      itemCount: workImages.length,
+      itemCount:2,
       itemBuilder: (context, index) => ClipRRect(
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(12.r),
         child: Image.asset(workImages[index], fit: BoxFit.cover),
       ),
     );
@@ -210,7 +217,7 @@ class MakeUpScreen extends StatelessWidget {
       children: makeupServices
           .map(
             (text) => Padding(
-              padding: EdgeInsets.only(left: 125, top: 4),
+              padding: EdgeInsets.only(left: 5, top: 4),
               child: Row(
                 children: [
                   CircleAvatar(

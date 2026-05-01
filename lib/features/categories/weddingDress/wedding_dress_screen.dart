@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/images.dart';
-import '../../../core/model/model_dresses_category.dart';
-import '../../booking/Book_Dress/dress_screen.dart';
+import '../../../core/model/dresses/model_dresses_category.dart';
+import 'Book_Dress/dress_screen.dart';
 import '../../widget/appbar_logo_screen.dart';
 import '../../widget/filtter_screen/fillter_screen.dart';
 

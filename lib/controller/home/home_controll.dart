@@ -28,7 +28,7 @@ class HomeControllImp extends HomeControll {
     ModelCategory(
       image: Images.suitStore,
       nameCategory: "Suit Store",
-      page: RouteHelper.suitStoreScreen,
+      page: RouteHelper.suitStore,
     ),
     ModelCategory(
       image: Images.photographer,
@@ -62,7 +62,7 @@ class HomeControllImp extends HomeControll {
     ModelCategory(
       image: Images.suitStore,
       nameCategory: "Suit Store",
-      page: RouteHelper.suitStoreScreen,
+      page: RouteHelper.suitStore,
     ),
     ModelCategory(
       image: Images.MensHairSalon,

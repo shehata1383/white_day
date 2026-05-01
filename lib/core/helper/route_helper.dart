@@ -10,11 +10,6 @@ import '../../features/auth/sign up/sign_up_vendor_screen.dart';
 import '../../features/booking/Book_Photographer/Aboutaleb_Wedding.dart';
 import '../../features/booking/Book_Photographer/Dart_Wedding.dart';
 import '../../features/booking/Book_Photographer/agha_wedding.dart';
-import '../../features/booking/Book_makeup_artist/make_up_screen.dart';
-import '../../features/booking/Book_suit_store/Noble_White.dart';
-import '../../features/booking/Book_suit_store/Royal_Black .dart';
-import '../../features/booking/Book_suit_store/Shadow_Royal.dart';
-import '../../features/booking/Book_suit_store/Velet_Burgundy.dart';
 import '../../features/booking/Book_the_halls/Arkan_Wedding_Hall.dart';
 import '../../features/booking/Book_the_halls/Askar_Wedding_Hall.dart';
 import '../../features/booking/Book_the_halls/Cinderella_Wedding_Hall.dart';
@@ -43,7 +38,7 @@ import '../../features/home/home_screen.dart';
 import '../../features/home/home_screen_start.dart';
 import '../../features/categories/makeup artist/makeup_artist_screen.dart';
 import '../../features/categories/photographer/photographer_screen.dart';
-import '../../features/categories/suitStore/suit_store_screen.dart';
+import '../../features/categories/suitStore/suit_store.dart';
 import '../../features/categories/weddingDress/wedding_dress_screen.dart';
 
 class RouteHelper {
@@ -59,7 +54,7 @@ class RouteHelper {
   static const String photograperScreen = '/PhotograperScreen';
   static const String weddingDressScreen = '/weddingDressScreen';
   static const String weddingHallScreen = '/weddingHallScreen';
-  static const String suitStoreScreen = '/suitStoreScreen';
+  static const String suitStore = '/suitStore';
 
   static const String rixosPlazaWeddingHall = '/RixosPlazaWeddingHall';
   static const String cinderellaWeddingHall = '/CinderellaWeddingHall';
@@ -69,10 +64,7 @@ class RouteHelper {
   static const String dartWedding = '/DartWedding';
   static const String aghaWedding = '/AghaWedding';
   static const String aboutalebWedding = '/AboutalebWedding';
-  static const String royalBlack = '/RoyalBlack';
-  static const String nobleWhite = '/NobleWhite';
-  static const String shadowRoyal = '/ShadowRoyal';
-  static const String veletBurgundy = '/VeletBurgundy';
+ 
   static const String bookBridesmaidScreen = '/BookBridesmaidScreen';
   static const String bookEmergencyBag = '/BookEmergencyBag';
   static const String barbarShopScreen = '/BarbarShopScreen';
@@ -166,8 +158,8 @@ class RouteHelper {
       transition: Transition.zoom,
     ),
     GetPage(
-      name: suitStoreScreen,
-      page: () => const SuitStoreScreen(),
+      name: suitStore,
+      page: () => const SuitStore(),
       transition: Transition.zoom,
     ),
 
@@ -206,26 +198,7 @@ class RouteHelper {
       page: () => const DartWedding(),
       transition: Transition.fade,
     ),
-    GetPage(
-      name: royalBlack,
-      page: () => const RoyalBlack(),
-      transition: Transition.fade,
-    ),
-    GetPage(
-      name: nobleWhite,
-      page: () => const NobleWhite(),
-      transition: Transition.fade,
-    ),
-    GetPage(
-      name: shadowRoyal,
-      page: () => const ShadowRoyal(),
-      transition: Transition.fade,
-    ),
-    GetPage(
-      name: veletBurgundy,
-      page: () => const VeletBurgundy(),
-      transition: Transition.fade,
-    ),
+  
     GetPage(
       name: bookBridesmaidScreen,
       page: () => const BookBridesmaidScreen(),

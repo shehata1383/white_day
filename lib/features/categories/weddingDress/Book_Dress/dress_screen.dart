@@ -2,13 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:white_day/core/constants/colors.dart';
-import 'package:white_day/core/constants/images.dart';
+import '../../../../core/model/dresses/model_dresses_category.dart';
+import 'booking_dresses_screen.dart';
 
-class ShadowRoyal extends StatelessWidget {
-  const ShadowRoyal({super.key});
-
+class DressScreen extends StatelessWidget {
+  const DressScreen({super.key,required this.data});
+final ModelDressesCategory data;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,25 +23,16 @@ class ShadowRoyal extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 15.h),
-                _buildMainImage(),
+                _buildMainImage(image:  data.mainImage),
                 SizedBox(height: 10.h),
-                _buildRatingCard(),
+                _buildRatingCard( title: data.name, address: data.address, rate: data.rate),
                 SizedBox(height: 15.h),
-                _buildImagesGrid(),
-                SizedBox(height: 5.h),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(12.r),
-                  child: Image.asset(
-                    Images.shadow5,
-                    fit: BoxFit.cover,
-                    height: 210.h,
-                  ),
-                ),
+                _buildImagesGrid(workImages: data.listImage),
                 SizedBox(height: 5),
                 const Divider(color: Colors.grey, thickness: 1),
                 const _SectionTitle(title: "Price"),
                 Text(
-                  "13,500 L.E",
+                  "${NumberFormat('#,###').format(data.price)} L.E",
                   style: GoogleFonts.inriaSerif(
                     fontSize: 23.sp,
                     fontWeight: FontWeight.w600,
@@ -46,14 +40,13 @@ class ShadowRoyal extends StatelessWidget {
                 ),
                 const Divider(color: Colors.grey, thickness: 1),
                 const _SectionTitle(title: "Details"),
-                _buildDetailsList(),
+                _buildDetailsList(makeupServices: data.details),
                 const Divider(color: Colors.grey, thickness: 1),
                 const _SectionTitle(title: "Description"),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
                   child: Text(
-                    "This black wedding suit combines timeless elegance with modern sophistication, crafted to make the groom feel confident, stylish, and unforgettable on his special day.",
-                    textAlign: TextAlign.left,
+                data.description ,   textAlign: TextAlign.left,
                     style: GoogleFonts.inriaSerif(
                       fontSize: 16.sp,
                       height: 1.4,
@@ -63,9 +56,9 @@ class ShadowRoyal extends StatelessWidget {
                   ),
                 ),
                 const Divider(color: Colors.grey, thickness: 1),
-                const _SectionTitle(title: "4,9 Rating"),
+                 _SectionTitle(title: "${data.rate} Rating"),
                 Text(
-                  "Based on 99 reviews",
+                  "Based on ${data.reviews} reviews",
                   style: GoogleFonts.inriaSerif(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.w500,
@@ -74,7 +67,17 @@ class ShadowRoyal extends StatelessWidget {
                 const Divider(color: Colors.grey, thickness: 1),
                 SizedBox(height: 30.h),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(
+                      () => BookingDressScreen(
+                        image1: data.mainImage[0],
+                        image2: data.mainImage[1],
+                        title:  data.name,
+                        listSize: data.listSize,
+                        listColors:data.listColors,
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.colorButton,
                     foregroundColor: Colors.black,
@@ -104,7 +107,7 @@ class ShadowRoyal extends StatelessWidget {
     );
   }
 
-  Widget _buildMainImage() {
+  Widget _buildMainImage({required List<String> image}) {
     return SizedBox(
       height: 290,
       width: 430,
@@ -112,10 +115,10 @@ class ShadowRoyal extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              decoration: const BoxDecoration(
+              decoration:  BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(12)),
                 image: DecorationImage(
-                  image: AssetImage(Images.shadow1),
+                  image: AssetImage(image[0]),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -123,10 +126,10 @@ class ShadowRoyal extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              decoration: const BoxDecoration(
+              decoration:  BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(12)),
                 image: DecorationImage(
-                  image: AssetImage(Images.shadow2),
+                  image: AssetImage(image[1]),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -137,11 +140,11 @@ class ShadowRoyal extends StatelessWidget {
     );
   }
 
-  Widget _buildRatingCard() {
+  Widget _buildRatingCard({required String title,required String address,required double rate}) {
     return Column(
       children: [
         Text(
-          "Shadow Royal Wedding Suit",
+        title  ,
           style: GoogleFonts.inriaSerif(
             color: Colors.black,
             fontWeight: FontWeight.w400,
@@ -153,14 +156,14 @@ class ShadowRoyal extends StatelessWidget {
           children: [
             Row(
               children: List.generate(
-                5,
+                4,
                 (index) =>
                     Icon(Icons.star, color: Colors.yellow[700], size: 25.r),
               ),
             ),
             SizedBox(width: 5),
             Text(
-              "4,9",
+              rate.toString(),
               style: GoogleFonts.inriaSerif(
                 color: Colors.black,
                 fontWeight: FontWeight.w400,
@@ -170,7 +173,7 @@ class ShadowRoyal extends StatelessWidget {
           ],
         ),
         Text(
-          "Cairo, Egypt",
+         address ,
           style: GoogleFonts.inriaSerif(
             color: Colors.black,
             fontWeight: FontWeight.w400,
@@ -181,16 +184,16 @@ class ShadowRoyal extends StatelessWidget {
     );
   }
 
-  Widget _buildImagesGrid() {
-    List<String> workImages = [Images.shadow3, Images.shadow4];
+  Widget _buildImagesGrid({required List<String> workImages}) {
+     
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         mainAxisSpacing: 10.h,
-        crossAxisSpacing: 25.w,
-        childAspectRatio: 0.75,
+        crossAxisSpacing: 10.w,
+        childAspectRatio: 0.73,
       ),
       itemCount: workImages.length,
       itemBuilder: (context, index) => ClipRRect(
@@ -200,19 +203,13 @@ class ShadowRoyal extends StatelessWidget {
     );
   }
 
-  Widget _buildDetailsList() {
-    List<String> makeupServices = [
-      "Size:44/46/48/50/52",
-      "Color:Black",
-      "Material:65% Polyester,35% Viscose",
-      "2 Pieces (Pants/Jacket)",
-    ];
+  Widget _buildDetailsList( {required List<String> makeupServices}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: makeupServices
           .map(
             (text) => Padding(
-              padding: EdgeInsets.only(left: 5, top: 4),
+              padding: EdgeInsets.only(left: 125, top: 4),
               child: Row(
                 children: [
                   CircleAvatar(

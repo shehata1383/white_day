@@ -2,12 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:white_day/core/constants/colors.dart';
-import 'package:white_day/core/constants/images.dart';
+import '../../../../core/model/make_up/model_makeup_category.dart';
+import 'booking_makeup_artist_screen.dart';
 
-class NobleWhite extends StatelessWidget {
-  const NobleWhite({super.key});
+class MakeUpScreen extends StatelessWidget {
+  const MakeUpScreen({super.key, required this.data});
+  final ModelMakeupCategory data;
 
   @override
   Widget build(BuildContext context) {
@@ -20,39 +24,44 @@ class NobleWhite extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 15.h),
-                _buildMainImage(),
+
+                _buildMainImage(mainImage: data.mainImage),
+
                 SizedBox(height: 10.h),
-                _buildRatingCard(),
-                SizedBox(height: 15.h),
-                _buildImagesGrid(),
-                SizedBox(height: 5.h),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(12.r),
-                  child: Image.asset(
-                    Images.royal5,
-                    fit: BoxFit.cover,
-                    height: 210.h,
-                  ),
+
+                _buildRatingCard(
+                  name: data.name,
+                  address: data.address,
+                  rate: data.rate,
                 ),
+
+                SizedBox(height: 15.h),
+
+                _buildImagesGrid(workImages: data.listImage),
+
                 SizedBox(height: 5),
+
                 const Divider(color: Colors.grey, thickness: 1),
+
                 const _SectionTitle(title: "Price"),
                 Text(
-                  "11,500 L.E",
+                  "Starting from ${NumberFormat('#,###').format(data.price)} L.E",
                   style: GoogleFonts.inriaSerif(
                     fontSize: 23.sp,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
                 const Divider(color: Colors.grey, thickness: 1),
+
                 const _SectionTitle(title: "Details"),
-                _buildDetailsList(),
+                _buildDetailsList(makeupServices: data.details),
                 const Divider(color: Colors.grey, thickness: 1),
-                const _SectionTitle(title: "Description"),
+
+                _SectionTitle(title: "About ${data.name.split(' ').first}"),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
                   child: Text(
-                    "White wedding suit for the groom, perfect for a timeless and sophisticated look.",
+                    data.about,
                     textAlign: TextAlign.left,
                     style: GoogleFonts.inriaSerif(
                       fontSize: 16.sp,
@@ -63,18 +72,32 @@ class NobleWhite extends StatelessWidget {
                   ),
                 ),
                 const Divider(color: Colors.grey, thickness: 1),
-                const _SectionTitle(title: "4,7 Rating"),
+
+                _SectionTitle(title: "${data.rate} Rating"),
                 Text(
-                  "Based on 90 reviews",
+                  "Based on ${data.reviews} reviews",
                   style: GoogleFonts.inriaSerif(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
                 const Divider(color: Colors.grey, thickness: 1),
+
                 SizedBox(height: 30.h),
+
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(
+                      () => BookingMakeupArtistScreen(
+                        onPressed: () {},
+                        image1: data.listImage[0],
+
+                        image2: data.listImage[1],
+
+                        listService: data.listService,
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.colorButton,
                     foregroundColor: Colors.black,
@@ -104,48 +127,30 @@ class NobleWhite extends StatelessWidget {
     );
   }
 
-  Widget _buildMainImage() {
-    return SizedBox(
-      height: 290,
-      width: 430,
-      child: Row(
-        children: [
-          Expanded(
-            child: Container(
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(12)),
-                image: DecorationImage(
-                  image: AssetImage(Images.noble1),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: Container(
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(12)),
-                image: DecorationImage(
-                  image: AssetImage(Images.noble2),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
-        ],
+  Widget _buildMainImage({required String mainImage}) {
+    return Container(
+      width: 396,
+      height: 264,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        image: DecorationImage(image: AssetImage(mainImage), fit: BoxFit.cover),
       ),
     );
   }
 
-  Widget _buildRatingCard() {
+  Widget _buildRatingCard({
+    required String name,
+    required String address,
+    required double rate,
+  }) {
     return Column(
       children: [
         Text(
-          "Noble White Wedding Suit",
-          style: GoogleFonts.inriaSerif(
+          name,
+          style: GoogleFonts.inter(
             color: Colors.black,
             fontWeight: FontWeight.w400,
-            fontSize: 30,
+            fontSize: 32,
           ),
         ),
         Row(
@@ -153,15 +158,15 @@ class NobleWhite extends StatelessWidget {
           children: [
             Row(
               children: List.generate(
-                5,
+                4,
                 (index) =>
                     Icon(Icons.star, color: Colors.yellow[700], size: 25.r),
               ),
             ),
             SizedBox(width: 5),
             Text(
-              "4,7",
-              style: GoogleFonts.inriaSerif(
+              rate.toString(),
+              style: GoogleFonts.inter(
                 color: Colors.black,
                 fontWeight: FontWeight.w400,
                 fontSize: 24.sp,
@@ -170,7 +175,7 @@ class NobleWhite extends StatelessWidget {
           ],
         ),
         Text(
-          "Cairo, Egypt",
+          address,
           style: GoogleFonts.inriaSerif(
             color: Colors.black,
             fontWeight: FontWeight.w400,
@@ -181,38 +186,31 @@ class NobleWhite extends StatelessWidget {
     );
   }
 
-  Widget _buildImagesGrid() {
-    List<String> workImages = [Images.noble3, Images.royal4];
+  Widget _buildImagesGrid({required List<String> workImages}) {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         mainAxisSpacing: 10.h,
-        crossAxisSpacing: 25.w,
-        childAspectRatio: 0.75,
+        crossAxisSpacing: 10.w,
+        childAspectRatio: 1.1,
       ),
       itemCount: workImages.length,
       itemBuilder: (context, index) => ClipRRect(
-        borderRadius: BorderRadius.circular(12.r),
+        borderRadius: BorderRadius.circular(8.r),
         child: Image.asset(workImages[index], fit: BoxFit.cover),
       ),
     );
   }
 
-  Widget _buildDetailsList() {
-    List<String> makeupServices = [
-      "Size:44/46/48/50/52/54",
-      "Color:White",
-      "Material:65% Polyester,35% Viscose",
-      "3 Pieces (Pants/Jacket/Vest)",
-    ];
+  Widget _buildDetailsList({required List<String> makeupServices}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: makeupServices
           .map(
             (text) => Padding(
-              padding: EdgeInsets.only(left: 5, top: 4),
+              padding: EdgeInsets.only(left: 125, top: 4),
               child: Row(
                 children: [
                   CircleAvatar(

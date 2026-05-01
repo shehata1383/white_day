@@ -5,45 +5,117 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/images.dart';
 import '../../../core/helper/route_helper.dart';
+import '../../../core/model/suit_store/model_suit_store.dart';
+import 'Book_suit_store/suit_store_screen.dart';
 import '../../widget/appbar_logo_screen.dart';
 import '../../widget/filtter_screen/fillter_screen.dart';
 
-class SuitStoreScreen extends StatefulWidget {
-  const SuitStoreScreen({super.key});
+class SuitStore extends StatefulWidget {
+  const SuitStore({super.key});
 
   @override
-  State<SuitStoreScreen> createState() => _SuitStoreScreenState();
+  State<SuitStore> createState() => _SuitStoreState();
 }
 
-class _SuitStoreScreenState extends State<SuitStoreScreen> {
+class _SuitStoreState extends State<SuitStore> {
   List<Map<String, dynamic>> listSubCategoryes = <Map<String, dynamic>>[
     {
       "nameCategores": "Royle Black",
       "price": "12,500 L.E",
       "imageSubCategores": Images.Royle_Black,
-       "route": RouteHelper.royalBlack,
+      "route": SuitStoreScreen(
+        data: ModelSuitStore(
+          name: "Royal Black Wedding Suit",
+          rate: 4.8,
+          address: "Cairo, Egypt",
+          mainImage: [Images.royal1, Images.royal2],
+          listImage: [Images.royal3, Images.royal4, Images.royal5],
+          price: 12500,
+          details: [
+      "Size:44/46/48/50/52",
+      "Color:Black",
+      "Material:65% Polyester,35% Viscose",
+      "3 Pieces (Pants/Jacket/Vest)",
+    ],
+          about:
+                    "The design combines elegance and absolute luxury to give you an unforgettable, sophisticated presence on your wedding day.",
+          reviews: 80,
+        ),
+      ),
     },
     {
       "nameCategores": "Noble White",
       "price": "11,500 L.E",
       "imageSubCategores": Images.Noble_White,
-       "route": RouteHelper.nobleWhite,
+      "route": SuitStoreScreen(
+        data: ModelSuitStore(
+          name: "Noble White Wedding Suit",
+          rate: 4.7,
+          address: "Cairo, Egypt",
+          mainImage: [Images.noble1, Images.noble2],
+          listImage: [Images.noble3, Images.royal4, Images.royal5],
+          price: 11500,
+          details: [
+            "Size:44/46/48/50/52/54",
+            "Color:White",
+            "Material:65% Polyester,35% Viscose",
+            "3 Pieces (Pants/Jacket/Vest)",
+          ],
+          about:
+              "White wedding suit for the groom, perfect for a timeless and sophisticated look.",
+          reviews: 90,
+        ),
+      ),
     },
     {
       "nameCategores": "Shadow Royal",
       "price": "13,500 L.E",
       "imageSubCategores": Images.Shadow_Royal,
-       "route": RouteHelper.shadowRoyal,
+      "route": SuitStoreScreen(
+        data: ModelSuitStore(
+          name: "Shadow Royal Wedding Suit",
+          rate: 4.6,
+          address: "Cairo, Egypt",
+          mainImage: [Images.shadow1, Images.shadow2],
+          listImage: [Images.shadow3, Images.shadow4, Images.shadow5],
+          price: 12500,
+          details: [
+      "Size:44/46/48/50/52",
+      "Color:Black",
+      "Material:65% Polyester,35% Viscose",
+      "2 Pieces (Pants/Jacket)",
+    ],
+          about:  
+                    "Step into your wedding day with this sleek Burgundy suit, designed to exude confidence, elegance, and unforgettable charm for the groom.",
+          reviews: 99,
+        ),
+      ),
     },
     {
       "nameCategores": "Velet Burgundy",
       "price": "12,500 L.E",
       "imageSubCategores": Images.Velet_Burgundy,
-       "route": RouteHelper.veletBurgundy,
+      "route":  SuitStoreScreen(
+        data: ModelSuitStore(
+          name:  "Velet Burgundy Wedding Suit",
+          rate: 4.6,
+          address: "Cairo, Egypt",
+          mainImage: [Images.velet1, Images.velet2],
+          listImage: [Images.velet3, Images.velet4, Images.velet5],
+          price: 12500,
+          details: [
+      "Size:46/48/50/52/58/60",
+      "Color:Burgundy",
+      "Material:65% Polyester,35% Viscose",
+      "3 Pieces (Pants/Jacket/Vest)",
+    ],
+          about:  
+                    "Step into your wedding day with this sleek Burgundy suit, designed to exude confidence, elegance, and unforgettable charm for the groom.",
+          reviews: 75,
+        ),
+      ),
     },
   ];
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +134,8 @@ class _SuitStoreScreenState extends State<SuitStoreScreen> {
               ),
             ),
             SizedBox(height: 10.h),
- FillterScreen(),            SizedBox(height: 15.h),
+            FillterScreen(),
+            SizedBox(height: 15.h),
 
             Expanded(
               child: GridView.builder(
@@ -80,7 +153,7 @@ class _SuitStoreScreenState extends State<SuitStoreScreen> {
                   return InkWell(
                     onTap: () {
                       if (suilt['route'] != null) {
-                        Get.toNamed(suilt['route']);
+                        Get.to(suilt['route']);
                       }
                     },
                     child: Container(
@@ -92,7 +165,7 @@ class _SuitStoreScreenState extends State<SuitStoreScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           ClipRRect(
-                          borderRadius: BorderRadiusDirectional.only(
+                            borderRadius: BorderRadiusDirectional.only(
                               topStart: Radius.circular(15.r),
                               topEnd: Radius.circular(15.r),
                             ),
@@ -122,11 +195,10 @@ class _SuitStoreScreenState extends State<SuitStoreScreen> {
                                     suilt['price'],
                                     style: GoogleFonts.inriaSerif(
                                       fontSize: 14.sp,
-                                      fontWeight: FontWeight.bold
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
-                               
                               ],
                             ),
                           ),
