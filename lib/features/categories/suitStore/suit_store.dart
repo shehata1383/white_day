@@ -39,7 +39,7 @@ class _SuitStoreState extends State<SuitStore> {
     ],
           about:
                     "The design combines elegance and absolute luxury to give you an unforgettable, sophisticated presence on your wedding day.",
-          reviews: 80,
+          reviews: 80, listSize: [44,46,48,52,54],
         ),
       ),
     },
@@ -63,7 +63,7 @@ class _SuitStoreState extends State<SuitStore> {
           ],
           about:
               "White wedding suit for the groom, perfect for a timeless and sophisticated look.",
-          reviews: 90,
+          reviews: 90, listSize: [44,46,48,52,54],
         ),
       ),
     },
@@ -87,7 +87,7 @@ class _SuitStoreState extends State<SuitStore> {
     ],
           about:  
                     "Step into your wedding day with this sleek Burgundy suit, designed to exude confidence, elegance, and unforgettable charm for the groom.",
-          reviews: 99,
+          reviews: 99, listSize: [46,48,50,52],
         ),
       ),
     },
@@ -111,7 +111,7 @@ class _SuitStoreState extends State<SuitStore> {
     ],
           about:  
                     "Step into your wedding day with this sleek Burgundy suit, designed to exude confidence, elegance, and unforgettable charm for the groom.",
-          reviews: 75,
+          reviews: 75, listSize: [46,48,50,52,58,60],
         ),
       ),
     },

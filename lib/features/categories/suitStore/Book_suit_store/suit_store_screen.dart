@@ -2,16 +2,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:white_day/core/constants/colors.dart';
 import 'package:white_day/core/constants/images.dart';
 
 import '../../../../core/model/suit_store/model_suit_store.dart';
+import 'booking_suit_screen.dart';
 
 class SuitStoreScreen extends StatelessWidget {
-  const SuitStoreScreen({super.key,required this.data });
-final ModelSuitStore data;
+  const SuitStoreScreen({super.key, required this.data});
+  final ModelSuitStore data;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,20 +25,20 @@ final ModelSuitStore data;
             child: Column(
               children: [
                 SizedBox(height: 15.h),
-                _buildMainImage(image:[ Images.noble1,Images.noble2]),
+                _buildMainImage(image: [Images.noble1, Images.noble2]),
                 SizedBox(height: 10.h),
                 _buildRatingCard(
                   title: data.name,
                   rate: data.rate,
-                  address:data.address ,
+                  address: data.address,
                 ),
                 SizedBox(height: 15.h),
-                _buildImagesGrid(workImages:data.listImage ),
+                _buildImagesGrid(workImages: data.listImage),
                 SizedBox(height: 5.h),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12.r),
                   child: Image.asset(
-                    data.listImage [2],
+                    data.listImage[2],
                     fit: BoxFit.cover,
                     height: 210.h,
                   ),
@@ -53,15 +55,14 @@ final ModelSuitStore data;
                 ),
                 const Divider(color: Colors.grey, thickness: 1),
                 const _SectionTitle(title: "Details"),
-                _buildDetailsList(
-                  makeupServices: data.details,
-                ),
+                _buildDetailsList(makeupServices: data.details),
                 const Divider(color: Colors.grey, thickness: 1),
                 const _SectionTitle(title: "Description"),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
                   child: Text(
-                   data.about, textAlign: TextAlign.left,
+                    data.about,
+                    textAlign: TextAlign.left,
                     style: GoogleFonts.inriaSerif(
                       fontSize: 16.sp,
                       height: 1.4,
@@ -71,7 +72,7 @@ final ModelSuitStore data;
                   ),
                 ),
                 const Divider(color: Colors.grey, thickness: 1),
-                 _SectionTitle(title: "${data.rate} Rating"),
+                _SectionTitle(title: "${data.rate} Rating"),
                 Text(
                   "Based on ${data.reviews} reviews",
                   style: GoogleFonts.inriaSerif(
@@ -82,7 +83,16 @@ final ModelSuitStore data;
                 const Divider(color: Colors.grey, thickness: 1),
                 SizedBox(height: 30.h),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(
+                      () => BookingSuitScreen(
+                        image1: data.mainImage[0],
+                        image2:  data.mainImage[1],
+                        title: data.name,
+                        listSize: data.listSize,
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.colorButton,
                     foregroundColor: Colors.black,
@@ -131,7 +141,7 @@ final ModelSuitStore data;
           ),
           Expanded(
             child: Container(
-              decoration:  BoxDecoration(
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(12)),
                 image: DecorationImage(
                   image: AssetImage(image[1]),
@@ -203,7 +213,7 @@ final ModelSuitStore data;
         crossAxisSpacing: 25.w,
         childAspectRatio: 0.75,
       ),
-      itemCount:2,
+      itemCount: 2,
       itemBuilder: (context, index) => ClipRRect(
         borderRadius: BorderRadius.circular(12.r),
         child: Image.asset(workImages[index], fit: BoxFit.cover),

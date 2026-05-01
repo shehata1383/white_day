@@ -82,7 +82,7 @@ class HomeControllImp extends HomeControll {
     ModelCategory(
       image: Images.emergencyBag,
       nameCategory: "Emergency Bag",
-      page: RouteHelper.bookEmergencyBag,
+      page: RouteHelper.emergencyBag,
     ),
     ModelCategory(
       image: Images.bridesmaid,

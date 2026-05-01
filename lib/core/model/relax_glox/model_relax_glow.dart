@@ -1,24 +1,20 @@
-class ModelSuitStore {
-  List<String> mainImage;
+class ModelRelaxGlow {
   String name;
+  List<String> listImage;
   double rate;
   String address;
-  List<String> listImage;
   int price;
   List<String> details;
-  List<int> listSize;
   String about;
-  int reviews;
-  ModelSuitStore({
+  int review;
+  ModelRelaxGlow({
     required this.name,
+    required this.listImage,
     required this.rate,
     required this.address,
-    required this.mainImage,
-    required this.listImage,
     required this.price,
     required this.details,
     required this.about,
-    required this.reviews,
-    required this.listSize,
+    required this.review,
   });
 }

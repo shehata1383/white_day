@@ -5,8 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/images.dart';
 import '../../../core/helper/route_helper.dart';
+import '../../../core/model/barbar_shop/model_barbar_shop.dart';
 import '../../widget/appbar_logo_screen.dart';
 import '../../widget/filtter_screen/fillter_screen.dart';
+import 'booking_barbar_shop/barbar_shop_details_screen.dart';
 
 class BarbarShopScreen extends StatefulWidget {
   const BarbarShopScreen({super.key});
@@ -21,21 +23,77 @@ class _BarbarShopScreenState extends State<BarbarShopScreen> {
       "nameCategores": "Royal Groom Package",
       "price": "Starting From 4,200 L.E",
       "imageSubCategores": Images.barbar_shop1,
-      "route": RouteHelper.royalGroomPackageScreen,
+      "route": BarbarShopDetailsScreen(
+        data: ModelBarbarShop(
+          name: "Royal Groom Package",
+          listImage: [Images.royalGroomPackage],
+          rate: 5.1,
+          address: "Cairo, Egypt",
+          price: 4200,
+          details: [
+            "Haircut",
+            "Beard trim",
+            "Gk oil treatmet",
+            "Baderma facial",
+            "Manicure and pedicure",
+            "Grooms finishing",
+          ],
+          about:
+              "We redefine men's grooming with precision, style, and attention to every detail because every man deserves a sharp, confident look.",
+          review: 80,
+        ),
+      ),
     },
     {
       "nameCategores": "Groom Glow Package",
       "price": "Starting From 1,450 L.E",
       "imageSubCategores": Images.barbar_shop2,
-      "route": RouteHelper.groomGlowPackage,
+      "route": BarbarShopDetailsScreen(
+        data: ModelBarbarShop(
+          name: "Groom Glow Package",
+          listImage: [Images.groomGlowPackage],
+          rate: 4.7,
+          address: "Cairo, Egypt",
+          price: 1450,
+          details: [
+            "Haircut",
+            "Beard trim",
+            "Hot oil treatmet",
+            "Facial cleansing",
+          ],
+          about:
+              "Your go-to place for clean cuts, fresh fades, and a look that speaks confidence.",
+          review: 100,
+        ),
+      ),
     },
     {
       "nameCategores": "The Gentelman Package",
       "price": "Starting From 2,900L.E",
       "imageSubCategores": Images.barbar_shop3,
-      "route": RouteHelper.theGentelmanPackage,
+      "route": BarbarShopDetailsScreen(
+        data: ModelBarbarShop(
+          name:  "The Gentelman Package",
+          listImage
+          : [Images.theGentelmanPackage,
+        Images.theGentelmanPackage2  ],
+          rate: 4.8,
+          address: "Cairo, Egypt",
+          price: 2900,
+          details:[
+      "Haircut",
+      "Beard trim",
+      "Hot oil treatmet",
+      "Manicure and pedicure",
+      "Hyderafacial"
+
+    ],
+          about:
+                      "Crafting timeless styles and modern looks with expert hands where elegance meets masculinity.",
+          review: 100,
+        ),
+      ),
     },
-   
   ];
 
   @override
@@ -74,7 +132,7 @@ class _BarbarShopScreenState extends State<BarbarShopScreen> {
                 ),
                 itemBuilder: (context, index) {
                   return GestureDetector(
-                    onTap: () => Get.toNamed(listSubCategoryes[index]['route']),
+                    onTap: () => Get.to(listSubCategoryes[index]['route']),
                     child: Container(
                       decoration: BoxDecoration(
                         color: AppColors.colorDetails,
@@ -105,12 +163,14 @@ class _BarbarShopScreenState extends State<BarbarShopScreen> {
                             ),
                           ),
                           Padding(
-                            padding:  EdgeInsetsDirectional.symmetric(horizontal: 2.w),
+                            padding: EdgeInsetsDirectional.symmetric(
+                              horizontal: 2.w,
+                            ),
                             child: Text(
                               listSubCategoryes[index]['nameCategores'],
                               style: GoogleFonts.inriaSerif(
                                 fontSize: 18.sp,
-                                
+
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black,
                               ),
@@ -120,7 +180,9 @@ class _BarbarShopScreenState extends State<BarbarShopScreen> {
                           ),
                           SizedBox(height: 2.h),
                           Padding(
-                            padding:  EdgeInsetsDirectional.symmetric(horizontal: 2.w),
+                            padding: EdgeInsetsDirectional.symmetric(
+                              horizontal: 2.w,
+                            ),
                             child: Text(
                               listSubCategoryes[index]['price'],
                               style: GoogleFonts.inriaSerif(
@@ -130,7 +192,7 @@ class _BarbarShopScreenState extends State<BarbarShopScreen> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 5,)
+                          SizedBox(height: 5),
                         ],
                       ),
                     ),
@@ -143,6 +205,4 @@ class _BarbarShopScreenState extends State<BarbarShopScreen> {
       ),
     );
   }
-
-  
 }

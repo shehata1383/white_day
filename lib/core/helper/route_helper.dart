@@ -18,20 +18,17 @@ import '../../features/booking/book_artist/amr_diab.dart';
 import '../../features/booking/book_artist/bahaa_sultan.dart';
 import '../../features/booking/book_artist/mahmoud_al_Laithi.dart';
 import '../../features/booking/book_artist/tamer_hosny.dart';
-import '../../features/booking/book_barbar_shop/groom_glow_package.dart';
-import '../../features/booking/book_barbar_shop/royal_groom_package_screen.dart';
-import '../../features/booking/book_barbar_shop/the_gentelman_package.dart';
 import '../../features/booking/book_car/MG_5_2023.dart';
 import '../../features/booking/book_car/hyundai_elantra_2026.dart';
 import '../../features/booking/book_car/kia_sportage_gt_line.dart';
 import '../../features/booking/book_catering/brides_breakfast_snak_packages.dart';
-import '../../features/booking/book_relax_glow/relax_glow_package.dart';
+import '../../features/categories/relax_glow/relax_glow_package.dart';
 import '../../features/categories/Artists/artist_screen.dart';
 import '../../features/categories/WeddingHall/wedding_hall_screen.dart';
 import '../../features/auth/sign in/sign_in_screen.dart';
 import '../../features/auth/sign up/sign_up_client_screen.dart';
-import '../../features/booking/book_bridesmaid/book_bridesmaid_screen.dart';
-import '../../features/booking/book_emergency_bag/book_emergency_bag.dart';
+import '../../features/categories/bridesmaid/bridesmaid_screen.dart';
+import '../../features/categories/emergency_bag/emergency_bag.dart';
 import '../../features/categories/barbar_shop/barbar_shop_screen.dart';
 import '../../features/categories/cars/cars_screen.dart';
 import '../../features/home/home_screen.dart';
@@ -66,12 +63,9 @@ class RouteHelper {
   static const String aboutalebWedding = '/AboutalebWedding';
  
   static const String bookBridesmaidScreen = '/BookBridesmaidScreen';
-  static const String bookEmergencyBag = '/BookEmergencyBag';
+  static const String emergencyBag = '/EmergencyBag';
   static const String barbarShopScreen = '/BarbarShopScreen';
-  static const String royalGroomPackageScreen = '/RoyalGroomPackageScreen';
-  static const String groomGlowPackage = '/GroomGlowPackage';
-  static const String theGentelmanPackage = '/TheGentelmanPackage';
-  static const String artistScreen = '/artistScreen';
+   static const String artistScreen = '/artistScreen';
   static const String amrDiab = '/AmrDiab';
   static const String bahaaSultan = '/BahaaSultan';
   static const String mahmoudAlLaithi = '/MahmoudAlLaithi';
@@ -201,32 +195,17 @@ class RouteHelper {
   
     GetPage(
       name: bookBridesmaidScreen,
-      page: () => const BookBridesmaidScreen(),
+      page: () =>  BridesmaidScreen(),
       transition: Transition.fade,
     ),
     GetPage(
-      name: bookEmergencyBag,
-      page: () => const BookEmergencyBag(),
+      name: emergencyBag,
+      page: () =>  EmergencyBag(),
       transition: Transition.fade,
     ),
     GetPage(
       name: barbarShopScreen,
       page: () => const BarbarShopScreen(),
-      transition: Transition.fade,
-    ),
-    GetPage(
-      name: royalGroomPackageScreen,
-      page: () => const RoyalGroomPackageScreen(),
-      transition: Transition.fade,
-    ),
-    GetPage(
-      name: groomGlowPackage,
-      page: () => const GroomGlowPackage(),
-      transition: Transition.fade,
-    ),
-    GetPage(
-      name: theGentelmanPackage,
-      page: () => const TheGentelmanPackage(),
       transition: Transition.fade,
     ),
     GetPage(
