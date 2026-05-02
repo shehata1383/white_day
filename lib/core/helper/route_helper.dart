@@ -7,21 +7,7 @@ import '../../features/auth/forgot password/reset_password_screen.dart';
 import '../../features/auth/forgot password/verify_code_screen.dart';
 import '../../features/auth/sign up/sign_up_choose_screen.dart';
 import '../../features/auth/sign up/sign_up_vendor_screen.dart';
-import '../../features/booking/Book_Photographer/Aboutaleb_Wedding.dart';
-import '../../features/booking/Book_Photographer/Dart_Wedding.dart';
-import '../../features/booking/Book_Photographer/agha_wedding.dart';
-import '../../features/booking/Book_the_halls/Arkan_Wedding_Hall.dart';
-import '../../features/booking/Book_the_halls/Askar_Wedding_Hall.dart';
-import '../../features/booking/Book_the_halls/Cinderella_Wedding_Hall.dart';
-import '../../features/booking/Book_the_halls/Rixos_Plaza_Wedding_Hall.dart';
-import '../../features/booking/book_artist/amr_diab.dart';
-import '../../features/booking/book_artist/bahaa_sultan.dart';
-import '../../features/booking/book_artist/mahmoud_al_Laithi.dart';
-import '../../features/booking/book_artist/tamer_hosny.dart';
-import '../../features/booking/book_car/MG_5_2023.dart';
-import '../../features/booking/book_car/hyundai_elantra_2026.dart';
-import '../../features/booking/book_car/kia_sportage_gt_line.dart';
-import '../../features/booking/book_catering/brides_breakfast_snak_packages.dart';
+import '../../features/categories/catering/brides_breakfast_snak_packages.dart';
 import '../../features/categories/relax_glow/relax_glow_package.dart';
 import '../../features/categories/Artists/artist_screen.dart';
 import '../../features/categories/WeddingHall/wedding_hall_screen.dart';
@@ -39,12 +25,10 @@ import '../../features/categories/suitStore/suit_store.dart';
 import '../../features/categories/weddingDress/wedding_dress_screen.dart';
 
 class RouteHelper {
-  // static const String initial = '/';
   static const String signIn = '/SignInScreen';
   static const String signUpClientScreen = '/SignUpClientScreen';
   static const String signUpChooseScreen = '/SignUpChooseScreen';
   static const String signUpVendorScreen = '/SignUpVendorScreen';
-
   static const String homeScreen = '/HomeScreen';
   static const String homeScreenStart = '/HomeScreenStart';
   static const String makeupArtistScreen = '/MakeupArtistScreen';
@@ -52,28 +36,11 @@ class RouteHelper {
   static const String weddingDressScreen = '/weddingDressScreen';
   static const String weddingHallScreen = '/weddingHallScreen';
   static const String suitStore = '/suitStore';
-
-  static const String rixosPlazaWeddingHall = '/RixosPlazaWeddingHall';
-  static const String cinderellaWeddingHall = '/CinderellaWeddingHall';
-  static const String askarWeddingHall = '/AskarWeddingHall';
-  static const String arkanWeddingHalldart = '/ArkanWeddingHalldart';
-
-  static const String dartWedding = '/DartWedding';
-  static const String aghaWedding = '/AghaWedding';
-  static const String aboutalebWedding = '/AboutalebWedding';
- 
   static const String bookBridesmaidScreen = '/BookBridesmaidScreen';
   static const String emergencyBag = '/EmergencyBag';
   static const String barbarShopScreen = '/BarbarShopScreen';
-   static const String artistScreen = '/artistScreen';
-  static const String amrDiab = '/AmrDiab';
-  static const String bahaaSultan = '/BahaaSultan';
-  static const String mahmoudAlLaithi = '/MahmoudAlLaithi';
-  static const String tamerHosny = '/TamerHosny';
+  static const String artistScreen = '/artistScreen';
   static const String carsScreen = '/CarsScreen';
-  static const String kiaSportageGtLine = '/KiaSportageGtLine';
-  static const String hyundaiElantra2026 = '/HyundaiElantra2026';
-  static const String mg52023 = '/Mg52023';
   static const String bridesBreakfastSnakPackages = '/BridesBreakfastSnakPackages';
   static const String relaxGlowPackage = '/RelaxGlowPackage';
   static const String forgotPasswordScreen = '/ForgotPasswordScreen';
@@ -156,43 +123,6 @@ class RouteHelper {
       page: () => const SuitStore(),
       transition: Transition.zoom,
     ),
-
-    GetPage(
-      name: rixosPlazaWeddingHall,
-      page: () => const RixosPlazaWeddingHall(),
-      transition: Transition.fade,
-    ),
-    GetPage(
-      name: cinderellaWeddingHall,
-      page: () => const CinderellaWeddingHall(),
-      transition: Transition.fade,
-    ),
-    GetPage(
-      name: askarWeddingHall,
-      page: () => const AskarWeddingHall(),
-      transition: Transition.fade,
-    ),
-    GetPage(
-      name: arkanWeddingHalldart,
-      page: () => const ArkanWeddingHalldart(),
-      transition: Transition.fade,
-    ),
-    GetPage(
-      name: aboutalebWedding,
-      page: () => const AboutalebWedding(),
-      transition: Transition.fade,
-    ),
-    GetPage(
-      name: aghaWedding,
-      page: () => const AghaWedding(),
-      transition: Transition.fade,
-    ),
-    GetPage(
-      name: dartWedding,
-      page: () => const DartWedding(),
-      transition: Transition.fade,
-    ),
-  
     GetPage(
       name: bookBridesmaidScreen,
       page: () =>  BridesmaidScreen(),
@@ -213,36 +143,8 @@ class RouteHelper {
       page: () =>  ArtistScreen(),
     ),
     GetPage(
-      name: amrDiab,
-      page: () =>  AmrDiab(),
-    ),GetPage(
-      name: bahaaSultan,
-      page: () =>  BahaaSultan(),
-    ),
-    GetPage(
-      name: mahmoudAlLaithi,
-      page: () =>  MahmoudAlLaithi(),
-    ),
-    
-    GetPage(
-      name: tamerHosny,
-      page: () =>  TamerHosny(),
-    ),
-    GetPage(
       name: carsScreen,
       page: () =>  CarsScreen(),
-    ),
-    GetPage(
-      name: kiaSportageGtLine,
-      page: () =>  KiaSportageGtLine(),
-    ),
-    GetPage(
-      name: hyundaiElantra2026,
-      page: () =>  HyundaiElantra2026(),
-    ),
-    GetPage(
-      name: mg52023,
-      page: () =>  Mg52023(),
     ),
     GetPage(
       name: bridesBreakfastSnakPackages,

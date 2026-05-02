@@ -3,13 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:white_day/core/constants/images.dart';
 import '../../../../core/constants/colors.dart';
-import '../../../../core/model/barbar_shop/model_barbar_shop.dart';
-import 'booking_barbar_shop_screen.dart';
+import '../../../../core/model/artist/model_artist.dart';
+import 'booking_artist_screen.dart';
 
-class BarbarShopDetailsScreen extends StatelessWidget {
-  const BarbarShopDetailsScreen({super.key, required this.data});
-  final ModelBarbarShop data;
+class ArtistDetailsScreen extends StatelessWidget {
+  const ArtistDetailsScreen({super.key, required this.data});
+  final ModelArtist data;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,21 +19,22 @@ class BarbarShopDetailsScreen extends StatelessWidget {
           child: Column(
             children: [
               Row(
-                children: data.listImage.map((image) {
-                  return Image.asset(
-                    image,
-                    width:( MediaQuery.of(context).size.width-0.1)/data.listImage.length,height: 200.h,
-
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Image.asset(
+                    data.listImage[0],
+                    height: 200.h,
                     fit: BoxFit.fitWidth,
-                  );
-                }).toList(),
+                  ),
+                  Image.asset(
+                    data.listImage[1],
+                    height: 200.h,
+                    fit: BoxFit.fitWidth,
+                  ),
+                ],
               ),
 
-              _buildRatingCard(
-                name: data.name,
-                rate: data.rate,
-                address: data.address,
-              ),
+              _buildRatingCard(name: data.name, rate: data.rate, address: data.address),
               const Divider(color: Colors.grey, thickness: 1),
 
               const _SectionTitle(title: "Price"),
@@ -49,12 +51,11 @@ class BarbarShopDetailsScreen extends StatelessWidget {
               _buildDetailsList(makeupServices: data.details),
               const Divider(color: Colors.grey, thickness: 1),
 
-              const _SectionTitle(title: "About"),
+               _SectionTitle(title: "About ${data.name}"),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
                 child: Text(
-                  data.about,
-                  textAlign: TextAlign.left,
+data.about,                  textAlign: TextAlign.left,
                   style: GoogleFonts.inriaSerif(
                     fontSize: 16.sp,
                     height: 1.4,
@@ -65,7 +66,7 @@ class BarbarShopDetailsScreen extends StatelessWidget {
               ),
               const Divider(color: Colors.grey, thickness: 1),
 
-              _SectionTitle(title: "${data.rate} Rating"),
+               _SectionTitle(title: "${data.rate} Rating"),
               Text(
                 "Based on ${data.review} reviews",
                 style: GoogleFonts.inriaSerif(
@@ -79,12 +80,7 @@ class BarbarShopDetailsScreen extends StatelessWidget {
 
               ElevatedButton(
                 onPressed: () {
-                  Get.to(()=>
-                    BookingBarbarShopScreen(
-                      listImage: data.listImage,
-                      title: data.name,
-                    )
-                  );
+                  Get.to(() => BookingArtistScreen(listImage: data.listImage, title: data.name));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.colorButton,
@@ -114,7 +110,8 @@ class BarbarShopDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildDetailsList({required List<String> makeupServices}) {
+  Widget _buildDetailsList({required  List<String> makeupServices}) {
+    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: makeupServices
@@ -146,15 +143,11 @@ class BarbarShopDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildRatingCard({
-    required String name,
-    required double rate,
-    required String address,
-  }) {
+  Widget _buildRatingCard({required String name,required double rate,required String address}) {
     return Column(
       children: [
         Text(
-          name,
+         name,
           style: GoogleFonts.inriaSerif(
             color: Colors.black,
             fontWeight: FontWeight.w400,
@@ -174,7 +167,7 @@ class BarbarShopDetailsScreen extends StatelessWidget {
             ),
             SizedBox(width: 5),
             Text(
-              rate.toString(),
+             rate.toString(),
               style: GoogleFonts.inter(
                 color: Colors.black,
                 fontWeight: FontWeight.w400,

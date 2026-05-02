@@ -3,13 +3,33 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import '../../../../core/constants/colors.dart';
-import '../../../../core/model/barbar_shop/model_barbar_shop.dart';
-import 'booking_barbar_shop_screen.dart';
+import 'package:white_day/core/constants/images.dart';
+import '../../../core/constants/colors.dart';
+import '../../../core/model/catering/model_catering.dart';
+import 'book_catering/booking_catering_screen.dart';
 
-class BarbarShopDetailsScreen extends StatelessWidget {
-  const BarbarShopDetailsScreen({super.key, required this.data});
-  final ModelBarbarShop data;
+class BridesBreakfastSnakPackages extends StatelessWidget {
+  BridesBreakfastSnakPackages({super.key});
+  final ModelCatering data = ModelCatering(
+    name: "Brides Breakfast & Snak Packages",
+    listImage: [Images.bridesBreakfast1, Images.bridesBreakfast2],
+    rate: 4.1,
+    address: "Cairo, Egypt",
+    price: 2000,
+    details: [
+      "Fresh Pastries & Pancakes",
+      "Scrambled Eggs & Cheese",
+      "Fruit Platter & Yourt",
+      "Juice ,Tea & Coffee",
+      "Chocolates & Cupcakes",
+      "Mini Sandwiches",
+      "Cheese & Crackers",
+      "Chips & Treats",
+    ],
+    about:
+        "Start your wedding day with delicious breakfast and snacks specially prepared for the bride and groom, to keep the energy high and the smiles brighter.",
+    review: 80,
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,14 +38,19 @@ class BarbarShopDetailsScreen extends StatelessWidget {
           child: Column(
             children: [
               Row(
-                children: data.listImage.map((image) {
-                  return Image.asset(
-                    image,
-                    width:( MediaQuery.of(context).size.width-0.1)/data.listImage.length,height: 200.h,
-
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    data.listImage[0],
+                    height: 200.h,
                     fit: BoxFit.fitWidth,
-                  );
-                }).toList(),
+                  ),
+                  Image.asset(
+                    data.listImage[1],
+                    height: 200.h,
+                    fit: BoxFit.fitWidth,
+                  ),
+                ],
               ),
 
               _buildRatingCard(
@@ -37,7 +62,7 @@ class BarbarShopDetailsScreen extends StatelessWidget {
 
               const _SectionTitle(title: "Price"),
               Text(
-                "${NumberFormat("#,###").format(data.price)} L.E",
+                "${NumberFormat('#,###').format(data.price)} L.E",
                 style: GoogleFonts.inriaSerif(
                   fontSize: 23.sp,
                   fontWeight: FontWeight.w400,
@@ -79,11 +104,11 @@ class BarbarShopDetailsScreen extends StatelessWidget {
 
               ElevatedButton(
                 onPressed: () {
-                  Get.to(()=>
-                    BookingBarbarShopScreen(
+                  Get.to(
+                    () => BookingCateringScreen(
                       listImage: data.listImage,
                       title: data.name,
-                    )
+                    ),
                   );
                 },
                 style: ElevatedButton.styleFrom(

@@ -73,6 +73,7 @@ class Images {
   static const String dart5 = 'assets/images/Dart5.jpg';
   static const String dart6 = 'assets/images/Dart6.jpg';
   static const String aboutaleb1 = 'assets/images/Aboutaleb1.jpg';
+  static const String aboutaleb2 = 'assets/images/Aboutaleb2.jpg';
   static const String aboutaleb3 = 'assets/images/Aboutaleb3.jpg';
   static const String aboutaleb4 = 'assets/images/Aboutaleb4.jpg';
   static const String aboutaleb5 = 'assets/images/Aboutaleb5.jpg';

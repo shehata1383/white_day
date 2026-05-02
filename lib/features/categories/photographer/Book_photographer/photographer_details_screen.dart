@@ -2,12 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:white_day/core/constants/colors.dart';
-import 'package:white_day/core/constants/images.dart';
+import '../../../../core/model/photographer/model_photographer_category.dart';
+import 'booking_photographer_screen.dart';
 
-class DartWedding extends StatelessWidget {
-  const DartWedding({super.key});
+class PhotographerDetailsScreen extends StatelessWidget {
+  const PhotographerDetailsScreen({super.key, required this.data});
+  final ModelPhotographerCategory data;
 
   @override
   Widget build(BuildContext context) {
@@ -20,30 +24,44 @@ class DartWedding extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 15.h),
-                _buildMainImage(),
+
+                _buildMainImage(mainImage: data.mainImage[0]),
+
                 SizedBox(height: 10.h),
-                _buildRatingCard(),
+
+                _buildRatingCard(
+                  name: data.name,
+                  address: data.address,
+                  rate: data.rate,
+                ),
+
                 SizedBox(height: 15.h),
-                _buildImagesGrid(),
+
+                _buildImagesGrid(workImages: data.listImage),
+
                 SizedBox(height: 5),
+
                 const Divider(color: Colors.grey, thickness: 1),
+
                 const _SectionTitle(title: "Price"),
                 Text(
-                  "Starting from 12,000 L.E",
+                  "Starting from ${NumberFormat('#,###').format(data.price)} L.E",
                   style: GoogleFonts.inriaSerif(
                     fontSize: 23.sp,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
                 const Divider(color: Colors.grey, thickness: 1),
+
                 const _SectionTitle(title: "Details"),
-                _buildDetailsList(),
+                _buildDetailsList(makeupServices: data.details),
                 const Divider(color: Colors.grey, thickness: 1),
-                const _SectionTitle(title: "About Dart"),
+
+                _SectionTitle(title: "About ${data.name.split(' ').first}"),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
                   child: Text(
-                    "Wedding photographer capturing your most special moments and memories.",
+                    data.about,
                     textAlign: TextAlign.left,
                     style: GoogleFonts.inriaSerif(
                       fontSize: 16.sp,
@@ -54,18 +72,32 @@ class DartWedding extends StatelessWidget {
                   ),
                 ),
                 const Divider(color: Colors.grey, thickness: 1),
-                const _SectionTitle(title: "4,9 Rating"),
+
+                _SectionTitle(title: "${data.rate} Rating"),
                 Text(
-                  "Based on 110 reviews",
+                  "Based on ${data.reviews} reviews",
                   style: GoogleFonts.inriaSerif(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
                 const Divider(color: Colors.grey, thickness: 1),
+
                 SizedBox(height: 30.h),
+
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(
+                      () => BookingPhotographerScreen(
+                        onPressed: () {},
+                        image1: data.listImage[0],
+
+                        image2: data.listImage[1],
+
+                        listService: data.listService,
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.colorButton,
                     foregroundColor: Colors.black,
@@ -95,48 +127,30 @@ class DartWedding extends StatelessWidget {
     );
   }
 
-  Widget _buildMainImage() {
-    return SizedBox(
-      height: 290,
-      width: 430,
-      child: Row(
-        children: [
-          Expanded(
-            child: Container(
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(12)),
-                image: DecorationImage(
-                  image: AssetImage(Images.dart1),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: Container(
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(12)),
-                image: DecorationImage(
-                  image: AssetImage(Images.dart2),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
-        ],
+  Widget _buildMainImage({required String mainImage}) {
+    return Container(
+      width: 396,
+      height: 264,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        image: DecorationImage(image: AssetImage(mainImage), fit: BoxFit.cover),
       ),
     );
   }
 
-  Widget _buildRatingCard() {
+  Widget _buildRatingCard({
+    required String name,
+    required String address,
+    required double rate,
+  }) {
     return Column(
       children: [
         Text(
-          "Dart Wedding",
-          style: GoogleFonts.inriaSerif(
+          name,
+          style: GoogleFonts.inter(
             color: Colors.black,
             fontWeight: FontWeight.w400,
-            fontSize: 30,
+            fontSize: 32,
           ),
         ),
         Row(
@@ -144,15 +158,15 @@ class DartWedding extends StatelessWidget {
           children: [
             Row(
               children: List.generate(
-                5,
+                4,
                 (index) =>
                     Icon(Icons.star, color: Colors.yellow[700], size: 25.r),
               ),
             ),
             SizedBox(width: 5),
             Text(
-              "4,9",
-              style: GoogleFonts.inriaSerif(
+              rate.toString(),
+              style: GoogleFonts.inter(
                 color: Colors.black,
                 fontWeight: FontWeight.w400,
                 fontSize: 24.sp,
@@ -161,7 +175,7 @@ class DartWedding extends StatelessWidget {
           ],
         ),
         Text(
-          "Cairo, Egypt",
+          address,
           style: GoogleFonts.inriaSerif(
             color: Colors.black,
             fontWeight: FontWeight.w400,
@@ -172,13 +186,7 @@ class DartWedding extends StatelessWidget {
     );
   }
 
-  Widget _buildImagesGrid() {
-    List<String> workImages = [
-      Images.dart3,
-      Images.dart4,
-      Images.dart5,
-      Images.dart6,
-    ];
+  Widget _buildImagesGrid({required List<String> workImages}) {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -186,18 +194,17 @@ class DartWedding extends StatelessWidget {
         crossAxisCount: 2,
         mainAxisSpacing: 10.h,
         crossAxisSpacing: 10.w,
-        childAspectRatio: 0.73,
+        childAspectRatio: 1.1,
       ),
       itemCount: workImages.length,
       itemBuilder: (context, index) => ClipRRect(
-        borderRadius: BorderRadius.circular(12.r),
+        borderRadius: BorderRadius.circular(8.r),
         child: Image.asset(workImages[index], fit: BoxFit.cover),
       ),
     );
   }
 
-  Widget _buildDetailsList() {
-    List<String> makeupServices = ["Prepartion", "Session", "Church", "Party"];
+  Widget _buildDetailsList({required List<String> makeupServices}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: makeupServices

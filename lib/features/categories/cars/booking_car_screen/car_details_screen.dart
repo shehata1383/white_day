@@ -1,50 +1,74 @@
-// ignore_for_file: deprecated_member_use, file_names
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:white_day/core/constants/colors.dart';
+import 'package:intl/intl.dart';
+import 'package:white_day/core/constants/images.dart';
+import '../../../../core/constants/colors.dart';
+import '../../../../core/model/car/model_car.dart';
+import 'booking_car_screen.dart';
 
-class ArkanWeddingHalldart extends StatelessWidget {
-  const ArkanWeddingHalldart({super.key});
-
+class CarDetailsScreen extends StatelessWidget {
+  const CarDetailsScreen({super.key, required this.data});
+  final ModelCar data;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backGround,
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: Column(
             children: [
-              SizedBox(height: 15.h),
-              _buildMainHeader(),
-              SizedBox(height: 15.h),
-              _buildImagesGrid(),
-              SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    children: [
+                      Image.asset(
+                        data.listImage[0],
+                        height: 100.h,
+                        fit: BoxFit.fitWidth,
+                      ),
+                      Image.asset(
+                        data.listImage[1],
+                        height: 100.h,
+                        fit: BoxFit.fitWidth,
+                      ),
+                    ],
+                  ),
+                  Image.asset(
+                    data.listImage[2],
+                    height: 200.h,
+                    fit: BoxFit.fitWidth,
+                  ),
+                ],
+              ),
 
+              _buildRatingCard(
+                name: data.name,
+                rate: data.rate,
+                address: data.address,
+              ),
               const Divider(color: Colors.grey, thickness: 1),
 
               const _SectionTitle(title: "Price"),
               Text(
-                "Starting from 25,000 L.E",
+                "${NumberFormat("#,###").format(data.price)} L.E",
                 style: GoogleFonts.inriaSerif(
                   fontSize: 23.sp,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w400,
                 ),
               ),
               const Divider(color: Colors.grey, thickness: 1),
 
               const _SectionTitle(title: "Details"),
-              _buildDetailsList(),
+              _buildDetailsList(makeupServices: data.details),
               const Divider(color: Colors.grey, thickness: 1),
 
-              const _SectionTitle(title: "About The Hall"),
+              const _SectionTitle(title: "About Car "),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
                 child: Text(
-                  "A stylish and spacious venue designed to create unforgettable moments, offering a perfect atmosphere, premium services, and exceptional comfort for your special occasions.",
-                  textAlign: TextAlign.left,
+                  data.about,
                   style: GoogleFonts.inriaSerif(
                     fontSize: 16.sp,
                     height: 1.4,
@@ -55,9 +79,9 @@ class ArkanWeddingHalldart extends StatelessWidget {
               ),
               const Divider(color: Colors.grey, thickness: 1),
 
-              const _SectionTitle(title: "5.1 Rating"),
+              _SectionTitle(title: "${data.rate} Rating"),
               Text(
-                "Based on 100 reviews",
+                "Based on ${data.review} reviews",
                 style: GoogleFonts.inriaSerif(
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w500,
@@ -66,8 +90,16 @@ class ArkanWeddingHalldart extends StatelessWidget {
               const Divider(color: Colors.grey, thickness: 1),
 
               SizedBox(height: 30.h),
+
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(
+                    () => BookingCarScreen(
+                      listImage: data.listImage,
+                      title: data.name,
+                    ),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.colorButton,
                   foregroundColor: Colors.black,
@@ -96,107 +128,13 @@ class ArkanWeddingHalldart extends StatelessWidget {
     );
   }
 
-  Widget _buildMainHeader() {
-    return Container(
-      width: 400.w,
-      height: 200.h,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12.r),
-        image: const DecorationImage(
-          image: AssetImage('assets/images/Arkan_Hall.png'),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            "Arkan Wedding Hall",
-            style: GoogleFonts.inriaSerif(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-              fontSize: 32,
-            ),
-          ),
-          SizedBox(height: 10.h),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                children: List.generate(
-                  5,
-                  (index) =>
-                      Icon(Icons.star, color: Colors.yellow[700], size: 24.r),
-                ),
-              ),
-              SizedBox(width: 5.w),
-              Text(
-                "5.1",
-                style: GoogleFonts.inriaSerif(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 24.sp,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 10.h),
-          Text(
-            "Cairo, Egypt",
-            style: GoogleFonts.inriaSerif(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-              fontSize: 20.sp,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildImagesGrid() {
-    List<String> hallImages = [
-      'assets/imge_Book_the_halls/Arkan_Wedding_Hall_1.png',
-      'assets/imge_Book_the_halls/Arkan_Wedding_Hall_2.png',
-      'assets/imge_Book_the_halls/Arkan_Wedding_Hall_3.png',
-      'assets/imge_Book_the_halls/Arkan_Wedding_Hall_4.png',
-    ];
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisSpacing: 10.h,
-        crossAxisSpacing: 10.w,
-        childAspectRatio: 1.1,
-      ),
-      itemCount: hallImages.length,
-      itemBuilder: (context, index) => ClipRRect(
-        borderRadius: BorderRadius.circular(8.r),
-        child: Image.asset(hallImages[index], fit: BoxFit.cover),
-      ),
-    );
-  }
-
-  Widget _buildDetailsList() {
-    List<String> details = [
-      "Capacity; 250 Gusets",
-      "Light System & Sound system",
-      "Bridal Room",
-      "Dance Floor",
-      "Air Conditioning",
-      "4K Video",
-      "Set Meun Options",
-      "Dj Avalible",
-      "Live Band",
-      "Fire Show",
-    ];
+  Widget _buildDetailsList({required List<String> makeupServices}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: details
+      children: makeupServices
           .map(
             (text) => Padding(
-              padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 6.w),
+              padding: EdgeInsets.only(left: 5, top: 4),
               child: Row(
                 children: [
                   CircleAvatar(
@@ -219,6 +157,55 @@ class ArkanWeddingHalldart extends StatelessWidget {
             ),
           )
           .toList(),
+    );
+  }
+
+  Widget _buildRatingCard({
+    required String name,
+    required double rate,
+    required String address,
+  }) {
+    return Column(
+      children: [
+        Text(
+          name,
+          style: GoogleFonts.inriaSerif(
+            color: Colors.black,
+            fontWeight: FontWeight.w400,
+            fontSize: 30,
+          ),
+        ),
+        SizedBox(height: 5.h),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              children: List.generate(
+                5,
+                (index) =>
+                    Icon(Icons.star, color: Colors.yellow[700], size: 30.r),
+              ),
+            ),
+            SizedBox(width: 5),
+            Text(
+              rate.toString(),
+              style: GoogleFonts.inter(
+                color: Colors.black,
+                fontWeight: FontWeight.w400,
+                fontSize: 24.sp,
+              ),
+            ),
+          ],
+        ),
+        Text(
+          address,
+          style: GoogleFonts.inriaSerif(
+            color: Colors.black,
+            fontWeight: FontWeight.w400,
+            fontSize: 20.sp,
+          ),
+        ),
+      ],
     );
   }
 }
@@ -251,7 +238,3 @@ class _SectionTitle extends StatelessWidget {
     );
   }
 }
-
-
-
-

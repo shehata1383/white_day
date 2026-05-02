@@ -5,8 +5,12 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/images.dart';
 import '../../../core/helper/route_helper.dart';
+import '../../../core/model/make_up/model_makeup_category.dart';
+import '../../../core/model/photographer/model_photographer_category.dart';
+import '../../../core/model/photographer/photographer_service.dart';
 import '../../widget/appbar_logo_screen.dart';
 import '../../widget/filtter_screen/fillter_screen.dart';
+import 'Book_photographer/photographer_details_screen.dart';
 
 class PhotographerScreen extends StatefulWidget {
   const PhotographerScreen({super.key});
@@ -21,19 +25,76 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
       "nameCategores": "By- Agha Wedding",
       "price": "Starting from 3000 L.E",
       "imageSubCategores": Images.photo1,
-      "route": RouteHelper.aghaWedding,
+      "route": PhotographerDetailsScreen(
+        data: ModelPhotographerCategory(
+          name: "Agha Wedding",
+          rate: 4.7,
+          address: "Cairo, Egypt",
+          mainImage: [Images.agha1, Images.agha2],
+          listImage: [Images.agha3, Images.agha4, Images.agha5, Images.agha6],
+          price: 3000,
+          details: ["Prepartion", "Session", "Church", "Party"],
+          about:
+              "(Agha weddings) is a professional photography service specialized in capturing wedding ceremonies and bridal events.",
+          reviews: 102,
+          listService: [
+            PhotographerService(serviceName: 'Preparation', servicePrice: 3000),
+            PhotographerService(serviceName: 'Session', servicePrice: 5000),
+            PhotographerService(serviceName: 'Church', servicePrice: 3500),
+            PhotographerService(serviceName: 'Party', servicePrice: 3000),
+          ],
+        ),
+      ),
     },
     {
       "nameCategores": "By- Dart Wedding",
       "price": "Starting from 12,000 L.E",
       "imageSubCategores": Images.dart2,
-      "route": RouteHelper.dartWedding,
+      "route": PhotographerDetailsScreen(
+        data: ModelPhotographerCategory(
+          name: "Dart Wedding",
+          rate: 4.9,
+          address: "Cairo, Egypt",
+          mainImage: [Images.dart1, Images.dart2],
+          listImage: [Images.dart3, Images.dart4, Images.dart5, Images.dart6],
+          price: 12000,
+          details: ["Prepartion", "Session", "Church", "Party"],
+          about:
+              "Wedding photographer capturing your most special moments and memories.",
+          reviews: 110,
+          listService: [
+            PhotographerService(serviceName: 'Preparation', servicePrice: 12000),
+            PhotographerService(serviceName: 'Session', servicePrice: 20000),
+            PhotographerService(serviceName: 'Church', servicePrice: 14000),
+            PhotographerService(serviceName: 'Party', servicePrice: 12000),
+          ],
+        ),
+      ),
     },
     {
       "nameCategores": "By-Aboutaleb Wedding",
       "price": "Starting from 15,000 L.E",
       "imageSubCategores": Images.aboutaleb3,
-      "route": RouteHelper.aboutalebWedding,
+      "route":  PhotographerDetailsScreen(
+        data: ModelPhotographerCategory(
+          name:"Aboutaleb Wedding",
+          rate: 5.1,
+          address: "Cairo, Egypt",
+          mainImage: [Images.aboutaleb1, Images.aboutaleb2],
+          listImage: [Images.aboutaleb3, Images.aboutaleb4, Images.aboutaleb5, Images.aboutaleb6],
+          price: 15000,
+          details: ["Prepartion", "Session", "Church", "Party"],
+          about:
+                    "I specialize in wedding photography, capturing love, laughter, and all the unforgettable moments that make your special day truly magical.",
+          reviews: 120,
+          listService: [
+            PhotographerService(serviceName: 'Preparation', servicePrice: 15000),
+            PhotographerService(serviceName: 'Session', servicePrice: 25000),
+            PhotographerService(serviceName: 'Church', servicePrice: 17000),
+            PhotographerService(serviceName: 'Party', servicePrice: 15000),
+          ],
+        ),
+      ),
     },
     {
       "nameCategores": "By- Omar ahmed",
@@ -88,7 +149,7 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
                 ),
                 itemBuilder: (context, index) {
                   return GestureDetector(
-                    onTap: () => Get.toNamed(listSubCategoryes[index]['route']),
+                    onTap: () => Get.to(listSubCategoryes[index]['route']),
                     child: Container(
                       decoration: BoxDecoration(
                         color: AppColors.colorDetails,
@@ -150,6 +211,4 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
       ),
     );
   }
-
- 
 }

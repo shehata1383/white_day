@@ -5,9 +5,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:white_day/core/constants/colors.dart';
 
-class CinderellaWeddingHall extends StatelessWidget {
-  const CinderellaWeddingHall({super.key});
+import '../../../../core/model/wedding_hall/model_wedding_hall.dart';
 
+class WeddingHallDetailsScreen extends StatelessWidget {
+  const WeddingHallDetailsScreen({super.key,required this.data});
+final ModelWeddingHall data;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,9 +29,9 @@ class CinderellaWeddingHall extends StatelessWidget {
 
               const _SectionTitle(title: "Price"),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 3.h),
+                padding: EdgeInsets.symmetric(vertical: 5.h),
                 child: Text(
-                  "Starting from 23,000 L.E",
+                  "Starting from 20,000 L.E",
                   style: GoogleFonts.inriaSerif(
                     fontSize: 23.sp,
                     fontWeight: FontWeight.w600,
@@ -58,11 +60,11 @@ class CinderellaWeddingHall extends StatelessWidget {
               ),
               const Divider(color: Colors.grey, thickness: 1),
 
-              const _SectionTitle(title: "4.9 Rating"),
+              const _SectionTitle(title: "4.8 Rating"),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 5.h),
                 child: Text(
-                  "Based on 130 reviews",
+                  "Based on 120 reviews",
                   style: GoogleFonts.inriaSerif(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.w500,
@@ -109,7 +111,7 @@ class CinderellaWeddingHall extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.r),
         image: const DecorationImage(
-          image: AssetImage('assets/images/Cinderella_Hall.png'),
+          image: AssetImage('assets/images/Rixos_Plaza_Hall.png'),
           fit: BoxFit.cover,
         ),
       ),
@@ -118,9 +120,9 @@ class CinderellaWeddingHall extends StatelessWidget {
         children: [
           SizedBox(height: 10,),
           Text(
-            "Cinderella Wedding Hall",
+            "Rixoz Plaza Wedding Hall",
             style: GoogleFonts.inriaSerif(
-              color: Colors.black,
+              color: Colors.white,
               fontWeight: FontWeight.w700,
               fontSize: 30,
             ),
@@ -137,9 +139,9 @@ class CinderellaWeddingHall extends StatelessWidget {
               ),
               SizedBox(width: 5.w),
               Text(
-                "4.9",
+                "4.8",
                 style: GoogleFonts.inriaSerif(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontWeight: FontWeight.w700,
                   fontSize: 24.sp,
                 ),
@@ -147,11 +149,11 @@ class CinderellaWeddingHall extends StatelessWidget {
             ],
           ),
           Text(
-            "10th of Ramadan , Al Safwa club",
+            "Cairo, Egypt",
             style: GoogleFonts.inriaSerif(
-              color: Colors.black,
+              color: Colors.white,
               fontWeight: FontWeight.w700,
-              fontSize: 18.sp,
+              fontSize: 24.sp,
             ),
           ),
         ],
@@ -161,10 +163,10 @@ class CinderellaWeddingHall extends StatelessWidget {
 
   Widget _buildImagesGrid() {
     List<String> hallImages = [
-      'assets/imge_Book_the_halls/Cinderella_Wedding_Hall_1.png',
-      'assets/imge_Book_the_halls/Cinderella_Wedding_Hall_2.png',
-      'assets/imge_Book_the_halls/Cinderella_Wedding_Hall_3.png',
-      'assets/imge_Book_the_halls/Cinderella_Wedding_Hall_4.png',
+      'assets/imge_Book_the_halls/Rixos_Plaza_Wedding_Hall_1.png',
+      'assets/imge_Book_the_halls/Rixos_Plaza_Wedding_Hall_2.png',
+      'assets/imge_Book_the_halls/Rixos_Plaza_Wedding_Hall_3.png',
+      'assets/images/Rixos_Plaza_Hall.png',
     ];
     return GridView.builder(
       shrinkWrap: true,
@@ -185,16 +187,16 @@ class CinderellaWeddingHall extends StatelessWidget {
 
   Widget _buildDetailsList() {
     List<String> details = [
-      "Capacity; 250 Gusets",
-      "Cinderella (Open Air)",
-      "Custom Decoration Available",
-      "Set Meun Options",
-      "Light System & Sound system ",
-      "4K Video ",
-      "Dance Floor",
+      "Capacity: 300 Gusets",
+      "Parking Available",
+      "Air Conditioning",
       "Bridal Room",
-      "Dj Avalible",
+      "Lighting & sound system",
+      "Custom Decoration Available",
+      "Set Menu Optios",
+      "kids Area",
       "Live Band",
+      "Dj Avalible",
     ];
     return Column(
       children: details
