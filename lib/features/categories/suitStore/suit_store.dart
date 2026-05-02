@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/images.dart';
-import '../../../core/helper/route_helper.dart';
 import '../../../core/model/suit_store/model_suit_store.dart';
 import 'Book_suit_store/suit_store_screen.dart';
 import '../../widget/appbar_logo_screen.dart';
@@ -215,71 +214,6 @@ class _SuitStoreState extends State<SuitStore> {
     );
   }
 
-  Widget _buildHeader() {
-    return Stack(
-      alignment: Alignment.topCenter,
-      children: [
-        Padding(
-          padding: EdgeInsets.only(top: 15.h),
-          child: Image.asset(Images.logo, width: 300.w),
-        ),
-        Positioned(
-          left: 0,
-          top: 0,
-          child: Image.asset(Images.appbarStyle, width: 80.w),
-        ),
-        Positioned(
-          right: 0,
-          top: 0,
-          child: Image.asset(Images.appbarStyle, width: 80.w),
-        ),
-      ],
-    );
-  }
 
-  Widget _buildFilters() {
-    return Padding(
-      padding: EdgeInsets.only(left: 10.w),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: []),
-    );
-  }
 
-  Widget _buildActiveFilter(
-    String label,
-    String? currentValue,
-    List<DropdownMenuItem<String>> items,
-    Function(String?) onChanged,
-  ) {
-    return Container(
-      width: 140.w,
-      height: 35.h,
-      padding: EdgeInsets.symmetric(horizontal: 8.w),
-      decoration: BoxDecoration(
-        color: AppColors.colorfilter,
-        borderRadius: BorderRadius.circular(6),
-      ),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton<String>(
-          value: currentValue,
-          hint: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                label,
-                style: GoogleFonts.inriaSerif(
-                  fontSize: 16.sp,
-                  color: Colors.black,
-                ),
-              ),
-              const Icon(Icons.unfold_more, size: 18),
-            ],
-          ),
-          isExpanded: true,
-          icon: const SizedBox.shrink(),
-          items: items,
-          onChanged: onChanged,
-        ),
-      ),
-    );
-  }
 }

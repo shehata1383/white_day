@@ -160,26 +160,7 @@ class _WeddingDressScreenState extends State<WeddingDressScreen> {
         ),
       ),
     },
-    {
-      "nameCategores": "Lavender Dream",
-      "price": "9,000 L.E",
-      "imageSubCategores": Images.dress5,
-    },
-    {
-      "nameCategores": "Sweet Girl",
-      "price": "12,000 L.E",
-      "imageSubCategores": Images.dress6,
-    },
-    {
-      "nameCategores": "Cherry Glow",
-      "price": "14,000 L.E",
-      "imageSubCategores": Images.dress7,
-    },
-    {
-      "nameCategores": "Elite Dress",
-      "price": "16,500 L.E",
-      "imageSubCategores": Images.dress8,
-    },
+    
   ];
 
   @override

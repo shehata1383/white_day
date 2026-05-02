@@ -1,10 +1,11 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/images.dart';
-import '../../../core/helper/route_helper.dart';
 import '../../../core/model/make_up/model_make_up_artist_service.dart';
 import '../../../core/model/make_up/model_makeup_category.dart';
 import 'Book_makeup_artist/make_up_screen.dart';
@@ -171,24 +172,7 @@ class _MakeupArtistScreenState extends State<MakeupArtistScreen> {
         ),
       ),
     },
-    {
-      "nameCategores": "By-Esraa mohmed",
-      "price": "Starting from 8,000L.E",
-      "imageSubCategores": Images.makeup4,
-      //"route": RouteHelper.SaraS_alama,
-    },
-    {
-      "nameCategores": "By-Rana fathy",
-      "price": "Starting from 7,500L.E",
-      "imageSubCategores": Images.makeup5,
-      //"route": RouteHelper.SaraS_alama,
-    },
-    {
-      "nameCategores": "By-Sohila ahmed",
-      "price": "Starting from 8,500L.E",
-      "imageSubCategores": Images.makeup6,
-      //"route": RouteHelper.SaraS_alama,
-    },
+   
   ];
 
   @override

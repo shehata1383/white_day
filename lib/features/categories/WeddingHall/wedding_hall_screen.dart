@@ -1,11 +1,11 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/images.dart';
-import '../../../core/helper/route_helper.dart';
 import '../../../core/model/wedding_hall/model_wedding_hall.dart';
 import '../../widget/appbar_logo_screen.dart';
 import '../../widget/filtter_screen/fillter_screen.dart';
@@ -160,30 +160,7 @@ class _WeddingHallScreenState extends State<WeddingHallScreen> {
         ),
       ),
     },
-    {
-      "nameCategores": "Crystal hall",
-      "price": "starting from 10,000 L.E",
-      "imageSubCategores": Images.halls5,
-      //  "route": RouteHelper.rixosPlazaWeddingHall,
-    },
-    {
-      "nameCategores": "Lavender hall",
-      "price": "starting from 13,000 L.E",
-      "imageSubCategores": Images.halls6,
-      // "route": RouteHelper.rixosPlazaWeddingHall,
-    },
-    {
-      "nameCategores": "Royal hall",
-      "price": "starting from 12,000 L.E",
-      "imageSubCategores": Images.halls7,
-      // "route": RouteHelper.rixosPlazaWeddingHall,
-    },
-    {
-      "nameCategores": "Rose hall",
-      "price": "starting from 16,000 L.E",
-      "imageSubCategores": Images.Rose_hall,
-      // "route": RouteHelper.rixosPlazaWeddingHall,
-    },
+   
   ];
 
   @override

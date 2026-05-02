@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/images.dart';
-import '../../../core/helper/route_helper.dart';
-import '../../../core/model/make_up/model_makeup_category.dart';
 import '../../../core/model/photographer/model_photographer_category.dart';
 import '../../../core/model/photographer/photographer_service.dart';
 import '../../widget/appbar_logo_screen.dart';
@@ -96,21 +94,7 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
         ),
       ),
     },
-    {
-      "nameCategores": "By- Omar ahmed",
-      "price": "Starting from 4500 L.E",
-      "imageSubCategores": Images.photo4,
-    },
-    {
-      "nameCategores": "By- Wael ameen",
-      "price": "Starting from 2500 L.E",
-      "imageSubCategores": Images.photo5,
-    },
-    {
-      "nameCategores": "By- Youssef ali",
-      "price": "Starting from 4500 L.E",
-      "imageSubCategores": Images.photo6,
-    },
+
   ];
 
   @override
