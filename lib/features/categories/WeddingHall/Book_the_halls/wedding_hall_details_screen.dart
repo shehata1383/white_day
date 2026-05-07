@@ -2,14 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:white_day/core/constants/colors.dart';
 
 import '../../../../core/model/wedding_hall/model_wedding_hall.dart';
+import 'booking_wedding_hall_screen.dart';
 
 class WeddingHallDetailsScreen extends StatelessWidget {
-  const WeddingHallDetailsScreen({super.key,required this.data});
-final ModelWeddingHall data;
+  const WeddingHallDetailsScreen({super.key, required this.data});
+  final ModelWeddingHall data;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,9 +22,14 @@ final ModelWeddingHall data;
           child: Column(
             children: [
               SizedBox(height: 15.h),
-              _buildMainHeader(),
+              _buildMainHeader(
+                image: data.mainImage,
+                title: data.name,
+                address: data.address,
+                rate: data.rate,
+              ),
               SizedBox(height: 15.h),
-              _buildImagesGrid(),
+              _buildImagesGrid(hallImages: data.listImage),
               SizedBox(height: 5),
 
               const Divider(color: Colors.grey, thickness: 1),
@@ -41,7 +48,7 @@ final ModelWeddingHall data;
               const Divider(color: Colors.grey, thickness: 1),
 
               const _SectionTitle(title: "Details"),
-              _buildDetailsList(),
+              _buildDetailsList(details: data.details),
               const Divider(color: Colors.grey, thickness: 1),
 
               const _SectionTitle(title: "About The Hall"),
@@ -75,7 +82,17 @@ final ModelWeddingHall data;
 
               SizedBox(height: 30.h),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(
+                    () => BookingWeddingHallScreen(
+                      onPressed: () {},
+                      image1: data.listImage[0],
+                      image2: data.listImage[1],
+                      title: data.name,
+                      listPackages: data.packages,
+                    ),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.colorButton,
                   foregroundColor: Colors.black,
@@ -104,23 +121,25 @@ final ModelWeddingHall data;
     );
   }
 
-  Widget _buildMainHeader() {
+  Widget _buildMainHeader({
+    required String image,
+    required String title,
+    required String address,
+    required double rate,
+  }) {
     return Container(
       width: 400.w,
       height: 200.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.r),
-        image: const DecorationImage(
-          image: AssetImage('assets/images/Rixos_Plaza_Hall.png'),
-          fit: BoxFit.cover,
-        ),
+        image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SizedBox(height: 10,),
+          SizedBox(height: 10),
           Text(
-            "Rixoz Plaza Wedding Hall",
+            title,
             style: GoogleFonts.inriaSerif(
               color: Colors.white,
               fontWeight: FontWeight.w700,
@@ -139,7 +158,7 @@ final ModelWeddingHall data;
               ),
               SizedBox(width: 5.w),
               Text(
-                "4.8",
+                rate.toString(),
                 style: GoogleFonts.inriaSerif(
                   color: Colors.white,
                   fontWeight: FontWeight.w700,
@@ -149,7 +168,7 @@ final ModelWeddingHall data;
             ],
           ),
           Text(
-            "Cairo, Egypt",
+            address,
             style: GoogleFonts.inriaSerif(
               color: Colors.white,
               fontWeight: FontWeight.w700,
@@ -161,13 +180,7 @@ final ModelWeddingHall data;
     );
   }
 
-  Widget _buildImagesGrid() {
-    List<String> hallImages = [
-      'assets/imge_Book_the_halls/Rixos_Plaza_Wedding_Hall_1.png',
-      'assets/imge_Book_the_halls/Rixos_Plaza_Wedding_Hall_2.png',
-      'assets/imge_Book_the_halls/Rixos_Plaza_Wedding_Hall_3.png',
-      'assets/images/Rixos_Plaza_Hall.png',
-    ];
+  Widget _buildImagesGrid({required List<String> hallImages}) {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -185,19 +198,7 @@ final ModelWeddingHall data;
     );
   }
 
-  Widget _buildDetailsList() {
-    List<String> details = [
-      "Capacity: 300 Gusets",
-      "Parking Available",
-      "Air Conditioning",
-      "Bridal Room",
-      "Lighting & sound system",
-      "Custom Decoration Available",
-      "Set Menu Optios",
-      "kids Area",
-      "Live Band",
-      "Dj Avalible",
-    ];
+  Widget _buildDetailsList({required List<String> details}) {
     return Column(
       children: details
           .map(
@@ -257,6 +258,3 @@ class _SectionTitle extends StatelessWidget {
     );
   }
 }
-
-
-

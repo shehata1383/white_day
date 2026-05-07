@@ -99,6 +99,7 @@ class Images {
   static const String velet4 = 'assets/Suits/Velet4.jpg';
   static const String velet5 = 'assets/Suits/Velet5.jpg';
   static const String vendor = 'assets/images/Vendor.png';
+  static const String king = 'assets/images/king.png';
 
 
   static const String Arkan_Hall = 'assets/images/Arkan_Hall.png';

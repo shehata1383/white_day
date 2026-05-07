@@ -8,7 +8,10 @@ class AppColors {
   static const Color colorDetails = Color(0xFFEBD0C2);
   static const Color colorfilter = Color(0xFFCFB0A2);
   static const Color colorStar = Color(0xffFFCC00);
-
+  static const Color colorText = Color(0xff2C4D82);
+  static const Color colorDivider = Color(0xff8E8E8E);
+  static const Color colorMyReservation1 = Color(0xffEBD0C2);
+  static const Color colorMyReservation2 = Color(0xff737373);
 }
 
 

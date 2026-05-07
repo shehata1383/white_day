@@ -6,8 +6,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:white_day/controller/home/home_controll.dart';
 import 'package:white_day/core/constants/colors.dart';
-import 'package:white_day/core/helper/route_helper.dart';
+import 'package:white_day/features/my_reservations/my_reservations_screen.dart';
 import '../../core/constants/images.dart';
+import '../../core/model/my_reservation/my_reservation_model.dart';
 import '../../core/widget/custom_button.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -65,22 +66,26 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(height: 10.h),
                 Expanded(
                   child: GridView.builder(
-                    padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 10.w,
+                      vertical: 5.h,
+                    ),
                     shrinkWrap: true,
                     itemCount: homeControll.listSubCategoriesHome.length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-                          if (homeControll.listSubCategoriesHome[index].page != "") {
-                            Get.toNamed(homeControll.listSubCategoriesHome[index].page!);
+                          if (homeControll.listSubCategoriesHome[index].page !=
+                              "") {
+                            Get.toNamed(
+                              homeControll.listSubCategoriesHome[index].page!,
+                            );
                           }
                         },
                         child: Container(
                           decoration: BoxDecoration(
                             color: AppColors.colorButton,
-                            borderRadius: BorderRadius.circular(
-                              20,
-                            ),
+                            borderRadius: BorderRadius.circular(20),
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.grey.withOpacity(0.5),
@@ -96,11 +101,11 @@ class HomeScreen extends StatelessWidget {
                             verticalDirection: VerticalDirection.down,
                             children: [
                               ClipRRect(
-                                borderRadius: BorderRadius.circular(
-                                  20,
-                                ),
+                                borderRadius: BorderRadius.circular(20),
                                 child: Image.asset(
-                                  homeControll.listSubCategoriesHome[index].image!,
+                                  homeControll
+                                      .listSubCategoriesHome[index]
+                                      .image!,
                                   width: double.infinity,
                                   height: 140.h,
                                   fit: BoxFit.fitHeight,
@@ -109,8 +114,10 @@ class HomeScreen extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 5),
                                 child: Text(
-                                  homeControll.listSubCategoriesHome[index].nameCategory!,
-        
+                                  homeControll
+                                      .listSubCategoriesHome[index]
+                                      .nameCategory!,
+
                                   style: GoogleFonts.inriaSerif(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
@@ -136,14 +143,44 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(height: 10.h),
                 CustomButton(
                   onPressed: () {
-                    Get.toNamed(RouteHelper.homeScreen);
+                    Get.to(
+                            MyReservationsScreen(
+                          data: [
+                            MyReservationModel(
+                              image:
+                                  'assets/imge_Book_the_halls/Askar_Wedding_Hall_2.png',
+                              title: 'Askar Wedding Hall',
+                              date: 'Friday,May 24, 2026 8:00 Pm',
+                              address: 'Cairo, Egypt',
+                              pay: true,
+                              clientName: 'Ahmed Mohmmed ',
+                              clientNumber: '01287564930',
+                              packageName: 'Golden Package',
+                              price: 150000,
+                            ),
+                            MyReservationModel(
+                              image:
+                                  Images.makeup1,
+                              title:  "Sara Salama: makeup artist",
+                              date: "Monday, October 26,2026",
+                              address: "Cairo, Egypt",
+                              pay: false,
+                              clientName: 'Ahmed Mohmmed ',
+                              clientNumber: '01287564930',
+                              packageName: 'Golden Package',
+                              price: 0,
+                            ),
+                          ],
+                        ),
+               
+                    );
                   },
                   buttonText: "My Reservations",
                   color: AppColors.colorButton,
                   fontSize: 22.sp,
                   textColor: Colors.black,
                   isBold: true,
-                 margin: EdgeInsetsDirectional.symmetric(horizontal:25.w),
+                  margin: EdgeInsetsDirectional.symmetric(horizontal: 25.w),
                   height: 35.h,
                   radius: 20,
                 ),
@@ -151,7 +188,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         );
-      }
+      },
     );
   }
 }
