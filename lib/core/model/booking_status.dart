@@ -1,0 +1,1 @@
+enum BookingStatus { booked, pending, available }

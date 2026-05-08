@@ -3,13 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:table_calendar/table_calendar.dart';
+import 'package:table_calendar/table_calendar.dart' hide isSameDay;
 import 'package:white_day/core/constants/colors.dart';
 import 'package:white_day/features/widget/appbar_logo_screen.dart';
+import '../../../core/model/booking_status.dart';
 import '../../../core/model/my_reservation/my_reservation_model.dart';
 import '../../../core/widget/custom_button.dart';
 import '../../../core/widget/custom_text_field.dart';
 import 'review_booking_screen.dart';
+import 'widget/build_status_cell.dart';
+import 'widget/calender_header.dart';
 
 class RecordingDateMyReservation extends StatefulWidget {
   const RecordingDateMyReservation({super.key,required this.reservation});
@@ -24,18 +27,15 @@ class _RecordingDateMyReservationState
     extends State<RecordingDateMyReservation> {
   // التاريخ المختار (كما في صورتك 26 أكتوبر 2026)
   final ValueNotifier<DateTime> _focusedDay2 = ValueNotifier(DateTime.now());
-  final Set<DateTime> _selectedDays = {};
-  late PageController _pageController;
+final Map<DateTime, BookingStatus> _dayStatus = {};  late PageController _pageController;
   @override
   void initState() {
     super.initState();
-    List<DateTime> myReadyDays = [
-      DateTime(2026, 10, 26),
-      DateTime(2026, 10, 28),
-      DateTime(2026, 10, 30),
-    ];
+    _dayStatus.addAll({
+      DateTime(2026, 10, 26): BookingStatus.booked,  // محجوز (برغندي)
+      DateTime(2026, 10, 28): BookingStatus.pending, // انتظار (وردي)
+    });
 
-    _selectedDays.addAll(myReadyDays);
     _pageController = PageController();
   }
 
@@ -44,7 +44,6 @@ class _RecordingDateMyReservationState
     _pageController.dispose();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +58,7 @@ class _RecordingDateMyReservationState
                 ValueListenableBuilder<DateTime>(
                   valueListenable: _focusedDay2,
                   builder: (context, value, _) {
-                    return _CalendarHeader(
+                    return CalendarHeader(
                       focusedDay: value,
                       onTodayButtonTap: () {
                         setState(() => _focusedDay2.value = DateTime.now());
@@ -83,33 +82,30 @@ class _RecordingDateMyReservationState
                   },
                 ),
                 TableCalendar(
+               // --- الجزء السحري: Builders ---
+                  calendarBuilders: CalendarBuilders(
+                    // 1. الأيام العادية (المتاحة وغير المعرفة في الخريطة)
+                    defaultBuilder: (context, day, focusedDay) {
+                      // نبحث عن حالة اليوم في الخريطة
+                      BookingStatus? status;
+                      _dayStatus.forEach((key, value) {
+                        if (isSameDay(key, day)) status = value;
+                      });
+
+                      if (status == BookingStatus.booked) {
+                        return buildStatusCell(day, const Color(0xFF8B2C4F), Colors.white);
+                      } else if (status == BookingStatus.pending) {
+                        return buildStatusCell(day, const Color(0xFFE0A7C5), Colors.black87);
+                      }
+                      return null; // سيستخدم التصميم الافتراضي للأيام المتاحة
+                    },
+                  ),
                   firstDay: DateTime.utc(2020, 1, 1),
                   lastDay: DateTime.utc(2030, 12, 31),
                   focusedDay: _focusedDay2.value,
                   headerVisible: false,
-                  selectedDayPredicate: (day) {
-                    // استخدم الدالة القادمة مع المكتبة مباشرة
-                    return _selectedDays.any(
-                      (selectedDay) => isSameDay(selectedDay, day),
-                    );
-                  },
-                  onDaySelected: (selectedDay, focusedDay) {
-                    setState(() {
-                      _focusedDay2.value = focusedDay;
-            
-                      // منطق الإضافة والحذف:
-                      // إذا كان اليوم موجوداً في القائمة، قم بحذفه. إذا لم يكن، قم بإضافته.
-                      bool alreadySelected = _selectedDays.any(
-                        (d) => isSameDay(d, selectedDay),
-                      );
-            
-                      if (alreadySelected) {
-                        _selectedDays.removeWhere((d) => isSameDay(d, selectedDay));
-                      } else {
-                        _selectedDays.add(selectedDay);
-                      }
-                    });
-                  },
+                 
+                 
                   onCalendarCreated: (controller) => _pageController = controller,
             
                   // --- إضافة هذا الجزء لربط السحب بالهيدر ---
@@ -242,75 +238,3 @@ class _RecordingDateMyReservationState
   }
 }
 
-class _CalendarHeader extends StatelessWidget {
-  final DateTime focusedDay;
-  final VoidCallback onLeftArrowTap;
-  final VoidCallback onRightArrowTap;
-  final VoidCallback onTodayButtonTap;
-  final VoidCallback onClearButtonTap;
-  final bool clearButtonVisible;
-
-  const _CalendarHeader({
-    required this.focusedDay,
-    required this.onLeftArrowTap,
-    required this.onRightArrowTap,
-    required this.onTodayButtonTap,
-    required this.onClearButtonTap,
-    required this.clearButtonVisible,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final headerText = DateFormat.yMMM().format(focusedDay);
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Row(
-        children: [
-          const SizedBox(width: 16.0),
-          SizedBox(
-            width: 120.0,
-            child: Text(headerText, style: const TextStyle(fontSize: 26.0)),
-          ),
-
-          if (clearButtonVisible)
-            IconButton(
-              icon: const Icon(Icons.clear, size: 20.0),
-              visualDensity: VisualDensity.compact,
-              onPressed: onClearButtonTap,
-            ),
-          const Spacer(),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(15.r),
-            ),
-            child: IconButton(
-              icon: Icon(Icons.chevron_left, size: 30.w),
-              onPressed: onLeftArrowTap,
-            ),
-          ),
-          SizedBox(width: 10.w),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(15.r),
-            ),
-            child: IconButton(
-              icon: Icon(Icons.chevron_right, size: 30.w),
-              onPressed: onRightArrowTap,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// احذف هذا الكود لأنه يسبب تعارض
-bool isSameDay(DateTime? a, DateTime? b) {
-  if (a == null || b == null) {
-    return false; // هنا سيعطيك خطأ لأن النوع المرتجع هو قائمة وليس bool
-  }
-  return a.year == b.year && a.month == b.month && a.day == b.day;
-}
