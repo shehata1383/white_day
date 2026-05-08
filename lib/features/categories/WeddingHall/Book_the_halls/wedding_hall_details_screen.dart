@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:white_day/core/constants/colors.dart';
 
 import '../../../../core/model/wedding_hall/model_wedding_hall.dart';
@@ -38,7 +39,7 @@ class WeddingHallDetailsScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 5.h),
                 child: Text(
-                  "Starting from 20,000 L.E",
+                  "Starting from ${NumberFormat("#,###.##").format(data.price)} L.E",
                   style: GoogleFonts.inriaSerif(
                     fontSize: 23.sp,
                     fontWeight: FontWeight.w600,

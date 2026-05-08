@@ -158,6 +158,7 @@ class Images {
   static const String relaxGlowPackage = 'assets/images/RelaxGlowPackage.png';
   static const String royalDreem1 = 'assets/images/Royal Dreem 1.png';
   static const String royalDreem2 = 'assets/images/Royal Dreem 2.png';
+  static const String visa = 'assets/images/visa.jpg';
 
 
 
