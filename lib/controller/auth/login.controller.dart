@@ -17,12 +17,22 @@ class LoginControllerImp extends LoginController {
 
   LoginControllerImp();
   @override
+  
   login() async {
+    String userTypr="client";
     OverlayLoadingProgress.start();
     var formdata = formKey.currentState;
     if (formdata!.validate()) {
       OverlayLoadingProgress.stop();
-    Get.offAllNamed(RouteHelper.homeScreenStart);
+      if("client"==userTypr)
+      {
+        Get.offAllNamed(RouteHelper.homeScreenStart);
+      }
+      else if("admin"==userTypr)
+      {
+        Get.offAllNamed(RouteHelper.homePagesAdmin);
+      }
+    
 
     }else{ showCustomSnackBar(
         'Please fill in all required fields'.tr,
