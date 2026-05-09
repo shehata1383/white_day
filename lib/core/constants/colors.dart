@@ -12,6 +12,9 @@ class AppColors {
   static const Color colorDivider = Color(0xff8E8E8E);
   static const Color colorMyReservation1 = Color(0xffEBD0C2);
   static const Color colorMyReservation2 = Color(0xff737373);
+  static const Color colordrawer1= Color(0xffD9D9D9);
+  static const Color colordrawer2= Color(0xff737373);
+  static const Color colorChart= Color(0xffECE8E8);
 }
 
 

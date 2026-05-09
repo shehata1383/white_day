@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 import '../../controller/auth/login.controller.dart';
+import '../../features/admin/home_pages_admin.dart';
 import '../../features/auth/forgot password/forgot_password_screen.dart';
 import '../../features/auth/forgot password/password_reset_successfilly_screen.dart';
 import '../../features/auth/forgot password/reset_password_screen.dart';
@@ -47,6 +48,9 @@ class RouteHelper {
   static const String verifyCodeScreen = '/VerifyCodeScreen';
   static const String resetPasswordScreen = '/ResetPasswordScreen';
   static const String passwordResetSuccessfillyScreen = '/PasswordResetSuccessfillyScreen';
+  
+  //admin
+  static const String homePagesAdmin = '/HomePagesAdmin';
 
   static List<GetPage> routes = [
     GetPage(
@@ -153,6 +157,12 @@ class RouteHelper {
     GetPage(
       name: relaxGlowPackage,
       page: () =>  RelaxGlowPackage(),
+    ),
+
+    //admin
+    GetPage(
+      name: homePagesAdmin,
+      page: () =>  HomePagesAdmin(),
     ),
     
   ];

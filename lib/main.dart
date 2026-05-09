@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
                   title: AppConstants.appName,
                   theme: light(),
                   navigatorKey: Get.key,
-                  initialRoute: RouteHelper.homeScreenStart,
+                  initialRoute: RouteHelper.homePagesAdmin,
                   debugShowCheckedModeBanner: false,
                   getPages: RouteHelper.routes,
                 );
