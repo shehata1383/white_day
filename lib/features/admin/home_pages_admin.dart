@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:white_day/core/constants/colors.dart';
+import 'package:white_day/core/helper/route_helper.dart';
 import 'package:white_day/features/admin/pages/dash_board.dart';
 import 'package:white_day/features/widget/appbar_logo_screen.dart';
 
@@ -218,7 +220,7 @@ class _HomePagesAdminState extends State<HomePagesAdmin> {
                         ],
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {Get.offAllNamed(RouteHelper.homeScreenStart);},
                         child: Padding(
                           padding: EdgeInsetsDirectional.symmetric(
                             horizontal: 20.w,

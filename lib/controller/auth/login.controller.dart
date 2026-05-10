@@ -19,16 +19,16 @@ class LoginControllerImp extends LoginController {
   @override
   
   login() async {
-    String userTypr="client";
+   
     OverlayLoadingProgress.start();
     var formdata = formKey.currentState;
     if (formdata!.validate()) {
       OverlayLoadingProgress.stop();
-      if("client"==userTypr)
+      if("client"==email.text)
       {
-        Get.offAllNamed(RouteHelper.homeScreenStart);
+        Get.offAllNamed(RouteHelper.homeScreen);
       }
-      else if("admin"==userTypr)
+      else if("admin"==email.text)
       {
         Get.offAllNamed(RouteHelper.homePagesAdmin);
       }
