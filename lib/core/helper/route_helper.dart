@@ -26,6 +26,7 @@ import '../../features/client/categories/photographer/photographer_screen.dart';
 import '../../features/client/categories/suitStore/suit_store.dart';
 import '../../features/client/categories/weddingDress/wedding_dress_screen.dart';
 import '../../features/manager/home_pages_manager.dart';
+import '../../features/vendor/home_pages_vendor.dart';
 
 class RouteHelper {
   static const String signIn = '/SignInScreen';
@@ -57,6 +58,10 @@ class RouteHelper {
 
   //manager
   static const String homePagesManager = '/HomePagesManager';
+
+  //vendor
+  static const String homePagesVendor = '/HomePagesVendor';
+
   static List<GetPage> routes = [
     GetPage(
       name: signIn,
@@ -178,6 +183,12 @@ class RouteHelper {
     GetPage(
       name: homePagesManager,
       page: () =>  HomePagesManager(),
+    ),
+
+    //vendor
+    GetPage(
+      name: homePagesVendor,
+      page: () =>  HomePagesVendor(),
     ),
   ];
 }

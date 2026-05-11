@@ -38,7 +38,7 @@ class LoginControllerImp extends LoginController {
       }
       else if("vendor"==email.text)
       {
-        Get.offAllNamed(RouteHelper.homePagesAdmin);
+        Get.offAllNamed(RouteHelper.homePagesVendor);
       }
     
 
