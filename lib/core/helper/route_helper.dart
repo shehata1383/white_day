@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 
 import '../../controller/auth/login.controller.dart';
 import '../../features/admin/home_pages_admin.dart';
+import '../../features/admin/pages/add_new_section_screen.dart';
 import '../../features/auth/forgot password/forgot_password_screen.dart';
 import '../../features/auth/forgot password/password_reset_successfilly_screen.dart';
 import '../../features/auth/forgot password/reset_password_screen.dart';
@@ -51,6 +52,7 @@ class RouteHelper {
   
   //admin
   static const String homePagesAdmin = '/HomePagesAdmin';
+  static const String addNewSectionScreen = '/AddNewSectionScreen';
 
   static List<GetPage> routes = [
     GetPage(
@@ -163,6 +165,10 @@ class RouteHelper {
     GetPage(
       name: homePagesAdmin,
       page: () =>  HomePagesAdmin(),
+    ),
+    GetPage(
+      name: addNewSectionScreen,
+      page: () =>  AddNewSectionScreen(),
     ),
     
   ];

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:white_day/core/constants/colors.dart';
+import 'package:white_day/core/helper/route_helper.dart';
 import '../../../core/widget/custom_button.dart';
 
 class DepartementsManagement extends StatelessWidget {
@@ -64,6 +66,7 @@ class DepartementsManagement extends StatelessWidget {
                         width: MediaQuery.of(context).size.width*0.55,
                         height: 68,
                         onPressed: () {
+                          Get.toNamed(RouteHelper.addNewSectionScreen);
                         },
                         margin: EdgeInsetsDirectional.symmetric(horizontal: 5.w),
                         buttonText: "Add To Sections",

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../controller/admin/add_new_section_controller.dart';
 import '../../controller/auth/login.controller.dart';
 import '../../controller/auth/signupClientController.dart';
 import '../../controller/auth/signupVendorController.dart';
@@ -11,4 +12,5 @@ Future<void> init() async {
   Get.lazyPut(() => SignupclientcontrollerImp());
   Get.lazyPut(() => SignupvendorcontrollerImp());
   Get.lazyPut(() => HomeControllImp());
+  Get.lazyPut(() => AddNewSectionController());
 }
