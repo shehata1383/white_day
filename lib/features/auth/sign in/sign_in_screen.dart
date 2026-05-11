@@ -49,7 +49,7 @@ class SignInScreen extends StatelessWidget {
                         height: 60.h,
                         borderRadius: 20
                         
-                      ,
+                      ,isPassword: true,
                         hintText: "Password",
                         controller: loginControllerImp.password,
                         suffixIcon: Icons.lock_outlined,

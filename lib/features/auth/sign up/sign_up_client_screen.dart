@@ -56,6 +56,7 @@ class SignUpClientScreen extends StatelessWidget {
                         colorFill: AppColors.colorInput,
                         height: 60.h,
                         borderRadius: 20,
+                        isPassword: true,
                         hintText: "Phone number".tr,
                         controller: signupclientcontrollerImp.MobileNumberController,
                         suffixIcon: Icons.phone,

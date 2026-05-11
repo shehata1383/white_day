@@ -7,9 +7,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:white_day/controller/home/home_controll.dart';
 import 'package:white_day/core/constants/colors.dart';
 import 'package:white_day/features/client/my_reservations/my_reservations_screen.dart';
-import '../../../core/constants/images.dart';
-import '../../../core/model/my_reservation/my_reservation_model.dart';
-import '../../../core/widget/custom_button.dart';
+import '../../core/constants/images.dart';
+import '../../core/model/my_reservation/my_reservation_model.dart';
+import '../../core/widget/custom_button.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

@@ -19,12 +19,13 @@ import '../../features/client/categories/bridesmaid/bridesmaid_screen.dart';
 import '../../features/client/categories/emergency_bag/emergency_bag.dart';
 import '../../features/client/categories/barbar_shop/barbar_shop_screen.dart';
 import '../../features/client/categories/cars/cars_screen.dart';
-import '../../features/client/home/home_screen.dart';
-import '../../features/client/home/home_screen_start.dart';
+import '../../features/home/home_screen.dart';
+import '../../features/home/home_screen_start.dart';
 import '../../features/client/categories/makeup artist/makeup_artist_screen.dart';
 import '../../features/client/categories/photographer/photographer_screen.dart';
 import '../../features/client/categories/suitStore/suit_store.dart';
 import '../../features/client/categories/weddingDress/wedding_dress_screen.dart';
+import '../../features/manager/home_pages_manager.dart';
 
 class RouteHelper {
   static const String signIn = '/SignInScreen';
@@ -54,6 +55,8 @@ class RouteHelper {
   static const String homePagesAdmin = '/HomePagesAdmin';
   static const String addNewSectionScreen = '/AddNewSectionScreen';
 
+  //manager
+  static const String homePagesManager = '/HomePagesManager';
   static List<GetPage> routes = [
     GetPage(
       name: signIn,
@@ -170,6 +173,11 @@ class RouteHelper {
       name: addNewSectionScreen,
       page: () =>  AddNewSectionScreen(),
     ),
-    
+
+    //manager
+    GetPage(
+      name: homePagesManager,
+      page: () =>  HomePagesManager(),
+    ),
   ];
 }

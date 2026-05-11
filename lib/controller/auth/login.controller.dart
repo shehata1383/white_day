@@ -32,6 +32,14 @@ class LoginControllerImp extends LoginController {
       {
         Get.offAllNamed(RouteHelper.homePagesAdmin);
       }
+      else if("manager"==email.text)
+      {
+        Get.offAllNamed(RouteHelper.homePagesManager);
+      }
+      else if("vendor"==email.text)
+      {
+        Get.offAllNamed(RouteHelper.homePagesAdmin);
+      }
     
 
     }else{ showCustomSnackBar(

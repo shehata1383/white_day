@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/constants/colors.dart';
-import '../../../../core/model/model_review.dart';
+import '../../../core/constants/colors.dart';
+import '../../../core/model/model_review.dart';
 
 class ReviewsWidget extends StatelessWidget {
   const ReviewsWidget({super.key, required this.review});

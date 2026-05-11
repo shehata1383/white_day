@@ -6,9 +6,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:white_day/core/constants/colors.dart';
 import 'package:white_day/core/helper/route_helper.dart';
-import '../../../controller/home/home_controll.dart';
-import '../../../core/constants/images.dart';
-import '../../../core/widget/custom_button.dart';
+import '../../controller/home/home_controll.dart';
+import '../../core/constants/images.dart';
+import '../../core/widget/custom_button.dart';
 import 'widget/reviews_widget.dart';
 
 class HomeScreenStart extends StatelessWidget {
@@ -17,6 +17,7 @@ class HomeScreenStart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeControllImp>(
+      init: HomeControllImp(),
       builder: (homeControllImp) {
         return Scaffold(
           body: SafeArea(

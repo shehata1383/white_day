@@ -116,6 +116,18 @@ class CustomTextFieldState extends State<CustomTextField> {
       else if (widget.hintText == "Governorate".tr) {
       return "emailRequired".tr;
     }
+      else if (widget.hintText == "Phone Number:".tr) {
+      return "phoneRequired".tr;
+    }
+      else if (widget.hintText == "Section:".tr) {
+      return "sectionRequired".tr;
+    }
+      else if (widget.hintText == "Price:".tr) {
+      return "priceRequired".tr;
+    }
+      else if (widget.hintText == "Details:".tr) {
+      return "detailsRequired".tr;
+    }
 
     return null;
   }
