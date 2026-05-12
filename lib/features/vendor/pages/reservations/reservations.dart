@@ -213,160 +213,151 @@ class _ReservationsState extends State<Reservations> {
     );
   }
 }
-
 Widget buildListRequest({
   required List<ReservationModel> model,
   required BuildContext context,
 }) {
   return SizedBox(
-    width: MediaQuery.of(context).size.width * 0.64,
+    // يفضل زيادة العرض قليلاً ليناسب الشاشات الصغيرة (مثلاً 0.9)
+    width: MediaQuery.of(context).size.width * 0.9, 
     height: MediaQuery.of(context).size.height * 0.65,
-    child: Expanded(
-      child: GridView.builder(
-        itemCount: model.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 1,
-          mainAxisSpacing: 15.h,
-          mainAxisExtent: 140.h,
-        ),
-        itemBuilder: (context, index) {
-          return Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(15.r),
-            ),
-            padding: EdgeInsetsDirectional.symmetric(vertical: 10.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      padding: EdgeInsetsDirectional.symmetric(
-                        horizontal: 5.w,
-                        vertical: 2.h,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppColors.colorButton,
-                        borderRadius: BorderRadius.circular(20.r),
-                      ),
+    child: GridView.builder(
+      // تم حذف Expanded من هنا لأنه يسبب خطأ داخل الـ SizedBox
+      itemCount: model.length,
+      padding: EdgeInsets.symmetric(vertical: 10.h),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 1,
+        mainAxisSpacing: 15.h,
+        mainAxisExtent: 160.h, // تمت زيادة الارتفاع قليلاً لتجنب الـ Overflow
+      ),
+      itemBuilder: (context, index) {
+        return Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(15.r),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.05),
+                blurRadius: 5,
+                offset: const Offset(0, 2),
+              ),
+            ],
+          ),
+          padding: EdgeInsets.all(5.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+                    decoration: BoxDecoration(
+                      color: AppColors.colorButton,
+                      borderRadius: BorderRadius.circular(20.r),
+                    ),
+                    child: SizedBox(
+                      width: 55.w,
                       child: Text(
                         model[index].isConfirmed == null
                             ? "Request is pending"
                             : model[index].isConfirmed == true
-                            ? "Confirmed"
-                            : "Reject",
+                                ? "Confirmed"
+                                : "Reject",
                         style: GoogleFonts.inriaSerif(
-                          fontSize: 11,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                    Text(
-                      "${model[index].requestType} - ${model[index].vendorName}",
-                      style: GoogleFonts.inriaSerif(
-                        // خط كلاسيكي يشبه التصميم
-                        fontSize: 11,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: 100.w,
-                      child: Text(
-                        "Client: ${model[index].clientName}",
-                        style: GoogleFonts.inriaSerif(
-                          // خط كلاسيكي يشبه التصميم
-                          fontSize: 10.sp,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 100.w,
-                      child: Text(
-                        model[index].requestDate,
-                        style: GoogleFonts.inriaSerif(
-                          // خط كلاسيكي يشبه التصميم
                           fontSize: 11.sp,
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
                         ),
-                        textAlign: TextAlign.center,
                       ),
                     ),
-                  ],
-                ),
-                Text(
-                  "Total: ${NumberFormat("#,###").format(model[index].price)} L.E",
-                  style: GoogleFonts.inriaSerif(
-                    // خط كلاسيكي يشبه التصميم
-                    fontSize: 11.sp,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
                   ),
+                  Text(
+                    "${model[index].requestType} - ${model[index].vendorName}",
+                    style: GoogleFonts.inriaSerif(
+                      fontSize: 11.sp,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
+              const Spacer(), // يوزع المساحة لضمان بقاء الأزرار في الأسفل
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(width: 120.w,
+                    child: Text(
+                      "Client: ${model[index].clientName}",
+                      style: GoogleFonts.inriaSerif(
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 55.w,
+                    child: Text(
+                      model[index].requestDate,
+                      style: GoogleFonts.inriaSerif(fontSize: 11.sp),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 5.h),
+              Text(
+                "Total: ${NumberFormat("#,###").format(model[index].price)} L.E",
+                style: GoogleFonts.inriaSerif(
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.bold,
                 ),
-                SizedBox(height: 10.h),
-                model[index].isConfirmed == null
-                    ? Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          CustomButton(
-                            width: 100.w,
-                            height: 30.h,
-                            onPressed: () {
-                              Get.to(() => Approval(isApproval: false));
-                            },
-                            buttonText: "Reject",
-                            color: AppColors.colorButton,
-                            fontSize: 20.sp,
-                            textColor: Colors.black,
-                            isBold: true,
-                            radius: 30,
-                          ),
-                          CustomButton(
-                            width: 100.w,
-                            height: 30.h,
-                            onPressed: () {
-                              Get.to(() => Approval(isApproval: true));
-                            },
-                            buttonText: "Approval",
-                            color: AppColors.colorButton,
-                            fontSize: 20.sp,
-                            textColor: Colors.black,
-                            isBold: true,
-                            radius: 30,
-                          ),
-                        ],
-                      )
-                    : CustomButton(
-                        width: 140.w,
-                        height: 30.h,
-                        onPressed: () {
-                          Get.to(() => ReservationDetailsScreen(model:model[index],));
-                        },
+              ),
+              const Spacer(),
+              model[index].isConfirmed == null
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        CustomButton(
+                          width: 110.w,
+                          height: 35.h,
+                          onPressed: () => Get.to(() => Approval(isApproval: false)),
+                          buttonText: "Reject",
+                          color: AppColors.colorButton,
+                          fontSize: 16.sp, // تقليل حجم الخط ليناسب الزر الصغير
+                          textColor: Colors.black,
+                          isBold: true,
+                          radius: 30,
+                        ),
+                        CustomButton(
+                          width: 110.w,
+                          height: 35.h,
+                          onPressed: () => Get.to(() => Approval(isApproval: true)),
+                          buttonText: "Approval",
+                          color: AppColors.colorButton,
+                          fontSize: 16.sp,
+                          textColor: Colors.black,
+                          isBold: true,
+                          radius: 30,
+                        ),
+                      ],
+                    )
+                  : Center(
+                      child: CustomButton(
+                        width: 160.w,
+                        height: 35.h,
+                        onPressed: () => Get.to(() => ReservationDetailsScreen(model: model[index])),
                         buttonText: "View details",
                         color: AppColors.colorButton,
-                        fontSize: 20.sp,
+                        fontSize: 16.sp,
                         textColor: Colors.black,
                         isBold: true,
                         radius: 30,
                       ),
-              ],
-            ),
-          );
-        },
-      ),
+                    ),
+            ],
+          ),
+        );
+      },
     ),
   );
 }
