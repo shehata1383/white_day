@@ -11,7 +11,7 @@ import 'package:white_day/features/widget/appbar_logo_screen.dart';
 import '../../core/model/manager/emergency_management.dart';
 import '../../core/model/vendor/reservation_model.dart';
 import 'pages/dash_board_vendor.dart';
-import 'pages/reservations.dart';
+import 'pages/reservations/reservations.dart';
 import 'pages/availability_update.dart';
 import 'pages/special_offers.dart';
 
