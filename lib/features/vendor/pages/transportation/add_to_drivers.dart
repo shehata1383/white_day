@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:white_day/features/widget/appbar_logo_screen.dart';
-import '../../../controller/admin/add_new_section_controller.dart';
-import '../../../core/constants/colors.dart';
-import '../../../core/widget/custom_button.dart';
-import '../../../core/widget/custom_text_field.dart';
+import '../../../../controller/admin/add_new_section_controller.dart';
+import '../../../../core/constants/colors.dart';
+import '../../../../core/widget/custom_button.dart';
+import '../../../../core/widget/custom_text_field.dart';
 
 class AddToDrivers extends StatelessWidget {
   const AddToDrivers({super.key});
@@ -114,7 +114,7 @@ class AddToDrivers extends StatelessWidget {
                         ),
                       ),
 
-                      SizedBox(height: 15.h),
+                      SizedBox(height: 5.h),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -123,8 +123,8 @@ class AddToDrivers extends StatelessWidget {
                             height: 60.h,
                             width: 150.w,
                             borderRadius: 20,
-                            hintText: "Section:",
-                            controller: controller.sectionController,
+                            hintText: "Name:",
+                            controller: controller.nameController,
                             iconSize: 30.w,
                           ),
                           CustomTextField(
@@ -146,8 +146,8 @@ class AddToDrivers extends StatelessWidget {
                             height: 60.h,
                             width: 150.w,
                             borderRadius: 20,
-                            hintText: "Details:",
-                            controller: controller.detailsController,
+                            hintText: "Year:",
+                            controller: controller.yearController,
                             iconSize: 30.w,
                           ),
                           CustomTextField(
@@ -156,12 +156,26 @@ class AddToDrivers extends StatelessWidget {
                             height: 60.h,
                             borderRadius: 20,
                             fontSize: 16.sp,
-                            hintText: "Price:",
+                            hintText: "Place:",
                             controller: controller.priceController,
                           ),
                         ],
-                      ),
-                      SizedBox(height: 40.h),
+                      ),                      SizedBox(height: 20.h),
+
+                       Row(mainAxisAlignment: MainAxisAlignment.center,
+                         children: [
+                           CustomTextField(
+                                width: 250.w,
+                                colorFill: AppColors.colorButton,
+                                height: 60.h,
+                                borderRadius: 20,
+                                fontSize: 16.sp,
+                                hintText: "Notes:",
+                                controller: controller.noteController,
+                              ),
+                         ],
+                       ),
+                      SizedBox(height: 20.h),
                       CustomButton(
                         width: MediaQuery.of(context).size.width * 0.5,
                         height: 68,

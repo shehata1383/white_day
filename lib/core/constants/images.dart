@@ -161,6 +161,8 @@ class Images {
   static const String visa = 'assets/images/visa.jpg';
   static const String photograperOfer = 'assets/images/photograperOfer.jpg';
   static const String emergenceOfer = 'assets/images/emergenceOfer.jpg';
+  static const String driver1 = 'assets/images/driver1.jpg';
+  static const String driver2 = 'assets/images/driver2.jpg';
   static const String vendorProfile = 'assets/images/vendorprofile.png';
 
 

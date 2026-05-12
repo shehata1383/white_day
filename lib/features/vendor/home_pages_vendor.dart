@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:white_day/core/constants/colors.dart';
 import 'package:white_day/core/constants/images.dart';
 import 'package:white_day/core/helper/route_helper.dart';
@@ -10,10 +11,14 @@ import 'package:white_day/features/vendor/pages/wallet.dart';
 import 'package:white_day/features/widget/appbar_logo_screen.dart';
 import '../../core/model/manager/emergency_management.dart';
 import '../../core/model/vendor/reservation_model.dart';
-import 'pages/dash_board_vendor.dart';
-import 'pages/reservations/reservations.dart';
+import '../../core/model/vendor/transportation_car_model.dart';
+import '../../core/model/vendor/transportation_driver_model.dart';
 import 'pages/availability_update.dart';
-import 'pages/special_offers.dart';
+import 'pages/dashboard_vendor/dash_board_vendor.dart';
+import 'pages/reservations/approval.dart';
+import 'pages/reservations/reservations.dart';
+import 'pages/transportation/Transportation_fleet_management.dart';
+import 'pages/special_offer/special_offers.dart';
 
 class HomePagesVendor extends StatefulWidget {
   const HomePagesVendor({super.key});
@@ -351,8 +356,14 @@ class _HomePagesVendorState extends State<HomePagesVendor> {
                               requestDate: 'Monday,October26.2026',
                               price: 11000,
                               isConfirmed: null,
+                              time: '6 colock pm',
+                              place: 'cairo, shorouk city , duck caoffe ',
+                              resevationType: 'Party photography',
                             ),
                             ReservationModel(
+                              time: '6 colock pm',
+                              place: 'cairo, shorouk city , duck caoffe ',
+                              resevationType: 'Party photography',
                               requestType: 'Photographer',
                               vendorName: 'Agha Wedding',
                               clientName: 'Ahmed mohmmed',
@@ -363,7 +374,40 @@ class _HomePagesVendorState extends State<HomePagesVendor> {
                           ],
                         )
                       : selectPages == 3
-                      ? Wallet()
+                      ? TransportationFleetManagement(
+                          modelCar: [
+                            TransportationCarModel(
+                              available: true,
+                              carModel: 'Mg 5 2023',
+                              image: Images.mg520231,
+                              price: 1700,
+                              sectionName: 'Dream car',
+                            ),
+                            TransportationCarModel(
+                              available: false,
+                              carModel: 'Hyundai Elantra 2026',
+                              image: Images.hyundaiElantra20261,
+                              price: 2200,
+                              sectionName: 'Royal crown',
+                            ),
+                          ],
+                          modelDriver: [
+                            TransportationDriverModel(
+                              driverName: 'Ahmed mohmmed',
+                              image: Images.driver1,
+                              driverYear: 27,
+                              phoneNumber: '0117463938',
+                              place: 'Cairo , Mokattam',
+                            ),
+                            TransportationDriverModel(
+                              driverName: 'Omar Esaam',
+                              image: Images.driver2,
+                              driverYear: 30,
+                              phoneNumber: '01200937484',
+                              place: 'Giza , Mariouteya',
+                            ),
+                          ],
+                        )
                       : selectPages == 4
                       ? SpecialOffers(
                           specialOffer: [
@@ -391,3 +435,4 @@ class _HomePagesVendorState extends State<HomePagesVendor> {
     );
   }
 }
+

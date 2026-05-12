@@ -2,19 +2,19 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:white_day/controller/vendor/add_vendor_controller.dart';
 import 'package:white_day/features/widget/appbar_logo_screen.dart';
-import '../../../controller/admin/add_new_section_controller.dart';
-import '../../../core/constants/colors.dart';
-import '../../../core/widget/custom_button.dart';
-import '../../../core/widget/custom_text_field.dart';
+import '../../../../../core/constants/colors.dart';
+import '../../../../../core/widget/custom_button.dart';
+import '../../../../../core/widget/custom_text_field.dart';
 
-class AddNewSectionScreen extends StatelessWidget {
-  const AddNewSectionScreen({super.key});
+class AddToOffers extends StatelessWidget {
+  const AddToOffers({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<AddNewSectionController>(
-      init: AddNewSectionController(),
+    return GetBuilder<AddVendorController>(
+      init: AddVendorController(),
       builder: (controller) {
         return Scaffold(
           body: Form(
@@ -123,8 +123,8 @@ class AddNewSectionScreen extends StatelessWidget {
                             height: 60.h,
                             width: 150.w,
                             borderRadius: 20,
-                            hintText: "Section:",
-                            controller: controller.sectionController,
+                            hintText: "Job:",
+                            controller: controller.jobController,
                             iconSize: 30.w,
                           ),
                           CustomTextField(
@@ -132,8 +132,8 @@ class AddNewSectionScreen extends StatelessWidget {
                             colorFill: AppColors.colorButton,
                             borderRadius: 20,
                             fontSize: 16.sp,
-                            hintText: "Phone Number:",
-                            controller: controller.phoneNumberController,
+                            hintText: "Offers:",
+                            controller: controller.offerController,
                           ),
                         ],
                       ),
@@ -146,8 +146,8 @@ class AddNewSectionScreen extends StatelessWidget {
                             height: 60.h,
                             width: 150.w,
                             borderRadius: 20,
-                            hintText: "Details:",
-                            controller: controller.detailsController,
+                            hintText: "Price:s",
+                            controller: controller.priceController,
                             iconSize: 30.w,
                           ),
                           CustomTextField(
@@ -156,8 +156,8 @@ class AddNewSectionScreen extends StatelessWidget {
                             height: 60.h,
                             borderRadius: 20,
                             fontSize: 16.sp,
-                            hintText: "Price:",
-                            controller: controller.priceController,
+                            hintText: "Valid untill:",
+                            controller: controller.validUntillController,
                           ),
                         ],
                       ),

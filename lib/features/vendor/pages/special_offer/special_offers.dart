@@ -7,8 +7,8 @@ import 'package:white_day/core/constants/colors.dart';
 import 'package:white_day/core/constants/images.dart';
 import 'package:white_day/core/model/vendor/special_offer_model.dart';
 
-import '../../../core/widget/custom_button.dart';
-import '../add_to_offers.dart';
+import '../../../../core/widget/custom_button.dart';
+import 'add_to_offers.dart';
 
 class SpecialOffers extends StatelessWidget {
   const SpecialOffers({super.key, required this.specialOffer});

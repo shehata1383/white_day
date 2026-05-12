@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:white_day/core/constants/colors.dart';
 import 'package:white_day/core/constants/images.dart';
 
-import '../../../controller/vendor/dash_board_controller.dart';
+import '../../../../controller/vendor/dash_board_controller.dart';
 
 
 class DashBoardVendor extends StatelessWidget {

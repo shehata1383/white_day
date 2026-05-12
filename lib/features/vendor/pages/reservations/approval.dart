@@ -13,21 +13,21 @@ final bool isApproval ;
       body: SafeArea(child: Column(
         children: [
           appBarLogoScreen(),
-          const SizedBox(height: 20),
+           SizedBox(height: 70.h),
           Container(
-            height: 100,
-            width: 100,
+            height: 100.h,
+            width: 100.w,
             decoration: BoxDecoration(
               color: AppColors.colorButton2,
               shape: BoxShape.circle,
             ),
-            child: const Icon(Icons.done, color: Colors.white, size: 50),
+            child:  Icon(Icons.done, color: Colors.white, size: 50.w),
           ),
            Text(
             
            isApproval? "Approval":"Reject", style: GoogleFonts.inriaSerif(
-                          fontSize: 13.sp,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 30.sp,
+                          fontWeight: FontWeight.w900,
                           color: Colors.black,
                         ),),
         ],

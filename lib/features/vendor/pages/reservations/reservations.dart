@@ -8,6 +8,7 @@ import 'package:white_day/features/vendor/pages/reservations/approval.dart';
 
 import '../../../../core/model/vendor/reservation_model.dart';
 import '../../../../core/widget/custom_button.dart';
+import 'reservation_details_screen.dart';
 
 class Reservations extends StatefulWidget {
   const Reservations({super.key, required this.listSections});
@@ -351,7 +352,9 @@ Widget buildListRequest({
                     : CustomButton(
                         width: 140.w,
                         height: 30.h,
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(() => ReservationDetailsScreen(model:model[index],));
+                        },
                         buttonText: "View details",
                         color: AppColors.colorButton,
                         fontSize: 20.sp,

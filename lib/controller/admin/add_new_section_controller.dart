@@ -4,20 +4,34 @@ import 'package:image_picker/image_picker.dart';
 
 class AddNewSectionController extends GetxController {
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
-  late TextEditingController sectionController;
+  late TextEditingController nameController;
   late TextEditingController phoneNumberController;
-  late TextEditingController detailsController;
+  late TextEditingController yearController;
   late TextEditingController priceController;
+  late TextEditingController noteController;
+   late TextEditingController typeOfCarController;
+   late TextEditingController phoneNumberCarController;
+   late TextEditingController detailsController;
+  late TextEditingController  noteCarController;
+   late TextEditingController priceCarController;
+   late TextEditingController sectionController;
   // قائمة المسارات (بحد أقصى 4)
   final RxList<String?> selectedImagePaths = RxList<String?>(List.generate(4, (index) => null));
   final ImagePicker _picker = ImagePicker();
   @override
   void onInit() {
     super.onInit();
-    sectionController = TextEditingController();
+    nameController = TextEditingController();
     phoneNumberController = TextEditingController();
-    detailsController = TextEditingController();
+    yearController = TextEditingController();
     priceController = TextEditingController();
+    noteController = TextEditingController();
+      typeOfCarController= TextEditingController();
+    phoneNumberCarController= TextEditingController();
+    detailsController= TextEditingController();
+    noteCarController= TextEditingController();
+    priceCarController= TextEditingController();
+    sectionController= TextEditingController();
   }
 
   // دالة اختيار صورة لخانة محددة
@@ -38,10 +52,17 @@ class AddNewSectionController extends GetxController {
   }
 @override
   void dispose() {
-    sectionController.dispose();
+    nameController.dispose();
     phoneNumberController.dispose();
-    detailsController.dispose();
+    yearController.dispose();
     priceController.dispose();
+    noteController.dispose();
+    typeOfCarController.dispose();
+    phoneNumberCarController.dispose();
+    detailsController.dispose();
+    noteCarController.dispose();
+    priceCarController.dispose();
+    sectionController.dispose();
     super.dispose();
   }
 }
