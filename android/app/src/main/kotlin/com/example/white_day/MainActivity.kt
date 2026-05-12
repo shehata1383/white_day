@@ -1,4 +1,4 @@
-package com.example.white_day
+package com.ahmed.white_day
 
 import io.flutter.embedding.android.FlutterActivity
 

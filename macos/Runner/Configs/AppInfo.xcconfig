@@ -8,7 +8,7 @@
 PRODUCT_NAME = eilajaa
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.white_day
+PRODUCT_BUNDLE_IDENTIFIER = com.ahmed.white_day
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2026 com.example. All rights reserved.
