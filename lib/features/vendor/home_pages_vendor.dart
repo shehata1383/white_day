@@ -3,15 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:white_day/core/constants/colors.dart';
+import 'package:white_day/core/constants/images.dart';
 import 'package:white_day/core/helper/route_helper.dart';
-import 'package:white_day/features/manager/pages/emergency_management.dart';
+import 'package:white_day/core/model/vendor/special_offer_model.dart';
+import 'package:white_day/features/vendor/pages/wallet.dart';
 import 'package:white_day/features/widget/appbar_logo_screen.dart';
-
 import '../../core/model/manager/emergency_management.dart';
-import '../../core/model/manager/timeline_section.dart';
-import '../manager/pages/conflict_resolution.dart';
-import '../manager/pages/dash_board_manager.dart';
-import '../manager/pages/timeline_monitoring_screen.dart';
+import 'pages/dash_board_vendor.dart';
+import 'pages/reservations.dart';
+import 'pages/availability_update.dart';
+import 'pages/special_offers.dart';
 
 class HomePagesVendor extends StatefulWidget {
   const HomePagesVendor({super.key});
@@ -33,11 +34,9 @@ class _HomePagesVendorState extends State<HomePagesVendor> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.37,
+                  width: MediaQuery.of(context).size.width * 0.32,
                   height: MediaQuery.of(context).size.height * 0.784,
-                  decoration: BoxDecoration(
-                    color: AppColors.colorButton,
-                  ),
+                  decoration: BoxDecoration(color: AppColors.colorButton),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -72,7 +71,7 @@ class _HomePagesVendorState extends State<HomePagesVendor> {
                                   Text(
                                     "Dashboard",
                                     style: GoogleFonts.inriaSerif(
-                                      fontSize: 16,
+                                      fontSize: 14,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.black,
                                     ),
@@ -112,12 +111,11 @@ class _HomePagesVendorState extends State<HomePagesVendor> {
                                   SizedBox(width: 5.w),
                                   SizedBox(
                                     width:
-                                        MediaQuery.of(context).size.width *
-                                        0.25,
+                                        MediaQuery.of(context).size.width * 0.2,
                                     child: Text(
                                       "Availability update",
                                       style: GoogleFonts.inriaSerif(
-                                        fontSize: 16,
+                                        fontSize: 14,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.black,
                                       ),
@@ -152,19 +150,16 @@ class _HomePagesVendorState extends State<HomePagesVendor> {
                                   : null,
                               child: Row(
                                 children: [
-                                  Icon(
-                                    Icons.edit,
-                                    size: 30.w,
-                                  ),
+                                  Icon(Icons.edit, size: 30.w),
                                   SizedBox(width: 5.w),
                                   SizedBox(
                                     width:
                                         MediaQuery.of(context).size.width *
-                                        0.25,
+                                        0.20,
                                     child: Text(
                                       "Reservations",
                                       style: GoogleFonts.inriaSerif(
-                                        fontSize: 16,
+                                        fontSize: 13,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.black,
                                       ),
@@ -199,16 +194,19 @@ class _HomePagesVendorState extends State<HomePagesVendor> {
                                   : null,
                               child: Row(
                                 children: [
-                                  Icon(Icons.directions_car_outlined, size: 30.w),
+                                  Icon(
+                                    Icons.directions_car_outlined,
+                                    size: 30.w,
+                                  ),
                                   SizedBox(width: 5.w),
                                   SizedBox(
                                     width:
                                         MediaQuery.of(context).size.width *
-                                        0.25,
+                                        0.20,
                                     child: Text(
                                       "Transportation fleet management",
                                       style: GoogleFonts.inriaSerif(
-                                        fontSize: 16,
+                                        fontSize: 14,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.black,
                                       ),
@@ -242,19 +240,15 @@ class _HomePagesVendorState extends State<HomePagesVendor> {
                                   : null,
                               child: Row(
                                 children: [
-                                  Icon(
-                                    Icons.redeem_outlined,
-                                    size: 30.w,
-                                  ),
+                                  Icon(Icons.redeem_outlined, size: 30.w),
                                   SizedBox(width: 5.w),
                                   SizedBox(
                                     width:
-                                        MediaQuery.of(context).size.width *
-                                        0.25,
+                                        MediaQuery.of(context).size.width * 0.2,
                                     child: Text(
                                       "Special offers",
                                       style: GoogleFonts.inriaSerif(
-                                        fontSize: 16.sp,
+                                        fontSize: 14,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.black,
                                       ),
@@ -288,19 +282,15 @@ class _HomePagesVendorState extends State<HomePagesVendor> {
                                   : null,
                               child: Row(
                                 children: [
-                                  Icon(
-                                    Icons.wallet_outlined,
-                                    size: 30.w,
-                                  ),
+                                  Icon(Icons.wallet_outlined, size: 30.w),
                                   SizedBox(width: 5.w),
                                   SizedBox(
                                     width:
-                                        MediaQuery.of(context).size.width *
-                                        0.25,
+                                        MediaQuery.of(context).size.width * 0.2,
                                     child: Text(
                                       "Wallet",
                                       style: GoogleFonts.inriaSerif(
-                                        fontSize: 16.sp,
+                                        fontSize: 14,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.black,
                                       ),
@@ -313,12 +303,14 @@ class _HomePagesVendorState extends State<HomePagesVendor> {
                         ],
                       ),
                       Padding(
-                        padding:  EdgeInsetsDirectional.only(bottom: 15.h),
+                        padding: EdgeInsetsDirectional.only(bottom: 15.h),
                         child: GestureDetector(
-                          onTap: () {Get.offAllNamed(RouteHelper.homeScreenStart);},
+                          onTap: () {
+                            Get.offAllNamed(RouteHelper.homeScreenStart);
+                          },
                           child: Padding(
                             padding: EdgeInsetsDirectional.symmetric(
-                              horizontal: 20.w,
+                              horizontal: 10.w,
                             ),
                             child: Row(
                               children: [
@@ -337,39 +329,19 @@ class _HomePagesVendorState extends State<HomePagesVendor> {
                           ),
                         ),
                       ),
-                      
                     ],
                   ),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.6,
+                  width: MediaQuery.of(context).size.width * 0.68,
                   height: MediaQuery.of(context).size.height * 0.784,
                   child: selectPages == 0
-                      ? DashBoardManager()
+                      ? DashBoardVendor()
                       : selectPages == 1
-                      ? TimelineMonitoringScreen(
-                          listSections: [
-                            TimelineSection(
-                              time: "10:00 AM",
-                              data: "Bridal Makeup: Sara salama ",
-                            ),
-                            TimelineSection(
-                              time: "02:00 PM",
-                              data: "Session : Aboutaleb Wedding",
-                            ),
-                            TimelineSection(
-                              time: "12:00 PM",
-                              data: "Cars",
-                            ),
-                            TimelineSection(
-                              time: "05:00 PM",
-                              data: "Engagement in Cinderella Hall",
-                            ),
-                          ],
-                        )
+                      ? AvailabilityUpdateScreen()
                       : selectPages == 2
-                      ? EmergencyManagement(
-                         listSections: [
+                      ? Reservations(
+                          listSections: [
                             EmergencyManagementModel(
                               clientName: "Ahmed omar",
                               data: "Sudden cancellation on 17-6-2025",
@@ -380,27 +352,27 @@ class _HomePagesVendorState extends State<HomePagesVendor> {
                               data: "Problem between vendor and customer",
                               status: "Processed",
                             ),
-                           
                           ],
-                      )
-                      : ConflictResolution( listSections: [
-                            EmergencyManagementModel(
-                              clientName: "Sara Ahmed",
-                              data: "Customer complaint about delay",
-                              status: "In process",
+                        )
+                      : selectPages == 3
+                      ? Wallet()
+                      : selectPages == 4
+                      ? SpecialOffers(
+                          specialOffer: [
+                            SpecialOfferModel(
+                              servecs: ["Photoshoot", "Video"],
+                              price: 1000,
+                              validUntil: "16-6-2026", image: Images.photograperOfer,
                             ),
-                            EmergencyManagementModel(
-                              clientName: "Menna Ali",
-                              data: "Customer complaint about a makeup artist",
-                              status: "Processed",
+                            SpecialOfferModel(
+                              servecs: ["Engagement makeup", "veil styling"],
+                              price: 1750,
+                              validUntil: "27-7-2026",
+                              image: Images.emergenceOfer
                             ),
-                            EmergencyManagementModel(
-                              clientName: "Ahmed Mohmmed",
-                              data: "A client wants to change the date from 15-5-2025",
-                              status: "In process",
-                            ),
-                           
-                          ],),
+                          ],
+                        )
+                      : Wallet(),
                 ),
               ],
             ),

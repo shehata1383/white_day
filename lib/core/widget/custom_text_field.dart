@@ -128,6 +128,15 @@ class CustomTextFieldState extends State<CustomTextField> {
       else if (widget.hintText == "Details:".tr) {
       return "detailsRequired".tr;
     }
+      else if (widget.hintText ==  "Job:".tr) {
+      return "detailsRequired".tr;
+    }
+      else if (widget.hintText == "Offers:".tr) {
+      return "detailsRequired".tr;
+    }
+      else if (widget.hintText == "Valid untill:".tr) {
+      return "detailsRequired".tr;
+    }
 
     return null;
   }
