@@ -9,6 +9,7 @@ import 'package:white_day/core/model/vendor/special_offer_model.dart';
 import 'package:white_day/features/vendor/pages/wallet.dart';
 import 'package:white_day/features/widget/appbar_logo_screen.dart';
 import '../../core/model/manager/emergency_management.dart';
+import '../../core/model/vendor/reservation_model.dart';
 import 'pages/dash_board_vendor.dart';
 import 'pages/reservations.dart';
 import 'pages/availability_update.dart';
@@ -342,15 +343,22 @@ class _HomePagesVendorState extends State<HomePagesVendor> {
                       : selectPages == 2
                       ? Reservations(
                           listSections: [
-                            EmergencyManagementModel(
-                              clientName: "Ahmed omar",
-                              data: "Sudden cancellation on 17-6-2025",
-                              status: "In process",
+                            ReservationModel(
+                              clientName: "wafaa ahmed",
+
+                              requestType: 'Makeup Artist',
+                              vendorName: 'Sara salame',
+                              requestDate: 'Monday,October26.2026',
+                              price: 11000,
+                              isConfirmed: null,
                             ),
-                            EmergencyManagementModel(
-                              clientName: "",
-                              data: "Problem between vendor and customer",
-                              status: "Processed",
+                            ReservationModel(
+                              requestType: 'Photographer',
+                              vendorName: 'Agha Wedding',
+                              clientName: 'Ahmed mohmmed',
+                              requestDate: 'Thursday,April30.2026',
+                              price: 3000,
+                              isConfirmed: true,
                             ),
                           ],
                         )
@@ -362,13 +370,14 @@ class _HomePagesVendorState extends State<HomePagesVendor> {
                             SpecialOfferModel(
                               servecs: ["Photoshoot", "Video"],
                               price: 1000,
-                              validUntil: "16-6-2026", image: Images.photograperOfer,
+                              validUntil: "16-6-2026",
+                              image: Images.photograperOfer,
                             ),
                             SpecialOfferModel(
                               servecs: ["Engagement makeup", "veil styling"],
                               price: 1750,
                               validUntil: "27-7-2026",
-                              image: Images.emergenceOfer
+                              image: Images.emergenceOfer,
                             ),
                           ],
                         )

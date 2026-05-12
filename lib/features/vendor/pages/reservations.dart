@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:white_day/core/constants/colors.dart';
 
-import '../../../core/model/manager/emergency_management.dart';
+import '../../../core/model/vendor/reservation_model.dart';
+import '../../../core/widget/custom_button.dart';
 
 class Reservations extends StatefulWidget {
   const Reservations({super.key, required this.listSections});
-  final List<EmergencyManagementModel> listSections;
+  final List<ReservationModel> listSections;
 
   @override
   State<Reservations> createState() => _ReservationsState();
@@ -34,9 +36,11 @@ class _ReservationsState extends State<Reservations> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               GestureDetector(
-                onTap: () { setState(() {
+                onTap: () {
+                  setState(() {
                     select = 0;
-                  });},
+                  });
+                },
                 child: Stack(
                   alignment: AlignmentDirectional.topEnd,
                   children: [
@@ -83,9 +87,11 @@ class _ReservationsState extends State<Reservations> {
                 ),
               ),
               GestureDetector(
-                onTap: () { setState(() {
+                onTap: () {
+                  setState(() {
                     select = 1;
-                  });},
+                  });
+                },
                 child: Stack(
                   alignment: AlignmentDirectional.topEnd,
                   children: [
@@ -185,6 +191,130 @@ class _ReservationsState extends State<Reservations> {
                 ),
               ),
             ],
+          ),
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.64,
+            height: MediaQuery.of(context).size.height * 0.65,
+            child: Expanded(
+              child: GridView.builder(
+                itemCount: widget.listSections.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 1,
+                  mainAxisSpacing: 15.h,
+                  mainAxisExtent: 270.h,
+                ),
+                itemBuilder: (context, index) {
+                  return Container(
+                    color: Colors.white,
+                    padding: EdgeInsetsDirectional.symmetric(
+                     
+                      vertical: 10.h,
+                    ),
+                    child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              padding: EdgeInsetsDirectional.symmetric(
+                                horizontal: 5.w,
+                                vertical: 2.h,
+                              ),
+                              decoration: BoxDecoration(
+                                color: AppColors.colorButton,
+                                borderRadius: BorderRadius.circular(20.r),
+                              ),
+                              child: Text(
+                                widget.listSections[index].isConfirmed == null
+                                    ? "Request is pending"
+                                    : widget.listSections[index].isConfirmed ==
+                                          true
+                                    ? "Confirmed"
+                                    : "Reject",
+                                style: GoogleFonts.inriaSerif(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                        Text(
+                           "${widget.listSections[index].requestType} - ${widget.listSections[index].vendorName}",
+                          style: GoogleFonts.inriaSerif(
+                            // خط كلاسيكي يشبه التصميم
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),  ],
+                        ),
+                       SizedBox(height: 10.h), 
+                        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,        children: [
+                            SizedBox(width: 100.w,
+                              child: Text(
+                                "Client: ${widget.listSections[index].clientName}",
+                                style: GoogleFonts.inriaSerif(
+                                  // خط كلاسيكي يشبه التصميم
+                                  fontSize: 10.sp,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 100.w,
+                              child: Text(
+                                widget.listSections[index].requestDate,
+                                style: GoogleFonts.inriaSerif(
+                                  // خط كلاسيكي يشبه التصميم
+                                  fontSize: 11.sp,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ],
+                        ),
+                         Text(
+                              "Total: ${NumberFormat("#,###").format(widget.listSections[index].price)} L.E",
+                              style: GoogleFonts.inriaSerif(
+                                // خط كلاسيكي يشبه التصميم
+                                fontSize: 11.sp,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                       SizedBox(height: 10.h),
+                       Row(children: [ CustomButton(
+                        width:100.w,
+                        height: 68,
+                        onPressed: () {
+                        },
+                        buttonText: "Login",
+                        color: AppColors.colorButton,
+                        fontSize: 30.sp,
+                        textColor: Colors.black,
+                        isBold: true,
+                        radius: 20
+                      ), CustomButton(
+                        width: 100.w,
+                        height: 68,
+                        onPressed: () {
+                        },
+                        buttonText: "Login",
+                        color: AppColors.colorButton,
+                        fontSize: 30.sp,
+                        textColor: Colors.black,
+                        isBold: true,
+                        radius: 20
+                      ),],)
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
           ),
         ],
       ),
