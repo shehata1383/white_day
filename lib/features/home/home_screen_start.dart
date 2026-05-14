@@ -6,8 +6,10 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:white_day/core/constants/colors.dart';
 import 'package:white_day/core/helper/route_helper.dart';
+import 'package:white_day/features/client/user_profile/user_profile_screen.dart';
 import '../../controller/home/home_controll.dart';
 import '../../core/constants/images.dart';
+import '../../core/model/user_profile/user_profile_model.dart';
 import '../../core/widget/custom_button.dart';
 import 'widget/reviews_widget.dart';
 
@@ -52,9 +54,7 @@ class HomeScreenStart extends StatelessWidget {
                           ),
                           decoration: BoxDecoration(
                             color: AppColors.colorButton.withOpacity(0.8),
-                            borderRadius: BorderRadius.circular(
-                              12,
-                            ),
+                            borderRadius: BorderRadius.circular(12),
                           ),
                           child: Text(
                             "Reserve Now",
@@ -96,13 +96,16 @@ class HomeScreenStart extends StatelessWidget {
                       ),
                       itemBuilder: (context, index) {
                         return GestureDetector(
-                          onTap: () =>
-                              Get.toNamed( homeControllImp.listSubCategoryes[index].page!),
+                          onTap: () => Get.toNamed(
+                            homeControllImp.listSubCategoryes[index].page!,
+                          ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                               homeControllImp.listSubCategoryes[index].nameCategory!,
+                                homeControllImp
+                                    .listSubCategoryes[index]
+                                    .nameCategory!,
                                 style: GoogleFonts.inriaSerif(
                                   fontSize: 20.sp,
                                   fontWeight: FontWeight.w700,
@@ -114,7 +117,9 @@ class HomeScreenStart extends StatelessWidget {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
                                   child: Image.asset(
-                                   homeControllImp. listSubCategoryes[index].image!,
+                                    homeControllImp
+                                        .listSubCategoryes[index]
+                                        .image!,
                                     width: double.infinity,
                                     fit: BoxFit.cover,
                                   ),
@@ -128,7 +133,10 @@ class HomeScreenStart extends StatelessWidget {
                   ),
                   SizedBox(height: 15.h),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 5.h),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 30.w,
+                      vertical: 5.h,
+                    ),
                     decoration: BoxDecoration(
                       color: AppColors.colorButton,
                       borderRadius: BorderRadius.circular(12),
@@ -147,12 +155,14 @@ class HomeScreenStart extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: homeControllImp.reviews.length,
                     itemBuilder: (context, index) {
-                      return ReviewsWidget(review:homeControllImp. reviews[index]);
+                      return ReviewsWidget(
+                        review: homeControllImp.reviews[index],
+                      );
                     },
                   ),
-        
+
                   SizedBox(height: 20.h),
-        
+
                   Padding(
                     padding: EdgeInsets.only(bottom: 0.h),
                     child: Row(
@@ -168,7 +178,8 @@ class HomeScreenStart extends StatelessWidget {
                           textColor: Colors.black,
                         ),
                         CustomButton(
-                          onPressed: () => Get.toNamed(RouteHelper.signUpClientScreen),
+                          onPressed: () =>
+                              Get.toNamed(RouteHelper.signUpClientScreen),
                           buttonText: "Create account",
                           color: AppColors.colorButton,
                           fontSize: 20,
@@ -176,30 +187,62 @@ class HomeScreenStart extends StatelessWidget {
                           height: 35.h,
                           textColor: Colors.black,
                         ),
-                       
                       ],
                     ),
                   ),
-                   SizedBox(height: 10.h,),
-                          Align(
-                            alignment: AlignmentDirectional.centerStart,
-                            child: Padding(
-                              padding:  EdgeInsetsDirectional.only(start: 10),
-                              child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text('Conctact us:',style: GoogleFonts.inter(fontSize: 20),),
-                                 Text('01272017621',style: GoogleFonts.inter(fontSize: 18),),
-                          Text('Whitedayweddingplanner@gmail.com',style: GoogleFonts.inter(fontSize: 18),),],
-                              ),
-                            )),
-                         
+                  SizedBox(height: 10.h),
+                  Align(
+                    alignment: AlignmentDirectional.centerStart,
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.only(start: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Conctact us:',
+                            style: GoogleFonts.inter(fontSize: 20),
+                          ),
+                          Text(
+                            '01272017621',
+                            style: GoogleFonts.inter(fontSize: 18),
+                          ),
+                          Text(
+                            'Whitedayweddingplanner@gmail.com',
+                            style: GoogleFonts.inter(fontSize: 18),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
+          floatingActionButton: GestureDetector(
+            onTap: () {
+              () => Get.to(
+                UserProfileScreen(
+                  userProfile: UserProfile(
+                    name: 'Salma Ahmed',
+                    email: 'Salmaahmed879@gmmail.com',
+                    image: Images.review1,
+                    phoneNumber: '01025678957',
+                  ),
+                ),
+              );
+            },
+            child: Container(
+              padding: EdgeInsets.all(7),
+              decoration: BoxDecoration(
+                color: AppColors.colorButton,
+                borderRadius: BorderRadius.circular(25.r),
+              ),
+              child: Icon(Icons.home_outlined, size: 30.w),
+            ),
+          ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
         );
-      }
+      },
     );
   }
 }
